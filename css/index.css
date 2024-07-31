@@ -1,19 +1,15 @@
 body {
     margin: 0;
     font-family: 'Courier New', monospace;
-    background-color: #ccdde8;
 }
 
 .box {
     width: 100%;
-    color: #178fd6;
     box-sizing: border-box;
-    border-bottom: 1px solid #edece8;
 }
 
 .footer {
     text-align: end;
-    background-color: #034488;
     padding: 1vw;
     position: fixed;
     bottom: 0;
@@ -22,18 +18,57 @@ body {
 }
 
 .footer a {
-    color: #fffcf6;
     text-decoration: none;
 }
 
-.footer a:hover {
+/*month styles*/
+/*january*/
+body.january {
+    background-color: #ccdde8;
+}
+.box.january {
+    color: #178fd6;
+    border-bottom: 1px solid #edece8;
+}
+.footer.january {
+    background-color: #034488;
+}
+.footer.january a {
+    color: #fffcf6;
+}
+.footer.january a:hover {
     text-decoration: underline;
 }
 
-/*
+/*february*/
+body.february {
+    background-color: #0D0208;
+}
+.box.february {
+    color: #00FF41;
+    border-bottom: 1px solid #003B00;
+}
+.footer.february {
+    background-color: #0D0208;
+}
+.footer.february a {
+    color: #00FF41;
+}
+.footer.february a:hover {
+    color: #fffcf6;;
+}
+
+/*color palettes*/
+/*santorini
 #034488
 #178fd6
 #ccdde8
 #edece8
 #fffcf6
+*/
+/*matrix
+#0D0208
+#003B00
+#008F11
+#00FF41
 */
