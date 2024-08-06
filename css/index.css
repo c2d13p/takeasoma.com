@@ -3,22 +3,59 @@ body {
     font-family: 'Courier New', monospace;
 }
 
+a {
+    text-decoration: none;
+}
+
 .box {
     width: 100%;
+    height: 10vh;
+    font-size: 1.1em;
+    padding: 1rem;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 
 .footer {
-    text-align: end;
-    padding: 1vw;
+    width: 100%;
+    height: 10vh;
+    font-size: 1.4em;
+    padding: 1rem;
     position: fixed;
     bottom: 0;
-    width: 100%;
     box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;  
+    flex-direction: column;
 }
 
-.footer a {
-    text-decoration: none;
+@media only screen and (max-width: 1023px) {
+    .box {
+        height: 8vh;
+        font-size: 0.8em;
+        padding: 1rem;
+    }
+
+    .footer{
+        height: 8vh;
+        font-size: 1.2em;
+        padding: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .box {
+        height: 6vh;
+        font-size: 0.5em;
+        padding: 0.5rem;
+    }
+
+    .footer{
+        height: 6vh;
+        font-size: 0.9em;
+        padding: 0.6rem;
+    }
 }
 
 /*month styles*/
@@ -27,8 +64,10 @@ body.january {
     background-color: #ccdde8;
 }
 .box.january {
-    color: #178fd6;
     border-bottom: 1px solid #edece8;
+}
+.box.january a{
+    color: #178fd6;
 }
 .footer.january {
     background-color: #034488;
@@ -51,11 +90,14 @@ body.february {
 .footer.february {
     background-color: #0D0208;
 }
-.footer.february a {
+.february a {
     color: #00FF41;
 }
-.footer.february a:hover {
-    color: #fffcf6;;
+.february a:hover {
+    color: #fffcf6;
+}
+.box.february:hover {
+    background-color: #003B00;
 }
 
 /*color palettes*/
