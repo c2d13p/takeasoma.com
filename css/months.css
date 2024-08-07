@@ -2,7 +2,6 @@ a {
     text-decoration: none;
 }
 
-/*month styles*/
 /*january*/
 body.january {
     background-color: #ccdde8;
@@ -43,18 +42,3 @@ body.february {
 .box.february:hover {
     background-color: #003B00;
 }
-
-/*color palettes*/
-/*santorini
-#034488
-#178fd6
-#ccdde8
-#edece8
-#fffcf6
-*/
-/*matrix
-#0D0208
-#003B00
-#008F11
-#00FF41
-*/

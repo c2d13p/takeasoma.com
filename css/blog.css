@@ -30,7 +30,7 @@ a {
 }
 
 @media only screen and (max-width: 1023px) {
-    .body {
+    body {
         font-size: 0.8em;
     }
     
@@ -40,7 +40,7 @@ a {
 }
 
 @media only screen and (max-width: 767px) {
-    .body {
+    body {
         font-size: 0.8em;
     }
     
