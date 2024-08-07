@@ -1,0 +1,60 @@
+a {
+    text-decoration: none;
+}
+
+/*month styles*/
+/*january*/
+body.january {
+    background-color: #ccdde8;
+}
+.box.january {
+    border-bottom: 1px solid #edece8;
+}
+.box.january a{
+    color: #178fd6;
+}
+.footer.january {
+    background-color: #034488;
+}
+.footer.january a {
+    color: #fffcf6;
+}
+.footer.january a:hover {
+    text-decoration: underline;
+}
+
+/*february*/
+body.february {
+    background-color: #0D0208;
+}
+.box.february {
+    color: #00FF41;
+    border-bottom: 1px solid #003B00;
+}
+.footer.february {
+    background-color: #0D0208;
+}
+.february a {
+    color: #00FF41;
+}
+.february a:hover {
+    color: #fffcf6;
+}
+.box.february:hover {
+    background-color: #003B00;
+}
+
+/*color palettes*/
+/*santorini
+#034488
+#178fd6
+#ccdde8
+#edece8
+#fffcf6
+*/
+/*matrix
+#0D0208
+#003B00
+#008F11
+#00FF41
+*/
