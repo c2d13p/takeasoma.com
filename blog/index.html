@@ -26,12 +26,19 @@
             <option value="sms">SMS</option>
         </select>
         @
-        <input type="text" id="subscription-input" placeholder="email or phone number">
+        <input type="text" id="subscription-input" name="entry.1743896453" placeholder="email or phone number">
         ->
-        <button id="subscribe-button" onclick="subscribe()">subscribe</button>
+        <button id="subscribe-button">subscribe</button>
     </div>
     <div class="blog"><b>2024-08-07</b> Pill icons added. "<a href="https://www.youtube.com/watch?v=TKZVUtvjBdM" target="_blank">White Rabbit</a>" by Jefferson Airplane is such a great song by the way.</div>
     <div class="blog"><b>2024-08-01</b> On a hot summer day, we are live.</div>
+
+    <!-- Hidden form for Google Forms submission -->
+    <form id="hidden-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdkLoCKWndH8UwAdzG5zNb3hEGs4zRNjlbGSvVQQcOo08yYbA/formResponse?" target="hidden_iframe" style="display:none;">
+        <input type="hidden" name="entry.1743896453" id="hidden-entry">
+        <input type="submit" value="Submit">
+    </form>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <script src="../js/subscribe.js"></script>
 </body>

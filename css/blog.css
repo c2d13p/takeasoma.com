@@ -23,28 +23,68 @@ a {
     border-bottom: 2px solid #003B00;
 }
 
-#subscribe-button:disabled {
+#subscription-type, #subscription-input, #subscribe-button {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+#subscription-type {
     background-color: #003B00;
     color: #00FF41;
+    border: 1px solid #00FF41;
+    border-radius: 0px;
+    padding: 0rem 0.5rem 0rem 0rem;
+}
+
+#subscription-input {
+    background-color: #fffcf6;
+    color: #0D0208;
+    border: 0px;
+    border-radius: 0px;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+}
+
+#subscribe-button {
+    background-color: #003B00;
+    color: #00FF41;
+    border: 1px solid #00FF41;
+    border-radius: 15px;
+    padding: 0.1rem 1rem 0.1rem 1rem;
+    cursor: pointer;
+}
+
+#subscription-input::placeholder {
+    color: #636363;
+}
+
+#subscribe-button:disabled {
     cursor: not-allowed;
 }
 
 @media only screen and (max-width: 1023px) {
     body {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     
     .blog {
         padding: 0.4rem;
     }
+
+    #subscription-type, #subscription-input, #subscribe-button {
+        font-size: 0.8rem;
+    }
 }
 
 @media only screen and (max-width: 767px) {
     body {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     
     .blog {
         padding: 0.5rem;
+    }
+
+    #subscription-type, #subscription-input, #subscribe-button {
+       font-size: 0.8rem;
     }
 }
