@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         'december'
     ];
 
-    //const month = new Date().getMonth();
-    const month = 0;
+    const month = new Date().getMonth();
     const monthClass = monthClasses[month];
 
     document.body.classList.add(monthClass);

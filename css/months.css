@@ -1,44 +1,370 @@
+/*@import url('https://fonts.googleapis.com/css?family=Sofia');*/
+
+body {
+  /*font-family: "Sofia", sans-serif;*/
+  font-family: 'Courier New', monospace;
+}
+
 a {
     text-decoration: none;
 }
 
-/*january*/
+/*january, black*/
 body.january {
-    background-color: #ccdde8;
+    background-color: #91A3B0;
 }
 .box.january {
-    border-bottom: 1px solid #edece8;
+    background-image: linear-gradient(#708090, #91A3B0);
+}
+.box.january:hover {
+    background-image: none;
+    background-color: #36454F;
 }
 .box.january a{
-    color: #178fd6;
+    color: #36454F;
 }
 .footer.january {
-    background-color: #034488;
+    background-color: #36454F;
+}
+.box.january:hover a{
+    color: #8C92AC;
+}
+.box.january a:hover{
+    color: #8C92AC;
 }
 .footer.january a {
-    color: #fffcf6;
+    color: #8C92AC;
 }
 .footer.january a:hover {
     text-decoration: underline;
 }
 
-/*february*/
+/*february, white*/
 body.february {
-    background-color: #0D0208;
+    background-color: #FFFAFA;
 }
 .box.february {
-    color: #00FF41;
-    border-bottom: 1px solid #003B00;
-}
-.footer.february {
-    background-color: #0D0208;
-}
-.february a {
-    color: #00FF41;
-}
-.february a:hover {
-    color: #fffcf6;
+    background-image: linear-gradient(#F2F3F4, #FFFAFA);
 }
 .box.february:hover {
-    background-color: #003B00;
+    background-image: none;
+    background-color: #2A3439;
+}
+.box.february a{
+    color: #2A3439;
+}
+.footer.february {
+    background-color: #2A3439;
+}
+.box.february:hover a{
+    color: #F5F5F5;
+}
+.box.february a:hover{
+    color: #F5F5F5;
+}
+.footer.february a {
+    color: #F5F5F5;
+}
+.footer.february a:hover {
+    text-decoration: underline;
+}
+
+/*march, turquoise*/
+body.march {
+    background-color: #D0F0C0;
+}
+.box.march {
+    background-image: linear-gradient(#AFE7B2, #D0F0C0);
+}
+.box.march:hover {
+    background-image: none;
+    background-color: #01796F;
+}
+.box.march a{
+    color: #01796F;
+}
+.footer.march {
+    background-color: #01796F;
+}
+.box.march:hover a{
+    color: #F0FFF0;
+}
+.box.march a:hover{
+    color: #F0FFF0;
+}
+.footer.march a {
+    color: #F0FFF0;
+}
+.footer.march a:hover {
+    text-decoration: underline;
+}
+
+/*april, pink*/
+body.april {
+    background-color: #FFDAE9;
+}
+.box.april {
+    background-image: linear-gradient(#F2BDCD, #FFDAE9);
+}
+.box.april:hover {
+    background-image: none;
+    background-color: #ED7A9B;
+}
+.box.april a{
+    color: #ED7A9B;
+}
+.footer.april {
+    background-color: #ED7A9B;
+}
+.box.april:hover a{
+    color: #FFF0F5;
+}
+.box.april a:hover{
+    color: #FFF0F5;
+}
+.footer.april a {
+    color: #FFF0F5;
+}
+.footer.april a:hover {
+    text-decoration: underline;
+}
+
+/*may, green*/
+body.may {
+    background-color: #7CFC00;
+}
+.box.may {
+    background-image: linear-gradient(#C0FF00, #7CFC00);
+}
+.box.may:hover {
+    background-image: none;
+    background-color: #138808;
+}
+.box.may a{
+    color: #138808;
+}
+.footer.may {
+    background-color: #138808;
+}
+.box.may:hover a{
+    color: #80FF00;
+}
+.box.may a:hover{
+    color: #80FF00;
+}
+.footer.may a {
+    color: #80FF00;
+}
+.footer.may a:hover {
+    text-decoration: underline;
+}
+
+/*june, blue*/
+body.june {
+    background-color: #EDECE8;
+}
+.box.june {
+    background-image: linear-gradient(#CCDDE8, #EDECE8);
+}
+.box.june:hover {
+    background-image: none;
+    background-color: #178FD6;
+}
+.box.june a{
+    color: #178FD6;
+}
+.footer.june {
+    background-color: #178FD6;
+}
+.box.june:hover a{
+    color: #FFFCF6;
+}
+.box.june a:hover{
+    color: #FFFCF6;
+}
+.footer.june a {
+    color: #FFFCF6;
+}
+.footer.june a:hover {
+    text-decoration: underline;
+}
+
+/*july, yellow*/
+body.july {
+    background-color: #FADA5E;
+}
+.box.july {
+    background-image: linear-gradient(#FCF75E, #FADA5E);
+}
+.box.july:hover {
+    background-image: none;
+    background-color: #FFBA00;
+}
+.box.july a{
+    color: #FFBA00;
+}
+.footer.july {
+    background-color: #FFBA00;
+}
+.box.july:hover a{
+    color: #FFFACD;
+}
+.box.july a:hover{
+    color: #FFFACD;
+}
+.footer.july a {
+    color: #FFFACD;
+}
+.footer.july a:hover {
+    text-decoration: underline;
+}
+
+/*august, orange*/
+body.august {
+    background-color: #FFA000;
+}
+.box.august {
+    background-image: linear-gradient(#FF8F00, #FFA000);
+}
+.box.august:hover {
+    background-image: none;
+    background-color: #FF4F00;
+}
+.box.august a{
+    color: #FF4F00;
+}
+.footer.august {
+    background-color: #FF4F00;
+}
+.box.august:hover a{
+    color: #FFA500;
+}
+.box.august a:hover{
+    color: #FFA500;
+}
+.footer.august a {
+    color: #FFA500;
+}
+.footer.august a:hover {
+    text-decoration: underline;
+}
+
+/*september, violet*/
+body.september {
+    background-color: #CCCCFF;
+}
+.box.september {
+    background-image: linear-gradient(#E0B0FF, #CCCCFF);
+}
+.box.september:hover {
+    background-image: none;
+    background-color: #702963;
+}
+.box.september a{
+    color: #702963;
+}
+.footer.september {
+    background-color: #702963;
+}
+.box.september:hover a{
+    color: #E6E6FA;
+}
+.box.september a:hover{
+    color: #E6E6FA;
+}
+.footer.september a {
+    color: #E6E6FA;
+}
+.footer.september a:hover {
+    text-decoration: underline;
+}
+
+/*october, gray*/
+body.october {
+    background-color: #E5E4E2;
+}
+.box.october {
+    background-image: linear-gradient(#DBD7D2, #E5E4E2);
+}
+.box.october:hover {
+    background-image: none;
+    background-color: #AD958E;
+}
+.box.october a{
+    color: #AD958E;
+}
+.footer.october {
+    background-color: #AD958E;
+}
+.box.october:hover a{
+    color: #F5F5F5;
+}
+.box.october a:hover{
+    color: #F5F5F5;
+}
+.footer.october a {
+    color: #F5F5F5;
+}
+.footer.october a:hover {
+    text-decoration: underline;
+}
+
+/*november, brown*/
+body.november {
+    background-color: #B7410E;
+}
+.box.november {
+    background-image: linear-gradient(#882D17, #B7410E);
+}
+.box.november:hover {
+    background-image: none;
+    background-color: #592720;
+}
+.box.november a{
+    color: #592720;
+}
+.footer.november {
+    background-color: #592720;
+}
+.box.november:hover a{
+    color: #CC7F3B;
+}
+.box.november a:hover{
+    color: #CC7F3B;
+}
+.footer.november a {
+    color: #CC7F3B;
+}
+.footer.november a:hover {
+    text-decoration: underline;
+}
+
+/*december, red*/
+body.december {
+    background-color: #99FFFF;
+}
+.box.december {
+    background-image: linear-gradient(#FFFAFA, #99FFFF);
+}
+.box.december:hover {
+    background-image: none;
+    background-color: #FF0800;
+}
+.box.december a{
+    color: #FF0800;
+}
+.footer.december {
+    background-color: #FF0800;
+}
+.box.december:hover a{
+    color: #FFFAFA;
+}
+.box.december a:hover{
+    color: #FFFAFA;
+}
+.footer.december a {
+    color: #FFFAFA;
+}
+.footer.december a:hover {
+    text-decoration: underline;
 }

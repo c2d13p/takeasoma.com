@@ -26,6 +26,7 @@ a {
 #subscription-type, #subscription-input, #subscribe-button {
     font-family: 'Courier New', monospace;
     font-size: 0.9rem;
+    margin: 0.2rem;
 }
 
 #subscription-type {
