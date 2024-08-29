@@ -38,26 +38,26 @@ body.january {
 
 /*february, white*/
 body.february {
-    background-color: #FFFAFA;
+    background-color: #F0F8FF;
 }
 .box.february {
-    background-image: linear-gradient(#F2F3F4, #FFFAFA);
+    background-image: linear-gradient(#FFFAFA, #F0F8FF);
 }
 .box.february:hover {
     background-image: none;
-    background-color: #2A3439;
+    background-color: #191970;
 }
 .box.february {
-    color: #2A3439;
+    color: #191970;
 }
 .footer.february {
-    background-color: #2A3439;
+    background-color: #191970;
 }
 .box.february:hover {
-    color: #F5F5F5;
+    color: #F0FFFF;
 }
 .footer.february a {
-    color: #F5F5F5;
+    color: #F0FFFF;
 }
 .footer.february a:hover {
     text-decoration: underline;
@@ -119,26 +119,26 @@ body.april {
 
 /*may, green*/
 body.may {
-    background-color: #7CFC00;
+    background-color: #FADA5E;
 }
 .box.may {
-    background-image: linear-gradient(#C0FF00, #7CFC00);
+    background-image: linear-gradient(#FFFACD, #FADA5E);
 }
 .box.may:hover {
     background-image: none;
-    background-color: #138808;
+    background-color: #00BFFF;
 }
 .box.may {
-    color: #138808;
+    color: #00BFFF;
 }
 .footer.may {
-    background-color: #138808;
+    background-color: #00BFFF;
 }
 .box.may:hover {
-    color: #80FF00;
+    color: #E4D00A;
 }
 .footer.may a {
-    color: #80FF00;
+    color: #E4D00A;
 }
 .footer.may a:hover {
     text-decoration: underline;
@@ -180,13 +180,13 @@ body.july {
 }
 .box.july:hover {
     background-image: none;
-    background-color: #FFBA00;
+    background-color: #EF9B0F;
 }
 .box.july {
-    color: #FFBA00;
+    color: #EF9B0F;
 }
 .footer.july {
-    background-color: #FFBA00;
+    background-color: #EF9B0F;
 }
 .box.july:hover {
     color: #FFFACD;
@@ -207,13 +207,13 @@ body.august {
 }
 .box.august:hover {
     background-image: none;
-    background-color: #FF4F00;
+    background-color: #EC5800;
 }
 .box.august {
-    color: #FF4F00;
+    color: #EC5800;
 }
 .footer.august {
-    background-color: #FF4F00;
+    background-color: #EC5800;
 }
 .box.august:hover {
     color: #FFA500;
