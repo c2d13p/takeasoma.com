@@ -20,16 +20,13 @@ body.january {
     background-image: none;
     background-color: #36454F;
 }
-.box.january a{
+.box.january {
     color: #36454F;
 }
 .footer.january {
     background-color: #36454F;
 }
-.box.january:hover a{
-    color: #8C92AC;
-}
-.box.january a:hover{
+.box.january:hover {
     color: #8C92AC;
 }
 .footer.january a {
@@ -50,16 +47,13 @@ body.february {
     background-image: none;
     background-color: #2A3439;
 }
-.box.february a{
+.box.february {
     color: #2A3439;
 }
 .footer.february {
     background-color: #2A3439;
 }
-.box.february:hover a{
-    color: #F5F5F5;
-}
-.box.february a:hover{
+.box.february:hover {
     color: #F5F5F5;
 }
 .footer.february a {
@@ -80,16 +74,13 @@ body.march {
     background-image: none;
     background-color: #01796F;
 }
-.box.march a{
+.box.march {
     color: #01796F;
 }
 .footer.march {
     background-color: #01796F;
 }
-.box.march:hover a{
-    color: #F0FFF0;
-}
-.box.march a:hover{
+.box.march:hover {
     color: #F0FFF0;
 }
 .footer.march a {
@@ -110,16 +101,13 @@ body.april {
     background-image: none;
     background-color: #ED7A9B;
 }
-.box.april a{
+.box.april {
     color: #ED7A9B;
 }
 .footer.april {
     background-color: #ED7A9B;
 }
-.box.april:hover a{
-    color: #FFF0F5;
-}
-.box.april a:hover{
+.box.april:hover {
     color: #FFF0F5;
 }
 .footer.april a {
@@ -140,16 +128,13 @@ body.may {
     background-image: none;
     background-color: #138808;
 }
-.box.may a{
+.box.may {
     color: #138808;
 }
 .footer.may {
     background-color: #138808;
 }
-.box.may:hover a{
-    color: #80FF00;
-}
-.box.may a:hover{
+.box.may:hover {
     color: #80FF00;
 }
 .footer.may a {
@@ -170,16 +155,13 @@ body.june {
     background-image: none;
     background-color: #178FD6;
 }
-.box.june a{
+.box.june {
     color: #178FD6;
 }
 .footer.june {
     background-color: #178FD6;
 }
-.box.june:hover a{
-    color: #FFFCF6;
-}
-.box.june a:hover{
+.box.june:hover {
     color: #FFFCF6;
 }
 .footer.june a {
@@ -200,16 +182,13 @@ body.july {
     background-image: none;
     background-color: #FFBA00;
 }
-.box.july a{
+.box.july {
     color: #FFBA00;
 }
 .footer.july {
     background-color: #FFBA00;
 }
-.box.july:hover a{
-    color: #FFFACD;
-}
-.box.july a:hover{
+.box.july:hover {
     color: #FFFACD;
 }
 .footer.july a {
@@ -230,16 +209,13 @@ body.august {
     background-image: none;
     background-color: #FF4F00;
 }
-.box.august a{
+.box.august {
     color: #FF4F00;
 }
 .footer.august {
     background-color: #FF4F00;
 }
-.box.august:hover a{
-    color: #FFA500;
-}
-.box.august a:hover{
+.box.august:hover {
     color: #FFA500;
 }
 .footer.august a {
@@ -260,18 +236,16 @@ body.september {
     background-image: none;
     background-color: #702963;
 }
-.box.september a{
+.box.september {
     color: #702963;
 }
 .footer.september {
     background-color: #702963;
 }
-.box.september:hover a{
+.box.september:hover {
     color: #E6E6FA;
 }
-.box.september a:hover{
-    color: #E6E6FA;
-}
+
 .footer.september a {
     color: #E6E6FA;
 }
@@ -290,16 +264,13 @@ body.october {
     background-image: none;
     background-color: #AD958E;
 }
-.box.october a{
+.box.october {
     color: #AD958E;
 }
 .footer.october {
     background-color: #AD958E;
 }
-.box.october:hover a{
-    color: #F5F5F5;
-}
-.box.october a:hover{
+.box.october:hover {
     color: #F5F5F5;
 }
 .footer.october a {
@@ -320,16 +291,13 @@ body.november {
     background-image: none;
     background-color: #592720;
 }
-.box.november a{
+.box.november {
     color: #592720;
 }
 .footer.november {
     background-color: #592720;
 }
-.box.november:hover a{
-    color: #CC7F3B;
-}
-.box.november a:hover{
+.box.november:hover {
     color: #CC7F3B;
 }
 .footer.november a {
@@ -350,16 +318,13 @@ body.december {
     background-image: none;
     background-color: #FF0800;
 }
-.box.december a{
+.box.december {
     color: #FF0800;
 }
 .footer.december {
     background-color: #FF0800;
 }
-.box.december:hover a{
-    color: #FFFAFA;
-}
-.box.december a:hover{
+.box.december:hover {
     color: #FFFAFA;
 }
 .footer.december a {
