@@ -1,8 +1,75 @@
-/*@import url('https://fonts.googleapis.com/css?family=Sofia');*/
+@import url('https://fonts.googleapis.com/css?family=Nerko+One');
+@import url('https://fonts.googleapis.com/css?family=Matemasie');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+@import url('https://fonts.googleapis.com/css?family=Silkscreen');
+@import url('https://fonts.googleapis.com/css?family=Rubik+Bubbles');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Playwrite+AT');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Limelight');
+@import url('https://fonts.googleapis.com/css?family=Tomorrow');
+@import url('https://fonts.googleapis.com/css?family=MuseoModerno');
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+@import url('https://fonts.googleapis.com/css?family=Notable');
+@import url('https://fonts.googleapis.com/css?family=Buda');
 
+/*
 body {
-  /*font-family: "Sofia", sans-serif;*/
-  font-family: 'Courier New', monospace;
+    font-family: "Silkscreen";
+    font-family: "Tomorrow";
+}
+*/
+body.january {
+    font-family: "Shadows Into Light";
+}
+
+body.february {
+    font-family: "Buda";
+}
+
+body.march {
+    font-family: "Caveat";
+}
+
+body.april {
+    font-family: "Kaushan Script";
+}
+
+body.may {
+    font-family: "Oleo Script";
+}
+
+body.june {
+    font-family: "Playwrite AT";
+}
+
+body.july {
+    font-family: "Nerko One";
+    font-family: "Coiny";
+}
+
+body.august {
+    font-family: "Notable";
+}
+
+body.september {
+    font-family: "Limelight";
+    font-family: "MuseoModerno";
+    font-family: "Poiret One";
+}
+
+body.october {
+    font-family: "Autour One";
+}
+
+body.november {
+    font-family: "Matemasie";
+}
+
+body.december {
+    font-family: "Rubik Bubbles";
 }
 
 a {
