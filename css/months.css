@@ -3,11 +3,11 @@
 @import url('https://fonts.googleapis.com/css?family=Caveat');
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
 @import url('https://fonts.googleapis.com/css?family=Oleo+Script');
-@import url('https://fonts.googleapis.com/css?family=Silkscreen');
 @import url('https://fonts.googleapis.com/css?family=Rubik+Bubbles');
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
 @import url('https://fonts.googleapis.com/css?family=Playwrite+AT');
 @import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Autour+One');
 @import url('https://fonts.googleapis.com/css?family=Limelight');
 @import url('https://fonts.googleapis.com/css?family=Tomorrow');
 @import url('https://fonts.googleapis.com/css?family=MuseoModerno');
@@ -15,18 +15,12 @@
 @import url('https://fonts.googleapis.com/css?family=Notable');
 @import url('https://fonts.googleapis.com/css?family=Buda');
 
-/*
-body {
-    font-family: "Silkscreen";
-    font-family: "Tomorrow";
-}
-*/
 body.january {
     font-family: "Shadows Into Light";
 }
 
 body.february {
-    font-family: "Buda";
+    font-family: "Tomorrow";
 }
 
 body.march {
@@ -46,7 +40,6 @@ body.june {
 }
 
 body.july {
-    font-family: "Nerko One";
     font-family: "Coiny";
 }
 
@@ -55,9 +48,7 @@ body.august {
 }
 
 body.september {
-    font-family: "Limelight";
     font-family: "MuseoModerno";
-    font-family: "Poiret One";
 }
 
 body.october {
