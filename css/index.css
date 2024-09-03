@@ -8,6 +8,7 @@ body {
     height: 11vh;
     font-size: 1.35em;
     padding: 1rem;
+    line-height: 2rem;
     box-sizing: border-box;
     display: flex;
     align-items: center;

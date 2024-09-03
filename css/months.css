@@ -1,70 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Matemasie');
-@import url('https://fonts.googleapis.com/css?family=Caveat');
-@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
-@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
-@import url('https://fonts.googleapis.com/css?family=Rubik+Bubbles');
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
-@import url('https://fonts.googleapis.com/css?family=Playwrite+AT');
-@import url('https://fonts.googleapis.com/css?family=Autour+One');
-@import url('https://fonts.googleapis.com/css?family=Tomorrow');
-@import url('https://fonts.googleapis.com/css?family=MuseoModerno');
-@import url('https://fonts.googleapis.com/css?family=Coiny');
-@import url('https://fonts.googleapis.com/css?family=Notable');
-
-body.january {
-    font-family: "Shadows Into Light";
-}
-
-body.february {
-    font-family: "Tomorrow";
-}
-
-body.march {
-    font-family: "Caveat";
-}
-
-body.april {
-    font-family: "Kaushan Script";
-}
-
-body.may {
-    font-family: "Oleo Script";
-}
-
-body.june {
-    font-family: "Playwrite AT";
-}
-
-body.july {
-    font-family: "Coiny";
-}
-
-body.august {
-    font-family: "Notable";
-}
-
-body.september {
-    font-family: "MuseoModerno";
-}
-
-body.october {
-    font-family: "Autour One";
-}
-
-body.november {
-    font-family: "Matemasie";
-}
-
-body.december {
-    font-family: "Rubik Bubbles";
-}
-
 a {
     text-decoration: none;
 }
 
 /*january, black*/
 body.january {
+    font-family: "Shadows Into Light";
     background-color: #91A3B0;
 }
 .box.january {
@@ -92,6 +32,7 @@ body.january {
 
 /*february, white*/
 body.february {
+    font-family: "Tomorrow";
     background-color: #A4DDED;
 }
 .box.february {
@@ -119,6 +60,7 @@ body.february {
 
 /*march, turquoise*/
 body.march {
+    font-family: "Caveat";
     background-color: #D0F0C0;
 }
 .box.march {
@@ -146,6 +88,7 @@ body.march {
 
 /*april, pink*/
 body.april {
+    font-family: "Kaushan Script";
     background-color: #FFDAE9;
 }
 .box.april {
@@ -171,8 +114,9 @@ body.april {
     text-decoration: underline;
 }
 
-/*may, green*/
+/*may, sorrento*/
 body.may {
+    font-family: "Oleo Script";
     background-color: #FADA5E;
 }
 .box.may {
@@ -200,6 +144,7 @@ body.may {
 
 /*june, blue*/
 body.june {
+    font-family: "Playwrite AT";
     background-color: #EDECE8;
 }
 .box.june {
@@ -227,6 +172,7 @@ body.june {
 
 /*july, yellow*/
 body.july {
+    font-family: "Coiny";
     background-color: #FADA5E;
 }
 .box.july {
@@ -254,6 +200,7 @@ body.july {
 
 /*august, orange*/
 body.august {
+    font-family: "Notable";
     background-color: #FFA000;
 }
 .box.august {
@@ -281,6 +228,7 @@ body.august {
 
 /*september, violet*/
 body.september {
+    font-family: "MuseoModerno";
     background-color: #CCCCFF;
 }
 .box.september {
@@ -299,7 +247,6 @@ body.september {
 .box.september:hover {
     color: #E6E6FA;
 }
-
 .footer.september a {
     color: #E6E6FA;
 }
@@ -309,6 +256,7 @@ body.september {
 
 /*october, gray*/
 body.october {
+    font-family: "Autour One";
     background-color: #E5E4E2;
 }
 .box.october {
@@ -334,14 +282,9 @@ body.october {
     text-decoration: underline;
 }
 
-/*november, brown
+/*november, brown*/
 body.november {
-    background-color: #B7410E;
-}
-.box.november {
-    background-image: linear-gradient(#882D17, #B7410E);
-}*/
-body.november {
+    font-family: "Matemasie";
     background-color: #ED9121;
 }
 .box.november {
@@ -369,6 +312,7 @@ body.november {
 
 /*december, red*/
 body.december {
+    font-family: "Rubik Bubbles";
     background-color: #99FFFF;
 }
 .box.december {
