@@ -19,14 +19,26 @@
     <link rel="stylesheet" href="../css/001.css">
 </head>
 <body>
+    <div class="menu header">
+        <div>
+            <button id="decreaseSpeed"><b> - </b></button>
+            <button id="increaseSpeed"><b> + </b></button>
+        </div>
+        <div>
+            <button id="invertSpin"><b> ↻ </b></button>
+        </div>
+    </div>
+    
     <div class="container">
-        <img src="../images/circular-writing.png" class="image clockwise">
-        <img src="../images/creation-of-adam.png" class="image anticlockwise">
+        <img src="../images/circular-writing.png" class="image clockwise" id="image1">
+        <img src="../images/creation-of-adam.png" class="image anticlockwise" id="image2">
     </div>
 
-    <div class="footer">
-        <a href="../"><b>< LIST</b></a>
-        <a href="/shop"><b>SHOP ></b></a>
+    <div class="menu footer">
+        <a href="../"><b><span class="triangle left-tip"></span> LIST</b></a>
+        <a href="../"><b>SHOP <span class="triangle right-tip"></span></b></a>
     </div>
+
+    <script src="../js/manageSpin.js"></script>
 </body>
 </html>
