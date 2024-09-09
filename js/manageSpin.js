@@ -6,9 +6,17 @@ const invertSpinBtn = document.getElementById('invertSpin');
 
 let currentDuration = 61;
 let intervalId;
-const speedStep = 3; 
 let isClockwise1 = true;
 let isClockwise2 = false;
+
+// Function to determine speed step based on currentDuration
+function getSpeedStep() {
+    if (currentDuration <= 10) return 1;
+    else if (currentDuration <= 20) return 2;
+    else if (currentDuration <= 60) return 3;
+    else if (currentDuration <= 120) return 5;
+    else return 10;
+}
 
 // Function to update animation duration
 function updateAnimationDuration(duration) {
@@ -16,17 +24,19 @@ function updateAnimationDuration(duration) {
     image2.style.animationDuration = `${duration}s`;
 }
 
-// Function to increase speed (decrease duration) 
+// Function to increase speed (decrease duration)
 function increaseSpeed() {
+    let speedStep = getSpeedStep();
     if (currentDuration > 1) { // Ensure duration doesn't go below minimum
         currentDuration -= speedStep;
         updateAnimationDuration(currentDuration);
     }
 }
 
-// Function to decrease speed (increase duration) 
+// Function to decrease speed (increase duration)
 function decreaseSpeed() {
-    if (currentDuration < 200) { // Ensure duration doesn't exceed maximum
+    let speedStep = getSpeedStep();
+    if (currentDuration < 300) { // Ensure duration doesn't exceed maximum
         currentDuration += speedStep;
         updateAnimationDuration(currentDuration);
     }
@@ -55,10 +65,15 @@ decreaseSpeedBtn.addEventListener('click', decreaseSpeed);
 increaseSpeedBtn.addEventListener('mousedown', startIncreasingSpeed);
 increaseSpeedBtn.addEventListener('mouseup', stopChangingSpeed);
 increaseSpeedBtn.addEventListener('mouseleave', stopChangingSpeed);
-
 decreaseSpeedBtn.addEventListener('mousedown', startDecreasingSpeed);
 decreaseSpeedBtn.addEventListener('mouseup', stopChangingSpeed);
 decreaseSpeedBtn.addEventListener('mouseleave', stopChangingSpeed);
+increaseSpeedBtn.addEventListener('touchstart', startIncreasingSpeed);
+increaseSpeedBtn.addEventListener('touchend', stopChangingSpeed);
+increaseSpeedBtn.addEventListener('touchcancel', stopChangingSpeed);
+decreaseSpeedBtn.addEventListener('touchstart', startDecreasingSpeed);
+decreaseSpeedBtn.addEventListener('touchend', stopChangingSpeed);
+decreaseSpeedBtn.addEventListener('touchcancel', stopChangingSpeed);
 
 // Function to stop rotation
 function stopRotation() {
@@ -108,3 +123,23 @@ image2.addEventListener('touchend', resumeRotation);
 
 // Event listener for the invert spin button
 invertSpinBtn.addEventListener('click', invertSpin);
+
+document.body.style.webkitTouchCallout='none';
+document.body.style.webkitUserSelect='none';
+
+document.addEventListener(
+    "dblclick",
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: false }
+  );
+
+  window.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+};
+
+document.getElementById('image1').ondragstart = function() { return false; };
+document.getElementById('image2').ondragstart = function() { return false; };
