@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Who is creating who">
+    <meta name="keywords" content="soma, solutions, human being">
+    <meta property="og:title" content="WHO IS CREATING WHO">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.takeasoma.com/002-days-on-earth"> 
+    <meta property="og:image" content="../icons/apple-touch-icon-soma-002.png">
+    <meta property="og:description" content="Soma 002">
+    <title>WHO IS CREATING WHO</title>
+    <link rel="icon" href="../icons/light-mode-favicon-soma-002.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
+    <link rel="icon" href="../icons/dark-mode-favicon-soma-002.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
+    <link rel="shortcut icon" href="../icons/light-mode-favicon-soma-002.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
+    <link rel="shortcut icon" href="../icons/dark-mode-favicon-soma-002.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../icons/apple-touch-icon-soma-002.png">
+    <link rel="stylesheet" href="../css/002.css">
+</head>
+<body>
+    <div id="input-screen">
+      <h1>Enter your birthdate:</h1>
+      <input type="date" id="birthdate" required>
+      <button id="go-button" disabled>Go</button>
+    </div>
+  
+    <div id="result-screen" class="hidden">
+      <p id="age-display"></p>
+      <p class="quote">It's not the days in your life that count, it's the life in your days.</p>
+      <div id="settings">
+        <img id="cog" src="../icons/cog.png" alt="Settings" />
+      </div>
+    </div>
+  
+    <script src="../js/calculateAge.js"></script>
+  </body>
+</html>
