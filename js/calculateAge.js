@@ -43,6 +43,8 @@ document.addEventListener('click', function (event) {
 cog.addEventListener('click', function () {
   resultScreen.classList.add('hidden');
   inputScreen.classList.remove('hidden');
+  document.body.style.backgroundColor = '#000000';
+  document.body.style.color = '#ffffff';
   birthdateInput.value = getCookie('birthdate') ? new Date(getCookie('birthdate')).toISOString().substring(0, 10) : '';
 });
 
@@ -68,6 +70,8 @@ function getCookie(name) {
 function displayResultScreen(birthdate) {
   inputScreen.classList.add('hidden');
   resultScreen.classList.remove('hidden');
+  document.body.style.backgroundColor = '#ffffff';
+  document.body.style.color = '#000000';
   updateAgeDisplay(birthdate, currentMode);  // Use currentMode which is now properly initialized
 }
 
