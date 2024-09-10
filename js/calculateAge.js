@@ -85,26 +85,34 @@ function cycleAgeDisplay() {
 function updateAgeDisplay(birthdate, mode) {
   const now = new Date();
   let diff;
+  const ageDisplay = document.getElementById('age-display'); // Get the age display element
+  const quoteDisplays = document.querySelectorAll('.quote-display'); // Select all elements with class 'quote-display'
+  
   switch (mode) {
     case 'days':
       diff = Math.floor((now - birthdate) / (1000 * 60 * 60 * 24));
-      ageDisplay.textContent = `You are ${diff} days old`;
+      ageDisplay.innerHTML = `You are <span class="cursive">${diff} days</span> old`;
+      quoteDisplays.forEach(span => span.textContent = 'days');
       break;
     case 'hours':
       diff = Math.floor((now - birthdate) / (1000 * 60 * 60));
-      ageDisplay.textContent = `You are ${diff} hours old`;
+      ageDisplay.innerHTML = `You are <span class="cursive">${diff} hours</span> old`;
+      quoteDisplays.forEach(span => span.textContent = 'hours');
       break;
     case 'minutes':
       diff = Math.floor((now - birthdate) / (1000 * 60));
-      ageDisplay.textContent = `You are ${diff} minutes old`;
+      ageDisplay.innerHTML = `You are <span class="cursive">${diff} minutes</span> old`;
+      quoteDisplays.forEach(span => span.textContent = 'minutes');
       break;
     case 'years':
       diff = now.getFullYear() - birthdate.getFullYear();
-      ageDisplay.textContent = `You are ${diff} years old`;
+      ageDisplay.innerHTML = `You are <span class="cursive">${diff} years</span> old`;
+      quoteDisplays.forEach(span => span.textContent = 'years');
       break;
     case 'months':
       diff = (now.getFullYear() - birthdate.getFullYear()) * 12 + (now.getMonth() - birthdate.getMonth());
-      ageDisplay.textContent = `You are ${diff} months old`;
+      ageDisplay.innerHTML = `You are <span class="cursive">${diff} months</span> old`;
+      quoteDisplays.forEach(span => span.textContent = 'months');
       break;
   }
 }

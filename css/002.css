@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Caveat');
+@import url('https://fonts.googleapis.com/css?family=Allura');
+@import url('https://fonts.googleapis.com/css?family=Parisienne');
+
+
 html, body {
   height: 100%;
   margin: 0;
@@ -15,27 +21,30 @@ body {
 .hidden {
   display: none;
 }
+
+.age, .quote {
+  font-family: "Caveat";
+  font-size: 3em;
+  letter-spacing: 0.1rem;
+}
+
+.cursive {
+  font-family: "Allura";
+  font-size: 1.2em;
+}
   
 #input-screen {
   text-align: center;
-  background-color: #000000;
-  color: #ffffff;
+  font-family: "Inconsolata";
 }
 
 #result-screen {
   text-align: center;
-  background-color: #ffffff;
-  color: #000000;
 }
 
 button {
   padding: 10px 20px;
   margin-top: 10px;
-}
-  
-#age-display {
-  font-size: 2rem;
-  font-weight: bold;
 }
   
 #settings {
