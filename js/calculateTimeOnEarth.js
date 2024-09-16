@@ -41,8 +41,7 @@ document.addEventListener('click', function (event) {
 cog.addEventListener('click', function () {
   resultScreen.classList.add('hidden');
   inputScreen.classList.remove('hidden');
-  document.body.style.backgroundColor = '#000000';
-  document.body.style.color = '#ffffff';
+  document.body.style.background = 'linear-gradient(-45deg, #2A3439, #22282C, #191D1E, #111111)';
   birthDatetimeInput.value = getCookie('birthDatetime') ? new Date(getCookie('birthDatetime')).toISOString().substring(0, 10) : '';
 });
 
@@ -68,8 +67,7 @@ function getCookie(name) {
 function displayResultScreen(birthdate) {
   inputScreen.classList.add('hidden');
   resultScreen.classList.remove('hidden');
-  document.body.style.backgroundColor = '#ffffff';
-  document.body.style.color = '#000000';
+  document.body.style.background = 'linear-gradient(-45deg, #ffffff, #ffffff, #ffffff, #ffffff)';
   updateTimeDisplay(birthDatetime, currentMode);
 }
 

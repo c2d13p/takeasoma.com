@@ -13,7 +13,21 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #111111;
+  background: linear-gradient(-45deg, #2A3439, #22282C, #191D1E, #111111);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
 }
 
 .question {
@@ -65,6 +79,7 @@ button:enabled {
   font-family: "Caveat";
   font-size: 3em;
   letter-spacing: 0.1rem;
+  color: #111111;
 }
   
 #settings {
