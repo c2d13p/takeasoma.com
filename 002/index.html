@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Who is creating who">
+    <meta name="description" content="Time On Earth">
     <meta name="keywords" content="soma, solutions, human being">
-    <meta property="og:title" content="WHO IS CREATING WHO">
+    <meta property="og:title" content="TIME ON EARTH">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.takeasoma.com/002-days-on-earth"> 
+    <meta property="og:url" content="https://www.takeasoma.com/002-time-on-earth"> 
     <meta property="og:image" content="../icons/apple-touch-icon-soma-002.png">
     <meta property="og:description" content="Soma 002">
-    <title>WHO IS CREATING WHO</title>
+    <title>TIME ON EARTH</title>
     <link rel="icon" href="../icons/light-mode-favicon-soma-002.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
     <link rel="icon" href="../icons/dark-mode-favicon-soma-002.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
     <link rel="shortcut icon" href="../icons/light-mode-favicon-soma-002.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
@@ -20,22 +20,20 @@
 </head>
 <body>
     <div id="input-screen">
-      <h1>Enter your birthdate:</h1>
-      <input type="date" id="birthdate" required>
-      <button id="go-button" disabled>Go</button>
+      <h1 class="question">What is the datetime of your birth?</h1>
+      <input type="datetime-local" id="birth-datetime" required>
+      <button id="enter-button" disabled>Enter</button>
     </div>
   
     <div id="result-screen" class="hidden">
-      <p class="age" id="age-display"></p>
-      <p class="quote">
-        It's not the <span class="quote-display cursive">days</span> in your <span class="cursive">life</span> that count, 
-        it's the <span class="cursive">life</span> in your <span class="quote-display cursive">days</span>.
-      </p>
+      <h1>⋀</h1>
+      <h1 class="time" id="time-on-earth"></h1>
+      <h1>⋁</h1>
       <div id="settings">
         <img id="cog" src="../icons/cog.png" alt="Settings" />
       </div>
     </div>
   
-    <script src="../js/calculateAge.js"></script>
+    <script src="../js/calculateTimeOnEarth.js"></script>
 </body>
 </html>
