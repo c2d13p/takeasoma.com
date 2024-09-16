@@ -7,6 +7,8 @@ const enterButton = document.getElementById('enter-button');
 const inputScreen = document.getElementById('input-screen');
 const resultScreen = document.getElementById('result-screen');
 const timeDisplay = document.getElementById('time-on-earth');
+const upArrow = document.getElementById('up-arrow');
+const downArrow = document.getElementById('down-arrow');
 const cog = document.getElementById('cog');
 
 // Check if birth datetime is stored in cookie on page load
@@ -30,11 +32,13 @@ enterButton.addEventListener('click', function () {
   displayResultScreen(birthDatetime);
 });
 
-// Clicking anywhere cycles the display
-document.addEventListener('click', function (event) {
-  if (!resultScreen.classList.contains('hidden') && event.target.id !== 'cog') {
-    cycleTimeDisplay();
-  }
+// Add event listeners for arrow clicks
+upArrow.addEventListener('click', function () {
+  cycleTimeDisplay('up');
+});
+
+downArrow.addEventListener('click', function () {
+  cycleTimeDisplay('down');
 });
 
 // Clicking the cog brings back the input screen
@@ -63,17 +67,46 @@ function getCookie(name) {
   return null;
 }
 
+timeDisplay.addEventListener('mousedown', showQuote);
+timeDisplay.addEventListener('mouseup', restoreTime);
+timeDisplay.addEventListener('mouseleave', restoreTime); // In case the mouse leaves the element
+timeDisplay.addEventListener('touchstart', showQuote); // For mobile devices
+timeDisplay.addEventListener('touchend', restoreTime); // For mobile devices
+
+let originalTimeText = '';
+
+// Function to show the quote when the mouse or finger is held down
+function showQuote() {
+  // Store the original text before changing it
+  originalTimeText = timeDisplay.innerHTML;
+
+  // Set the quote based on the current mode (days, years, etc.)
+  timeDisplay.innerHTML = `It's not the ${currentMode} in your life that count, it's the life in your ${currentMode}`;
+}
+
+// Function to restore the original time when the mouse or finger is released
+function restoreTime() {
+  timeDisplay.innerHTML = originalTimeText;
+}
+
 // Function to calculate and display age in days, hours, minutes, years, months
-function displayResultScreen(birthdate) {
+function displayResultScreen(birthDatetime) {
   inputScreen.classList.add('hidden');
   resultScreen.classList.remove('hidden');
   document.body.style.background = 'linear-gradient(-45deg, #ffffff, #ffffff, #ffffff, #ffffff)';
   updateTimeDisplay(birthDatetime, currentMode);
 }
 
-function cycleTimeDisplay() {
+function cycleTimeDisplay(direction) {
   const modes = ['days', 'hours', 'minutes', 'years', 'months'];
-  currentMode = modes[(modes.indexOf(currentMode) + 1) % modes.length];
+  const currentIndex = modes.indexOf(currentMode);
+
+  if (direction === 'up') {
+    currentMode = modes[(currentIndex + 1) % modes.length];
+  } else if (direction === 'down') {
+    currentMode = modes[(currentIndex - 1 + modes.length) % modes.length];
+  }
+
   const birthDatetime = new Date(getCookie('birthDatetime'));
   updateTimeDisplay(birthDatetime, currentMode);
 }
