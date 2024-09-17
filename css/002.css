@@ -13,17 +13,17 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(-45deg, #2A3439, #22282C, #191D1E, #111111);
+  background: linear-gradient(-45deg, #171717, #99FFFF, #171717, #171717);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 20s ease infinite;
 }
 
 @keyframes gradient {
   0% {
-      background-position: 0% 50%;
+      background-position: 0% 0%;
   }
   50% {
-      background-position: 100% 50%;
+      background-position: 100% 100%;
   }
   100% {
       background-position: 0% 50%;
@@ -35,36 +35,60 @@ body {
   margin: 0 auto 3rem;
   font-family: "Inconsolata";
   font-size: 2.5em;
-  color: #f9f8f5; 
+  color: #f9f8f5;
+  text-shadow:
+  0 0 50px #171717,
+  0 0 20px #171717,
+  0 0 10px #171717;
 }
 
 input[type="datetime-local"] {
   display: block;
   margin: 0 auto 2rem;
-  background-color: #f9f8f5;
-  color: #111111; 
+  background-color: transparent;
+  color: #f9f8f5;
   border: none; 
   padding: 0.8rem;
   font-family: "Inconsolata";
-  font-size: 1.4em;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 button {
   display: block;
   margin: 0 auto 3rem;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-family: "Inconsolata";
   font-weight: bold;
   background-color: transparent;
   color: #f9f8f5;
+  text-shadow:
+  0 0 50px #171717,
+  0 0 20px #171717,
+  0 0 10px #171717;
   border: none;
   border-radius: 35px;
   cursor: pointer;
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  60% { opacity: 0.5; }
+  80%, 90% { opacity: 0; }
+  95% { opacity: 0.75; }
+  100% { opacity: 1; }
 }
 
 button:disabled {
   cursor: not-allowed;
-  /*color: transparent;*/
+  color: transparent;
+  animation: none;
+  text-shadow: none;
 }
 
 button:enabled {
@@ -92,4 +116,41 @@ button:enabled {
   width: 30px;
   height: 30px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1023px) {
+  .question {
+    margin: 0 auto 3rem;
+    font-size: 2.1em;
+  }
+
+  input[type="datetime-local"] {
+    margin: 0 auto 2rem;
+    padding: 0.8rem;
+    font-size: 1.5em;
+  }
+
+  button {
+    margin: 0 auto 3rem;
+    font-size: 2.1rem;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .question {
+    margin: 0 auto 1.6rem;
+    font-size: 1.5em;
+    line-height: 2rem;
+  }
+
+  input[type="datetime-local"] {
+    margin: 0 auto 1.6rem;
+    padding: 0.8rem;
+    font-size: 1.1em;
+  }
+
+  button {
+    margin: 0 auto 3rem;
+    font-size: 1.5rem;
+  }
 }
