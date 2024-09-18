@@ -117,7 +117,7 @@ document.addEventListener(
       event.preventDefault();
     },
     { passive: false }
-  );
+);
 
 document.getElementById('image1').ondragstart = function() { return false; };
 document.getElementById('image2').ondragstart = function() { return false; };
