@@ -15,12 +15,12 @@ body {
   text-align: center;
   background: linear-gradient(-45deg, #171717, #99FFFF, #171717, #171717);
   background-size: 400% 400%;
-  animation: gradient 20s ease infinite;
+  animation: gradient 20s cubic-bezier(0.5, 0, 0.5, 1) infinite;
 }
 
 @keyframes gradient {
   0% {
-      background-position: 0% 0%;
+      background-position: 0% 50%;
   }
   50% {
       background-position: 100% 100%;
