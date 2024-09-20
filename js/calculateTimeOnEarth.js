@@ -12,13 +12,13 @@ const downArrow = document.getElementById('down-arrow');
 const cog = document.getElementById('cog');
 
 // Check if birth datetime is stored in cookie on page load
-let birthDatetimeCookie = getCookie('birthDatetime');
+/*let birthDatetimeCookie = getCookie('birthDatetime');
 if (birthDatetimeCookie) {
   const birthDatetime = new Date(birthDatetimeCookie);
   displayResultScreen(birthDatetime);
 } else {
   inputScreen.classList.remove('hidden');
-}
+}*/
 
 // Enable the "Enter" button when valid input
 birthDatetimeInput.addEventListener('input', function () {

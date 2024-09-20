@@ -13,20 +13,49 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(-45deg, #171717, #99FFFF, #171717, #171717);
-  background-size: 400% 400%;
-  animation: gradient 20s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  background-color: #171717;
 }
 
-@keyframes gradient {
+#input-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  width: 90vmin;
+  height: 90vmin;
+  border-radius: 50%;
+  border: 0px;
+  background-color: #1f1f1f;
+  box-shadow: 
+    0 0 50px #0f0, 
+    0 0 100px #0f0, 
+    0 0 150px #0f0, 
+    0 0 200px #0f0, 
+    0 0 250px #0f0;
+  -webkit-animation: animate-border 5s linear infinite;
+          animation: animate-border 5s linear infinite;
+}
+
+@-webkit-keyframes animate-border {
   0% {
-      background-position: 0% 50%;
-  }
-  50% {
-      background-position: 100% 100%;
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
   }
   100% {
-      background-position: 0% 50%;
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes animate-border {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+            filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
   }
 }
 
@@ -36,11 +65,6 @@ body {
   font-family: "Inconsolata";
   font-size: 2.5em;
   color: #f9f8f5;
-  text-shadow:
-  0 0 50px #171717,
-  0 0 20px #171717,
-  0 0 10px #171717;
-  transform: translate3d(0, 0, 0)!important;
 }
 
 input[type="datetime-local"] {
@@ -48,7 +72,8 @@ input[type="datetime-local"] {
   margin: 0 auto 2rem;
   background-color: transparent;
   color: #f9f8f5;
-  border: none; 
+  border: 2px solid #f9f8f5;
+  border-radius: 50px;
   padding: 0.8rem;
   font-family: "Inconsolata";
   font-size: 1.6em;
@@ -98,6 +123,7 @@ button:enabled {
 
 .hidden {
   display: none;
+  visibility: hidden;
 }
 
 .time {
@@ -113,30 +139,6 @@ button:enabled {
   font-size: 2em;
   color: #171717;
   filter: drop-shadow(0 0 50px #0f0) drop-shadow(0 0 100px #0f0) drop-shadow(0 0 150px #0f0) drop-shadow(0 0 200px #0f0) drop-shadow(0 0 250px #0f0);
-  -webkit-animation: animate 5s linear infinite;
-          animation: animate 5s linear infinite;
-}
-
-@-webkit-keyframes animate {
-  0% {
-    -webkit-filter: hue-rotate(0deg) drop-shadow(0 0 50px #0f0);
-            filter: hue-rotate(0deg) drop-shadow(0 0 50px #0f0);
-  }
-  100% {
-    -webkit-filter: hue-rotate(360deg) drop-shadow(0 0 50px #0f0);
-            filter: hue-rotate(360deg) drop-shadow(0 0 50px #0f0);
-  }
-}
-
-@keyframes animate {
-  0% {
-    -webkit-filter: hue-rotate(0deg) drop-shadow(0 0 50px #0f0);
-            filter: hue-rotate(0deg) drop-shadow(0 0 50px #0f0);
-  }
-  100% {
-    -webkit-filter: hue-rotate(360deg) drop-shadow(0 0 50px #0f0);
-            filter: hue-rotate(360deg) drop-shadow(0 0 50px #0f0);
-  }
 }
 
 #up-arrow, #down-arrow {
