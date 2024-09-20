@@ -2,23 +2,15 @@
 let currentMode = 'days';
 
 // Get elements
+const container = document.querySelector('.container');
+const question = document.getElementById('question');
 const birthDatetimeInput = document.getElementById('birth-datetime');
 const enterButton = document.getElementById('enter-button');
-const inputScreen = document.getElementById('input-screen');
 const resultScreen = document.getElementById('result-screen');
 const timeDisplay = document.getElementById('time-on-earth');
 const upArrow = document.getElementById('up-arrow');
 const downArrow = document.getElementById('down-arrow');
 const cog = document.getElementById('cog');
-
-// Check if birth datetime is stored in cookie on page load
-/*let birthDatetimeCookie = getCookie('birthDatetime');
-if (birthDatetimeCookie) {
-  const birthDatetime = new Date(birthDatetimeCookie);
-  displayResultScreen(birthDatetime);
-} else {
-  inputScreen.classList.remove('hidden');
-}*/
 
 // Enable the "Enter" button when valid input
 birthDatetimeInput.addEventListener('input', function () {
@@ -30,66 +22,6 @@ enterButton.addEventListener('click', function () {
   const birthDatetime = new Date(birthDatetimeInput.value);
   setCookie('birthDatetime', birthDatetime.toISOString(), 365);
   displayResultScreen(birthDatetime);
-});
-
-// Add event listeners for arrow clicks
-upArrow.addEventListener('click', function () {
-  cycleTimeDisplay('up');
-});
-
-downArrow.addEventListener('click', function () {
-  cycleTimeDisplay('down');
-});
-
-document.addEventListener('wheel', function(event) {
-  if (event.deltaY < 0) {
-    cycleTimeDisplay('up'); // Scroll up
-  } else {
-    cycleTimeDisplay('down'); // Scroll down
-  }
-});
-
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'ArrowUp') {
-    cycleTimeDisplay('up'); // Arrow up key pressed
-  } else if (event.key === 'ArrowDown') {
-    cycleTimeDisplay('down'); // Arrow down key pressed
-  }
-});
-
-let touchStartY = 0;
-let touchEndY = 0;
-
-// Capture the start of the touch
-document.addEventListener('touchstart', function(event) {
-  touchStartY = event.changedTouches[0].screenY;
-});
-
-// Capture the end of the touch and determine direction
-document.addEventListener('touchend', function(event) {
-  touchEndY = event.changedTouches[0].screenY;
-  handleSwipeGesture();
-});
-
-// Function to handle swipe gesture
-function handleSwipeGesture() {
-  const swipeThreshold = 50; // Minimum distance in pixels for a swipe
-
-  if (touchStartY - touchEndY > swipeThreshold) {
-    cycleTimeDisplay('up'); // Swipe up
-  } else if (touchEndY - touchStartY > swipeThreshold) {
-    cycleTimeDisplay('down'); // Swipe down
-  }
-}
-
-// Clicking the cog brings back the input screen
-cog.addEventListener('click', function () {
-  resultScreen.classList.add('hidden');
-  inputScreen.classList.remove('hidden');
-  document.body.style.background = 'linear-gradient(-45deg, #171717, #99FFFF, #171717, #171717)';
-  document.body.style.backgroundSize = '400% 400%';
-  document.body.style.animation = 'gradient 20s cubic-bezier(0.5, 0, 0.5, 1) infinite';
-  birthDatetimeInput.value = getCookie('birthDatetime') ? new Date(getCookie('birthDatetime')).toISOString().substring(0, 10) : '';
 });
 
 // Functions to handle cookie
@@ -110,34 +42,27 @@ function getCookie(name) {
   return null;
 }
 
-timeDisplay.addEventListener('mousedown', showQuote);
-timeDisplay.addEventListener('mouseup', restoreTime);
-timeDisplay.addEventListener('touchstart', showQuote);
-timeDisplay.addEventListener('touchend', restoreTime);
-
-let originalTimeText = '';
-
-// Function to show the quote when the mouse or finger is held down
-function showQuote() {
-  // Store the original text before changing it
-  originalTimeText = timeDisplay.innerHTML;
-
-  // Set the quote based on the current mode (days, years, etc.)
-  timeDisplay.innerHTML = `It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}`;
-}
-
-// Function to restore the original time when the mouse or finger is released
-function restoreTime() {
-  timeDisplay.innerHTML = originalTimeText;
-}
+// Check if birth datetime is stored in cookie on page load
+/*let birthDatetimeCookie = getCookie('birthDatetime');
+if (birthDatetimeCookie) {
+  const birthDatetime = new Date(birthDatetimeCookie);
+  displayResultScreen(birthDatetime);
+} else {
+  question.classList.remove('hidden');
+  birthDatetimeInput.classList.remove('hidden');
+  enterButton.classList.remove('hidden');
+}*/
 
 // Function to calculate and display age in days, hours, minutes, years, months
 function displayResultScreen(birthDatetime) {
-  inputScreen.classList.add('hidden');
+  question.classList.add('hidden');
+  birthDatetimeInput.classList.add('hidden');
+  enterButton.classList.add('hidden');
   resultScreen.classList.remove('hidden');
-  document.body.style.background = 'linear-gradient(-45deg, #f9f8f5, #f9f8f5, #f9f8f5, #f9f8f5)';
-  document.body.style.backgroundSize = '400% 400%';
-  document.body.style.animation = 'gradient 20s cubic-bezier(0.5, 0, 0.5, 1) infinite';
+  document.body.style.backgroundColor = '#f9f8f5';
+  container.style.backgroundColor = '#f0ff99';
+  container.style.boxShadow = 
+    '0 0 50px #0f0, 0 0 100px #0f0, 0 0 150px #0f0, 0 0 200px #0f0, 0 0 250px #0f0';
   updateTimeDisplay(birthDatetime, currentMode);
 }
 
@@ -183,3 +108,65 @@ function updateTimeDisplay(birthDatetime, mode) {
       break;
   }
 }
+
+// Add event listeners for arrow clicks and scroll wheel
+upArrow.addEventListener('click', function () {
+  console.log("up")
+  cycleTimeDisplay('up');
+});
+
+downArrow.addEventListener('click', function () {
+  cycleTimeDisplay('down');
+});
+
+/*document.addEventListener('wheel', function(event) {
+  if (event.deltaY < 0) {
+    cycleTimeDisplay('up');
+  } else {
+    cycleTimeDisplay('down');
+  }
+});*/
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'ArrowUp') {
+    cycleTimeDisplay('up');
+  } else if (event.key === 'ArrowDown') {
+    cycleTimeDisplay('down');
+  }
+});
+
+timeDisplay.addEventListener('mousedown', showQuote);
+timeDisplay.addEventListener('mouseup', restoreTime);
+timeDisplay.addEventListener('touchstart', showQuote);
+timeDisplay.addEventListener('touchend', restoreTime);
+
+let originalTimeText = '';
+
+// Function to show the quote when the mouse or finger is held down
+function showQuote() {
+  // Store the original text before changing it
+  originalTimeText = timeDisplay.innerHTML;
+
+  // Set the quote based on the current mode (days, years, etc.)
+  timeDisplay.innerHTML = `It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}`;
+}
+
+// Function to restore the original time when the mouse or finger is released
+function restoreTime() {
+  timeDisplay.innerHTML = originalTimeText;
+}
+
+// Clicking the cog brings back the input screen
+cog.addEventListener('click', function () {
+  resultScreen.classList.add('hidden');
+  question.classList.remove('hidden');
+  birthDatetimeInput.classList.remove('hidden');
+  enterButton.classList.remove('hidden');
+  document.body.style.backgroundColor = '#171717';
+  container.style.backgroundColor = '#1f1f1f';
+  container.style.boxShadow = 
+    '0 0 50px #0f0, 0 0 100px #0f0, 0 0 150px #0f0, 0 0 200px #0f0, 0 0 250px #0f0';
+  birthDatetimeInput.value = getCookie('birthDatetime') ? new Date(getCookie('birthDatetime')).toISOString().substring(0, 10) : '';
+});
+
+document.body.style.webkitUserSelect='none';

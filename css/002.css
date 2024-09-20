@@ -16,7 +16,7 @@ body {
   background-color: #171717;
 }
 
-#input-screen {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +25,7 @@ body {
   width: 90vmin;
   height: 90vmin;
   border-radius: 50%;
-  border: 0px;
+  border: none;
   background-color: #1f1f1f;
   box-shadow: 
     0 0 50px #0f0, 
@@ -59,8 +59,12 @@ body {
   }
 }
 
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
 .question {
-  display: block;
   margin: 0 auto 3rem;
   font-family: "Inconsolata";
   font-size: 2.5em;
@@ -68,7 +72,6 @@ body {
 }
 
 input[type="datetime-local"] {
-  display: block;
   margin: 0 auto 2rem;
   background-color: transparent;
   color: #f9f8f5;
@@ -79,29 +82,33 @@ input[type="datetime-local"] {
   font-size: 1.6em;
   font-weight: bold;
 }
-
+  
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
 button {
-  display: block;
   margin: 0 auto 3rem;
   font-size: 2.5rem;
   font-family: "Inconsolata";
   font-weight: bold;
   background-color: transparent;
   color: #f9f8f5;
-  text-shadow:
-  0 0 50px #171717,
-  0 0 20px #171717,
-  0 0 10px #171717;
   border: none;
-  border-radius: 35px;
   cursor: pointer;
   animation: blink 3s infinite;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  color: transparent;
+  animation: none;
+}
+  
+button:enabled {
+  color: #f9f8f5;
+}
+  
 @keyframes blink {
   0%, 50% { opacity: 1; }
   60% { opacity: 0.5; }
@@ -110,36 +117,21 @@ button {
   100% { opacity: 1; }
 }
 
-button:disabled {
-  cursor: not-allowed;
-  color: transparent;
-  animation: none;
-  text-shadow: none;
-}
-
-button:enabled {
-  color: #f9f8f5;
-}
-
-.hidden {
-  display: none;
-  visibility: hidden;
-}
-
 .time {
   font-family: "Allura";
   font-size: 4em;
   letter-spacing: 0.1rem;
   line-height: 9rem;
   color: #171717;
-  filter: drop-shadow(#F0FF99 0 0 15px);
 }
 
 .time-bigger {
   font-size: 2em;
-  color: #171717;
-  filter: drop-shadow(0 0 50px #0f0) drop-shadow(0 0 100px #0f0) drop-shadow(0 0 150px #0f0) drop-shadow(0 0 200px #0f0) drop-shadow(0 0 250px #0f0);
 }
+/*
+filter: drop-shadow(0 0 50px #0f0) drop-shadow(0 0 100px #0f0) drop-shadow(0 0 150px #0f0) drop-shadow(0 0 200px #0f0) drop-shadow(0 0 250px #0f0);
+}
+*/
 
 #up-arrow, #down-arrow {
   cursor: pointer;
@@ -149,97 +141,100 @@ button:enabled {
   font-weight: bold;
 }
   
-#settings {
+#cog {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
-
+  
 #back-button {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
 }
   
-#cog, #list {
+#list {
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
 
 @media only screen and (max-width: 1023px) {
-  .question {
-    margin: 0 auto 3rem;
-    font-size: 2.1em;
-  }
-
-  input[type="datetime-local"] {
-    margin: 0 auto 2rem;
-    padding: 0.8rem;
-    font-size: 1.5em;
-  }
-
-  button {
-    margin: 0 auto 3rem;
-    font-size: 2.1rem;
-  }
-
-  .time {
-    font-size: 3em;
-    letter-spacing: 0.1rem;
-    line-height: 8rem;
+    .question {
+      margin: 0 auto 3rem;
+      font-size: 2.1em;
+    }
+  
+    input[type="datetime-local"] {
+      margin: 0 auto 2rem;
+      padding: 0.8rem;
+      font-size: 1.5em;
+    }
+  
+    button {
+      margin: 0 auto 3rem;
+      font-size: 2.1rem;
+    }
+  
+    .time {
+      font-size: 3em;
+      letter-spacing: 0.1rem;
+      line-height: 8rem;
+    }
+    
+    .time-bigger {
+      font-size: 1.8em;
+    }
+  
+    #up-arrow, #down-arrow {
+      font-size: 4.6em;
+      margin: 1rem;
+    }
+  
+    #cog, #list {
+      width: 30px;
+      height: 30px;
+    }
   }
   
-  .time-bigger {
-    font-size: 1.8em;
-  }
-
-  #up-arrow, #down-arrow {
-    font-size: 4.6em;
-    margin: 1rem;
-  }
-
-  #cog, #list {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .question {
-    margin: 0 auto 1.6rem;
-    font-size: 1.5em;
-    line-height: 2rem;
-  }
-
-  input[type="datetime-local"] {
-    margin: 0 auto 1.6rem;
-    padding: 0.8rem;
-    font-size: 1.1em;
-  }
-
-  button {
-    margin: 0 auto 3rem;
-    font-size: 1.5rem;
-  }
-
-  .time {
-    font-size: 2.2em;
-    letter-spacing: 0.1rem;
-    line-height: 5rem;
-  }
+  @media only screen and (max-width: 767px) {
+    .question {
+      margin: 0 auto 1.6rem;
+      font-size: 1.5em;
+      line-height: 2rem;
+    }
   
-  .time-bigger {
-    font-size: 1.6em;
+    input[type="datetime-local"] {
+      margin: 0 auto 1.6rem;
+      padding: 0.8rem;
+      font-size: 1.1em;
+    }
+  
+    button {
+      margin: 0 auto 3rem;
+      font-size: 1.5rem;
+    }
+  
+    .time {
+      font-size: 2.2em;
+      letter-spacing: 0.1rem;
+      line-height: 5rem;
+    }
+    
+    .time-bigger {
+      font-size: 1.6em;
+    }
+  
+    #up-arrow, #down-arrow {
+      font-size: 3.2em;
+      margin: 0.8rem;
+    }
+  
+    #cog, #list {
+      width: 25px;
+      height: 25px;
+    }
   }
-
-  #up-arrow, #down-arrow {
-    font-size: 3.2em;
-    margin: 0.8rem;
-  }
-
-  #cog, #list {
-    width: 25px;
-    height: 25px;
-  }
-}
