@@ -43,7 +43,7 @@ function getCookie(name) {
 }
 
 // Check if birth datetime is stored in cookie on page load
-/*let birthDatetimeCookie = getCookie('birthDatetime');
+let birthDatetimeCookie = getCookie('birthDatetime');
 if (birthDatetimeCookie) {
   const birthDatetime = new Date(birthDatetimeCookie);
   displayResultScreen(birthDatetime);
@@ -51,7 +51,7 @@ if (birthDatetimeCookie) {
   question.classList.remove('hidden');
   birthDatetimeInput.classList.remove('hidden');
   enterButton.classList.remove('hidden');
-}*/
+}
 
 // Function to calculate and display age in days, hours, minutes, years, months
 function displayResultScreen(birthDatetime) {
@@ -60,9 +60,8 @@ function displayResultScreen(birthDatetime) {
   enterButton.classList.add('hidden');
   resultScreen.classList.remove('hidden');
   document.body.style.backgroundColor = '#f9f8f5';
-  container.style.backgroundColor = '#f0ff99';
-  container.style.boxShadow = 
-    '0 0 50px #0f0, 0 0 100px #0f0, 0 0 150px #0f0, 0 0 200px #0f0, 0 0 250px #0f0';
+  container.style.backgroundColor = '#f9f8f5';
+  container.style.boxShadow = '0 0 50px #ffd700';
   updateTimeDisplay(birthDatetime, currentMode);
 }
 
@@ -70,9 +69,9 @@ function cycleTimeDisplay(direction) {
   const modes = ['days', 'hours', 'minutes', 'years', 'months'];
   const currentIndex = modes.indexOf(currentMode);
 
-  if (direction === 'up') {
+  if (direction === 'down') {
     currentMode = modes[(currentIndex + 1) % modes.length];
-  } else if (direction === 'down') {
+  } else if (direction === 'up') {
     currentMode = modes[(currentIndex - 1 + modes.length) % modes.length];
   }
 
@@ -88,23 +87,23 @@ function updateTimeDisplay(birthDatetime, mode) {
   switch (mode) {
     case 'days':
       diff = Math.floor((now - birthDatetime) / (1000 * 60 * 60 * 24));
-      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff} Days</span><br> On Earth`;
+      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Days</span><br> On Earth`;
       break;
     case 'hours':
       diff = Math.floor((now - birthDatetime) / (1000 * 60 * 60));
-      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff} Hours</span><br> On Earth`;
+      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Hours</span><br> On Earth`;
       break;
     case 'minutes':
       diff = Math.floor((now - birthDatetime) / (1000 * 60));
-      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff} Minutes</span><br> On Earth`;
+      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Minutes</span><br> On Earth`;
       break;
     case 'years':
       diff = now.getFullYear() - birthDatetime.getFullYear();
-      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff} Years</span><br> On Earth`;
+      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Years</span><br> On Earth`;
       break;
     case 'months':
       diff = (now.getFullYear() - birthDatetime.getFullYear()) * 12 + (now.getMonth() - birthDatetime.getMonth());
-      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff} Months</span><br> On Earth`;
+      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Months</span><br> On Earth`;
       break;
   }
 }
@@ -148,7 +147,7 @@ function showQuote() {
   originalTimeText = timeDisplay.innerHTML;
 
   // Set the quote based on the current mode (days, years, etc.)
-  timeDisplay.innerHTML = `It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}`;
+  timeDisplay.innerHTML = `<span class="quote">It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}</span>`;
 }
 
 // Function to restore the original time when the mouse or finger is released
@@ -164,8 +163,7 @@ cog.addEventListener('click', function () {
   enterButton.classList.remove('hidden');
   document.body.style.backgroundColor = '#171717';
   container.style.backgroundColor = '#1f1f1f';
-  container.style.boxShadow = 
-    '0 0 50px #0f0, 0 0 100px #0f0, 0 0 150px #0f0, 0 0 200px #0f0, 0 0 250px #0f0';
+  container.style.boxShadow = '0 0 50px #ffd700';
   birthDatetimeInput.value = getCookie('birthDatetime') ? new Date(getCookie('birthDatetime')).toISOString().substring(0, 10) : '';
 });
 
