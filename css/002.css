@@ -206,7 +206,7 @@ button:enabled {
   
   @media only screen and (max-width: 767px) {
     .question {
-      margin: 0 auto 1.6rem;
+      margin: 2em auto 1.6rem;
       font-size: 1.2em;
       line-height: 1.6rem;
     }
@@ -237,7 +237,7 @@ button:enabled {
     }
 
     .quote {
-      font-size: 1.2em;
+      font-size: 1em;
     }
   
     #up-arrow, #down-arrow {

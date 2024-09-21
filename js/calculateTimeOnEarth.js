@@ -167,4 +167,13 @@ cog.addEventListener('click', function () {
   birthDatetimeInput.value = getCookie('birthDatetime') ? new Date(getCookie('birthDatetime')).toISOString().substring(0, 10) : '';
 });
 
+document.body.style.webkitTouchCallout='none';
 document.body.style.webkitUserSelect='none';
+
+document.addEventListener(
+    "dblclick",
+    function (event) {
+      event.preventDefault();
+    },
+    { passive: false }
+);
