@@ -8,6 +8,7 @@ const birthDatetimeInput = document.getElementById('birth-datetime');
 const enterButton = document.getElementById('enter-button');
 const resultScreen = document.getElementById('result-screen');
 const timeDisplay = document.getElementById('time-on-earth');
+const controls = document.getElementById('controls');
 const upArrow = document.getElementById('up-arrow');
 const downArrow = document.getElementById('down-arrow');
 const cog = document.getElementById('cog');
@@ -59,6 +60,7 @@ function displayResultScreen(birthDatetime) {
   birthDatetimeInput.classList.add('hidden');
   enterButton.classList.add('hidden');
   resultScreen.classList.remove('hidden');
+  controls.classList.remove('hidden');
   document.body.style.backgroundColor = '#f9f8f5';
   container.style.backgroundColor = '#f9f8f5';
   container.style.boxShadow = '0 0 50px #ffd700';
@@ -158,6 +160,7 @@ function restoreTime() {
 // Clicking the cog brings back the input screen
 cog.addEventListener('click', function () {
   resultScreen.classList.add('hidden');
+  controls.classList.add('hidden');
   question.classList.remove('hidden');
   birthDatetimeInput.classList.remove('hidden');
   enterButton.classList.remove('hidden');
