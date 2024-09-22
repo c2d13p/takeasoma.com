@@ -138,8 +138,10 @@ document.addEventListener('keydown', function(event) {
 
 timeDisplay.addEventListener('mousedown', showQuote);
 timeDisplay.addEventListener('mouseup', restoreTime);
+timeDisplay.addEventListener('mouseleave', restoreTime);
 timeDisplay.addEventListener('touchstart', showQuote);
 timeDisplay.addEventListener('touchend', restoreTime);
+timeDisplay.addEventListener('touchcancel', restoreTime);
 
 let originalTimeText = '';
 
