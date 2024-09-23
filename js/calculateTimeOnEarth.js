@@ -136,10 +136,42 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-timeDisplay.addEventListener('mousedown', showQuote);
+let clicked = false;
+let touched = false;
+timeDisplay.addEventListener('mousedown', () => {
+  showQuote();
+  clicked = true;
+  console.log(clicked);
+});
 timeDisplay.addEventListener('mouseup', restoreTime);
-timeDisplay.addEventListener('touchstart', showQuote);
-timeDisplay.addEventListener('touchend', restoreTime);
+timeDisplay.addEventListener('mouseleave', () => {
+  if(clicked) {
+    restoreTime();
+    clicked = false;
+  }
+  console.log(clicked);
+});
+
+timeDisplay.addEventListener('touchstart', (e) => {
+  e.stopPropagation();
+  e.preventDefault();
+  showQuote();
+  touched = true;
+  console.log(touched);
+});
+timeDisplay.addEventListener('touchend', (e) => {
+  e.stopPropagation();
+  restoreTime();
+  touched = false;
+  console.log(touched);
+});
+timeDisplay.addEventListener('touchcancel', () => {
+  if(touched) {
+    restoreTime();
+    touched = false;
+  }
+  console.log(touched);
+});
 
 let originalTimeText = '';
 
@@ -167,12 +199,29 @@ cog.addEventListener('click', function () {
   document.body.style.backgroundColor = '#171717';
   container.style.backgroundColor = '#1f1f1f';
   container.style.boxShadow = '0 0 50px #ffd700';
-  birthDatetimeInput.value = getCookie('birthDatetime') ? new Date(getCookie('birthDatetime')).toISOString().substring(0, 10) : '';
+  const birthDatetime = getCookie('birthDatetime');
+  if (birthDatetime) {
+    // Convert to the required format YYYY-MM-DDTHH:MM
+    const formattedDatetime = new Date(birthDatetime).toISOString().substring(0, 16);
+    birthDatetimeInput.value = formattedDatetime;
+  } else {
+    birthDatetimeInput.value = '';
+  }
 });
 
-document.body.style.webkitTouchCallout='none';
 document.body.style.webkitUserSelect='none';
-
+/*
+document.body.style.webkitUserDrag = 'none';
+document.body.style.webkitUserModify = 'none';
+document.body.style.webkitHighlight = 'none';
+document.body.style.webkitTouchCallout = 'none';
+document.body.style.webkitUserSelect = 'none';
+document.body.style.khtmlUserSelect = 'none';
+document.body.style.mozUserSelect = 'none';
+document.body.style.msUserSelect = 'none';
+document.body.style.oUserSelect = 'none';
+document.body.style.userSelect = 'none';
+*/
 document.addEventListener(
     "dblclick",
     function (event) {
