@@ -136,42 +136,42 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-let clicked = false;
-let touched = false;
-timeDisplay.addEventListener('mousedown', () => {
-  showQuote();
-  clicked = true;
-  console.log(clicked);
-});
-timeDisplay.addEventListener('mouseup', restoreTime);
-timeDisplay.addEventListener('mouseleave', () => {
-  if(clicked) {
-    restoreTime();
-    clicked = false;
-  }
-  console.log(clicked);
-});
+let isInteracting = false;
 
 timeDisplay.addEventListener('pointerdown', (e) => {
-  e.stopPropagation();
   e.preventDefault();
   showQuote();
-  touched = true;
-  console.log(touched);
+  isInteracting = true;
+  console.log('Interaction started:', isInteracting);
 });
+
 timeDisplay.addEventListener('pointerup', (e) => {
-  e.stopPropagation();
-  restoreTime();
-  touched = false;
-  console.log(touched);
-});
-timeDisplay.addEventListener('pointercancel', () => {
-  if(touched) {
+  e.preventDefault();
+  if (isInteracting) {
     restoreTime();
-    touched = false;
+    isInteracting = false;
+    console.log('Interaction ended:', isInteracting);
   }
-  console.log(touched);
 });
+
+timeDisplay.addEventListener('pointerleave', (e) => {
+  if (isInteracting) {
+    restoreTime();
+    isInteracting = false;
+    console.log('Interaction cancelled (leave):', isInteracting);
+  }
+});
+
+timeDisplay.addEventListener('pointercancel', (e) => {
+  if (isInteracting) {
+    restoreTime();
+    isInteracting = false;
+    console.log('Interaction cancelled:', isInteracting);
+  }
+});
+
+// Prevent text selection during interaction
+timeDisplay.addEventListener('selectstart', (e) => e.preventDefault());
 
 let originalTimeText = '';
 
@@ -188,7 +188,6 @@ function showQuote() {
 
 // Function to restore the original time when the mouse or finger is released
 function restoreTime() {
-  console.log(originalTimeText);
   timeDisplay.innerHTML = originalTimeText;
 }
 
