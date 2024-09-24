@@ -178,7 +178,9 @@ let originalTimeText = '';
 // Function to show the quote when the mouse or finger is held down
 function showQuote() {
   // Store the original text before changing it
-  originalTimeText = timeDisplay.innerHTML;
+  if (!timeDisplay.innerHTML.includes('quote')) {
+    originalTimeText = timeDisplay.innerHTML;
+  }
 
   // Set the quote based on the current mode (days, years, etc.)
   timeDisplay.innerHTML = `<span class="quote">It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}</span>`;
@@ -186,6 +188,7 @@ function showQuote() {
 
 // Function to restore the original time when the mouse or finger is released
 function restoreTime() {
+  console.log(originalTimeText);
   timeDisplay.innerHTML = originalTimeText;
 }
 
@@ -201,9 +204,9 @@ cog.addEventListener('click', function () {
   container.style.boxShadow = '0 0 50px #ffd700';
   const birthDatetime = getCookie('birthDatetime');
   if (birthDatetime) {
-    // Convert to the required format YYYY-MM-DDTHH:MM
     const formattedDatetime = new Date(birthDatetime).toISOString().substring(0, 16);
     birthDatetimeInput.value = formattedDatetime;
+    enterButton.disabled = !birthDatetimeInput.value;
   } else {
     birthDatetimeInput.value = '';
   }
