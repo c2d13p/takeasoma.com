@@ -152,20 +152,20 @@ timeDisplay.addEventListener('mouseleave', () => {
   console.log(clicked);
 });
 
-timeDisplay.addEventListener('touchstart', (e) => {
+timeDisplay.addEventListener('pointerdown', (e) => {
   e.stopPropagation();
   e.preventDefault();
   showQuote();
   touched = true;
   console.log(touched);
 });
-timeDisplay.addEventListener('touchend', (e) => {
+timeDisplay.addEventListener('pointerup', (e) => {
   e.stopPropagation();
   restoreTime();
   touched = false;
   console.log(touched);
 });
-timeDisplay.addEventListener('touchcancel', () => {
+timeDisplay.addEventListener('pointercancel', () => {
   if(touched) {
     restoreTime();
     touched = false;
