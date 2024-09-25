@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 @import url('https://fonts.googleapis.com/css?family=Allura');
-@import url('https://fonts.googleapis.com/css?family=Playwrite+DE+Grund');
 @import url('https://fonts.googleapis.com/css?family=Chakra+Petch');
-@import url('https://fonts.googleapis.com/css?family=Jura');
 
 html, body {
   height: 100%;
@@ -70,6 +68,9 @@ body {
 
 input[type="datetime-local"] {
   margin: 0 auto 2rem;
+  font-family: "Inconsolata";
+  font-size: 1.4em;
+  font-weight: bold;
   min-width: 160px;
   min-height: 20px;
   background-color: transparent;
@@ -78,9 +79,6 @@ input[type="datetime-local"] {
   border-radius: 50px;
   box-shadow: 0 0 30px #ffd700;
   padding: 0.6rem;
-  font-family: "Inconsolata";
-  font-size: 1.4em;
-  font-weight: bold;
 }
   
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
@@ -119,8 +117,6 @@ button:enabled {
 }
 
 .time {
-  font-family: "Jura";
-  font-family: "Playwrite DE Grund";
   font-family: "Chakra Petch";
   font-size: 3.4em;
   line-height: 9rem;
@@ -143,25 +139,21 @@ button:enabled {
   font-weight: bold;
 }
   
-#cog {
+#cog, #list {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
   width: 40px;
   height: 40px;
-  cursor: pointer;
+  cursor: pointer;  
 }
-  
-#back-button {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
+
+#cog {
+  top: 1rem;
+  right: 1rem;
 }
   
 #list {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
+  bottom: 1rem;
+  left: 1rem;
 }
 
 @media only screen and (max-width: 1023px) {

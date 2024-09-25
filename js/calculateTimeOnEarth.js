@@ -1,7 +1,3 @@
-// Declare variables
-let currentMode = 'days';
-
-// Get elements
 const container = document.querySelector('.container');
 const question = document.getElementById('question');
 const birthDatetimeInput = document.getElementById('birth-datetime');
@@ -13,19 +9,18 @@ const upArrow = document.getElementById('up-arrow');
 const downArrow = document.getElementById('down-arrow');
 const cog = document.getElementById('cog');
 
-// Enable the "Enter" button when valid input
+let currentMode = 'days';
+
 birthDatetimeInput.addEventListener('input', function () {
   enterButton.disabled = !birthDatetimeInput.value;
 });
 
-// Calculate time on earth and show result when "Enter" button is clicked
 enterButton.addEventListener('click', function () {
   const birthDatetime = new Date(birthDatetimeInput.value);
   setCookie('birthDatetime', birthDatetime.toISOString(), 365);
   displayResultScreen(birthDatetime);
 });
 
-// Functions to handle cookie
 function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -43,8 +38,8 @@ function getCookie(name) {
   return null;
 }
 
-// Check if birth datetime is stored in cookie on page load
 let birthDatetimeCookie = getCookie('birthDatetime');
+
 if (birthDatetimeCookie) {
   const birthDatetime = new Date(birthDatetimeCookie);
   displayResultScreen(birthDatetime);
@@ -54,7 +49,6 @@ if (birthDatetimeCookie) {
   enterButton.classList.remove('hidden');
 }
 
-// Function to calculate and display age in days, hours, minutes, years, months
 function displayResultScreen(birthDatetime) {
   question.classList.add('hidden');
   birthDatetimeInput.classList.add('hidden');
@@ -101,32 +95,28 @@ function updateTimeDisplay(birthDatetime, mode) {
       break;
     case 'years':
       diff = now.getFullYear() - birthDatetime.getFullYear();
+      if (now < new Date(now.getFullYear(), birthDatetime.getMonth(), birthDatetime.getDate())) {
+        diff--;
+      }
       timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Years</span><br> On Earth`;
       break;
     case 'months':
       diff = (now.getFullYear() - birthDatetime.getFullYear()) * 12 + (now.getMonth() - birthDatetime.getMonth());
+      if (now.getDate() < birthDatetime.getDate()) {
+        diff--;
+      }
       timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Months</span><br> On Earth`;
       break;
   }
 }
 
-// Add event listeners for arrow clicks and scroll wheel
 upArrow.addEventListener('click', function () {
-  console.log("up")
   cycleTimeDisplay('up');
 });
 
 downArrow.addEventListener('click', function () {
   cycleTimeDisplay('down');
 });
-
-/*document.addEventListener('wheel', function(event) {
-  if (event.deltaY < 0) {
-    cycleTimeDisplay('up');
-  } else {
-    cycleTimeDisplay('down');
-  }
-});*/
 
 document.addEventListener('keydown', function(event) {
   if (event.key === 'ArrowUp') {
@@ -142,7 +132,6 @@ timeDisplay.addEventListener('pointerdown', (e) => {
   e.preventDefault();
   showQuote();
   isInteracting = true;
-  console.log('Interaction started:', isInteracting);
 });
 
 timeDisplay.addEventListener('pointerup', (e) => {
@@ -158,7 +147,6 @@ timeDisplay.addEventListener('pointerleave', (e) => {
   if (isInteracting) {
     restoreTime();
     isInteracting = false;
-    console.log('Interaction cancelled (leave):', isInteracting);
   }
 });
 
@@ -166,32 +154,25 @@ timeDisplay.addEventListener('pointercancel', (e) => {
   if (isInteracting) {
     restoreTime();
     isInteracting = false;
-    console.log('Interaction cancelled:', isInteracting);
   }
 });
 
-// Prevent text selection during interaction
 timeDisplay.addEventListener('selectstart', (e) => e.preventDefault());
 
 let originalTimeText = '';
 
-// Function to show the quote when the mouse or finger is held down
 function showQuote() {
-  // Store the original text before changing it
   if (!timeDisplay.innerHTML.includes('quote')) {
     originalTimeText = timeDisplay.innerHTML;
   }
 
-  // Set the quote based on the current mode (days, years, etc.)
   timeDisplay.innerHTML = `<span class="quote">It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}</span>`;
 }
 
-// Function to restore the original time when the mouse or finger is released
 function restoreTime() {
   timeDisplay.innerHTML = originalTimeText;
 }
 
-// Clicking the cog brings back the input screen
 cog.addEventListener('click', function () {
   resultScreen.classList.add('hidden');
   controls.classList.add('hidden');
@@ -212,18 +193,7 @@ cog.addEventListener('click', function () {
 });
 
 document.body.style.webkitUserSelect='none';
-/*
-document.body.style.webkitUserDrag = 'none';
-document.body.style.webkitUserModify = 'none';
-document.body.style.webkitHighlight = 'none';
-document.body.style.webkitTouchCallout = 'none';
-document.body.style.webkitUserSelect = 'none';
-document.body.style.khtmlUserSelect = 'none';
-document.body.style.mozUserSelect = 'none';
-document.body.style.msUserSelect = 'none';
-document.body.style.oUserSelect = 'none';
-document.body.style.userSelect = 'none';
-*/
+
 document.addEventListener(
     "dblclick",
     function (event) {
