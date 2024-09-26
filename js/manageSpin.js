@@ -53,18 +53,14 @@ function stopChangingSpeed() {
 
 increaseSpeedBtn.addEventListener('click', increaseSpeed);
 decreaseSpeedBtn.addEventListener('click', decreaseSpeed);
-increaseSpeedBtn.addEventListener('mousedown', startIncreasingSpeed);
-increaseSpeedBtn.addEventListener('mouseup', stopChangingSpeed);
-increaseSpeedBtn.addEventListener('mouseleave', stopChangingSpeed);
-decreaseSpeedBtn.addEventListener('mousedown', startDecreasingSpeed);
-decreaseSpeedBtn.addEventListener('mouseup', stopChangingSpeed);
-decreaseSpeedBtn.addEventListener('mouseleave', stopChangingSpeed);
-increaseSpeedBtn.addEventListener('touchstart', startIncreasingSpeed);
-increaseSpeedBtn.addEventListener('touchend', stopChangingSpeed);
-increaseSpeedBtn.addEventListener('touchcancel', stopChangingSpeed);
-decreaseSpeedBtn.addEventListener('touchstart', startDecreasingSpeed);
-decreaseSpeedBtn.addEventListener('touchend', stopChangingSpeed);
-decreaseSpeedBtn.addEventListener('touchcancel', stopChangingSpeed);
+increaseSpeedBtn.addEventListener('pointerdown', startIncreasingSpeed);
+increaseSpeedBtn.addEventListener('pointerup', stopChangingSpeed);
+increaseSpeedBtn.addEventListener('pointerleave', stopChangingSpeed);
+increaseSpeedBtn.addEventListener('pointercancel', stopChangingSpeed);
+decreaseSpeedBtn.addEventListener('pointerdown', startDecreasingSpeed);
+decreaseSpeedBtn.addEventListener('pointerup', stopChangingSpeed);
+decreaseSpeedBtn.addEventListener('pointerleave', stopChangingSpeed);
+decreaseSpeedBtn.addEventListener('pointercancel', stopChangingSpeed);
 
 function stopRotation() {
     image1.style.animationPlayState = 'paused';
@@ -97,14 +93,14 @@ function invertSpin() {
     isClockwise2 = !isClockwise2;
 }
 
-image1.addEventListener('mousedown', stopRotation);
-image1.addEventListener('mouseup', resumeRotation);
-image2.addEventListener('mousedown', stopRotation);
-image2.addEventListener('mouseup', resumeRotation);
-image1.addEventListener('touchstart', stopRotation);
-image1.addEventListener('touchend', resumeRotation);
-image2.addEventListener('touchstart', stopRotation);
-image2.addEventListener('touchend', resumeRotation);
+image1.addEventListener('pointerdown', stopRotation);
+image1.addEventListener('pointerup', resumeRotation);
+image1.addEventListener('pointercancel', resumeRotation);
+image1.addEventListener('pointerleave', resumeRotation);
+image2.addEventListener('pointerdown', stopRotation);
+image2.addEventListener('pointerup', resumeRotation);
+image2.addEventListener('pointercancel', resumeRotation);
+image2.addEventListener('pointerleave', resumeRotation);
 
 invertSpinBtn.addEventListener('click', invertSpin);
 
