@@ -24,7 +24,7 @@ enterButton.addEventListener('click', function () {
 function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + d.toUTCString();
+  const expires = "expires=" + d.toISOString();
   document.cookie = `${name}=${value};${expires};path=/`;
 }
 
@@ -187,14 +187,27 @@ cog.addEventListener('click', function () {
   container.style.backgroundColor = '#1f1f1f';
   container.style.boxShadow = '0 0 50px #ffd700';
   const birthDatetime = getCookie('birthDatetime');
+  console.log(birthDatetime);
   if (birthDatetime) {
-    const formattedDatetime = new Date(birthDatetime).toISOString().substring(0, 16);
+    const date = new Date(birthDatetime);
+    const formattedDatetime = formatDateForInput(date);
+    console.log(formattedDatetime);
     birthDatetimeInput.value = formattedDatetime;
     enterButton.disabled = !birthDatetimeInput.value;
   } else {
     birthDatetimeInput.value = '';
   }
 });
+
+function formatDateForInput(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
+}
 
 document.body.style.webkitUserSelect='none';
 
