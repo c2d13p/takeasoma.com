@@ -62,7 +62,7 @@ function displayResultScreen(birthDatetime) {
 }
 
 function cycleTimeDisplay(direction) {
-  const modes = ['days', 'hours', 'minutes', 'years', 'months'];
+  const modes = ['days', 'hours', 'minutes', 'years', 'months', 'weeks'];
   const currentIndex = modes.indexOf(currentMode);
 
   if (direction === 'down') {
@@ -106,6 +106,10 @@ function updateTimeDisplay(birthDatetime, mode) {
         diff--;
       }
       timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Months</span><br> On Earth`;
+      break;
+    case 'weeks':
+      diff = Math.floor((now - birthDatetime) / (1000 * 60 * 60 * 24 * 7));
+      timeDisplay.innerHTML = `You Have <br><span class="time-bigger">${diff.toLocaleString()} Weeks</span><br> On Earth`;
       break;
   }
 }
