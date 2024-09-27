@@ -130,47 +130,19 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
-let isInteracting = false;
-
-timeDisplay.addEventListener('pointerdown', (e) => {
-  e.preventDefault();
-  showQuote();
-  isInteracting = true;
-});
-
-timeDisplay.addEventListener('pointerup', (e) => {
-  e.preventDefault();
-  if (isInteracting) {
-    restoreTime();
-    isInteracting = false;
-    console.log('Interaction ended:', isInteracting);
-  }
-});
-
-timeDisplay.addEventListener('pointerleave', (e) => {
-  if (isInteracting) {
-    restoreTime();
-    isInteracting = false;
-  }
-});
-
-timeDisplay.addEventListener('pointercancel', (e) => {
-  if (isInteracting) {
-    restoreTime();
-    isInteracting = false;
-  }
-});
-
-timeDisplay.addEventListener('selectstart', (e) => e.preventDefault());
-
 let originalTimeText = '';
 
-function showQuote() {
-  if (!timeDisplay.innerHTML.includes('quote')) {
-    originalTimeText = timeDisplay.innerHTML;
+timeDisplay.addEventListener('click', () => {
+  if (timeDisplay.innerHTML.includes('quote')) {
+    restoreTime();
+  } else {
+    showQuote();
   }
+});
 
-  timeDisplay.innerHTML = `<span class="quote">It's not the ${currentMode}<br> in your life that count;<br> it's the life in your ${currentMode}</span>`;
+function showQuote() {
+  originalTimeText = timeDisplay.innerHTML;
+  timeDisplay.innerHTML = `<span class="quote">It's not the ${currentMode}<br> in your life that counts;<br> it's the life in your ${currentMode}</span>`;
 }
 
 function restoreTime() {
