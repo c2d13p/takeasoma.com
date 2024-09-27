@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: radial-gradient(#171717, #171717);
+  background-color: #171717;
 }
 
 .container {
