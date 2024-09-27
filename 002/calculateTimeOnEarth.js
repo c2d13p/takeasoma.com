@@ -55,7 +55,7 @@ function displayResultScreen(birthDatetime) {
   enterButton.classList.add('hidden');
   resultScreen.classList.remove('hidden');
   controls.classList.remove('hidden');
-  document.body.style.backgroundColor = '#f9f8f5';
+  document.body.style.background = 'radial-gradient(#e8e2cc, #f9f8f5)';
   container.style.backgroundColor = '#f9f8f5';
   container.style.boxShadow = '0 0 50px #ffd700';
   updateTimeDisplay(birthDatetime, currentMode);
@@ -155,7 +155,7 @@ cog.addEventListener('click', function () {
   question.classList.remove('hidden');
   birthDatetimeInput.classList.remove('hidden');
   enterButton.classList.remove('hidden');
-  document.body.style.backgroundColor = '#171717';
+  document.body.style.background = 'radial-gradient(#171717, #171717)';
   container.style.backgroundColor = '#1f1f1f';
   container.style.boxShadow = '0 0 50px #ffd700';
   const birthDatetime = getCookie('birthDatetime');

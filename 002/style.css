@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #171717;
+  background: radial-gradient(#171717, #171717);
 }
 
 .container {
@@ -26,9 +26,10 @@ body {
   border-radius: 50%;
   border: none;
   background-color: #1f1f1f;
+  background: radial-gradient(circle at 100px 100px, rgba(255, 215, 0, 0.8), rgba(31, 31, 31, 0.8));
   box-shadow: 0 0 50px #ffd700;
-  -webkit-animation: animate-border 5s linear infinite;
-          animation: animate-border 5s linear infinite;
+  -webkit-animation: animate-border 10s linear infinite;
+          animation: animate-border 10s linear infinite;
 }
 
 @-webkit-keyframes animate-border {
@@ -120,7 +121,7 @@ button:enabled {
   font-family: "Chakra Petch";
   font-size: 3.4em;
   line-height: 9rem;
-  color: #171717;
+  color: #f9f8f5;
 }
 
 .time-bigger {
@@ -137,6 +138,7 @@ button:enabled {
   font-size: 6em;
   text-align: center;
   font-weight: bold;
+  color: #f9f8f5;
 }
   
 #cog, #list {
