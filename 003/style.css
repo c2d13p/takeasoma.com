@@ -2,31 +2,43 @@
 
 body, html {
     margin: 0;
-    padding: 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
     font-family: "Rubik Mono One";
+    background-color: #ffffff;
 }
 
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
     height: 15vh;
-    position: relative;
+    z-index: 2;
 }
 
-.logo {
-    width: 50%;
-    height: 100%;
+.header-logo {
+    height: 90%;
     object-fit: contain;
 }
 
 .instagram-logo {
     position: absolute;
-    right: 20px;
-    height: 40%;
+    right: 4rem;
+    height: 50%;
+}
+
+h1 {
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    font-size: 2.4em;
+    text-align: center;
+    background: -webkit-linear-gradient(#7d7697, #ff8d11, #d5514d, #693856);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .container {
@@ -34,39 +46,97 @@ body, html {
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 7.5vh;
+}
+
+.img {
+    width: 40%;
+    margin: 2rem 0rem 2rem 0rem;
+    object-fit: cover;
 }
 
 .footer {
-    width: 100%;
-    height: 15vh;
-    font-family: "Rubik Mono One";
-    font-size: 3em;
-    padding: 1.6rem;
-    position: fixed;
-    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
+    background-color: #ffffff;
+    position: fixed;
     bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 7.5vh;
+    opacity: 0;
+    font-size: 2.4em;
+    padding: 0rem 3rem 0rem 3rem;
+    transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.footer-visible {
+    opacity: 1;
 }
 
 .footer a {
     text-decoration: none;
+    background: -webkit-linear-gradient(#7d7697, #ff8d11, #d5514d, #693856);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer a:hover {
+    text-decoration: underline;
 }
 
 .footer-logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 50%;
-    height: 100%;
+    height: 90%;
     object-fit: contain;
 }
 
-.img {
-    width: 60%;
-    height: auto;
-    margin: 20px 0;
-    object-fit: cover;
+@media only screen and (max-width: 1023px) {
+    .instagram-logo {
+        right: 2rem;
+    }
+
+    h1 {
+        margin-top: 1.2rem;
+        margin-bottom: 0rem;
+        font-size: 1.6em;
+    }
+
+    .img {
+        margin: 1rem 0rem 1rem 0rem;
+    }
+
+    .footer {
+        font-size: 1.6em;
+        padding: 0rem 1.2rem 0rem 1.2rem;
+        height: 6vh;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .instagram-logo {
+        right: 0.8rem;
+    }
+
+    h1 {
+        margin-top: 0.8rem;
+        margin-bottom: 0rem;
+        font-size: 1em;
+        line-height: 1em;
+    }
+
+    .img {
+        margin: 0.6rem 0rem 0.6rem 0rem;
+    }
+
+    .footer {
+        font-size: 1em;
+        padding: 0rem 0.6rem 0rem 0.6rem;
+        height: 4vh;
+    }
 }
