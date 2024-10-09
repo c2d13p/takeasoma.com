@@ -97,7 +97,12 @@ h1 {
 }
 
 @media only screen and (max-width: 1023px) {
+    .header {
+        height: 12vh;
+    }
+    
     .instagram-logo {
+        height: 45%;
         right: 2rem;
     }
 
@@ -119,7 +124,12 @@ h1 {
 }
 
 @media only screen and (max-width: 767px) {
+    .header {
+        height: 8vh;
+    }
+   
     .instagram-logo {
+        height: 45%;
         right: 0.8rem;
     }
 
