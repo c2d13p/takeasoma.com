@@ -15,17 +15,24 @@ birthDatetimeInput.addEventListener('input', function () {
   enterButton.disabled = !birthDatetimeInput.value;
 });
 
-enterButton.addEventListener('click', function () {
+enterButton.addEventListener('click', handleEnterButton);
+document.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter' && document.activeElement.tagName !== 'BUTTON') {
+    handleEnterButton();
+  }
+});
+
+function handleEnterButton () {
   const birthDatetime = new Date(birthDatetimeInput.value);
   setCookie('birthDatetime', birthDatetime.toISOString(), 365);
   displayResultScreen(birthDatetime);
-});
+};
 
 function setCookie(name, value, days) {
   const d = new Date();
   d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-  const expires = "expires=" + d.toISOString();
-  document.cookie = `${name}=${value};${expires};path=/`;
+  const expires = "Expires=" + d.toUTCString();
+  document.cookie = `${name}=${value}; ${expires}; path=/`;
 }
 
 function getCookie(name) {
@@ -159,11 +166,9 @@ cog.addEventListener('click', function () {
   container.style.backgroundColor = '#1f1f1f';
   container.style.boxShadow = '0 0 50px #ffd700';
   const birthDatetime = getCookie('birthDatetime');
-  console.log(birthDatetime);
   if (birthDatetime) {
     const date = new Date(birthDatetime);
     const formattedDatetime = formatDateForInput(date);
-    console.log(formattedDatetime);
     birthDatetimeInput.value = formattedDatetime;
     enterButton.disabled = !birthDatetimeInput.value;
   } else {
