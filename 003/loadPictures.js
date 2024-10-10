@@ -1,18 +1,13 @@
 const imageIDs = [
-    '1Fm2R_TjqsiG-sNxiWp1onZJzqn0IqYsf',
-    '1k9C633M8PNB6hFZF4ijhj4jD9x2vbXUA',
-    '1lSEIiig3EjoekfNszt3AmlpdoEWDuoj4',
-    '1-E-ggzoQz1lXlzHhtDjhbFseIJZBUcKO'
+    { id: '1Fm2R_TjqsiG-sNxiWp1onZJzqn0IqYsf', title: '20-06-1991' },
+    { id: '1k9C633M8PNB6hFZF4ijhj4jD9x2vbXUA', title: '24-04-2024' },
+    { id: '1lSEIiig3EjoekfNszt3AmlpdoEWDuoj4', title: '2022-01-01' },
+    { id: '1-E-ggzoQz1lXlzHhtDjhbFseIJZBUcKO', title: '2016-08-11' }
 ];
 
 const container = document.getElementById('image-container');
 
-imageIDs.forEach(id => {
-    const img = document.createElement('img');
-    img.src = `https://drive.google.com/thumbnail?id=${id}&sz=s4000`;
-    img.className = 'img';
-    container.appendChild(img);
-
+imageIDs.forEach(image => {
     /*
     sz=s32: 32x32 pixels
     sz=s64: 64x64 pixels
@@ -22,6 +17,21 @@ imageIDs.forEach(id => {
     sz=s1024: 1024 pixels in width (height is adjusted to maintain aspect ratio)
     sz=s4000: 4000 pixels in width (height is adjusted to maintain aspect ratio)
     */
+    const img = document.createElement('img');
+    img.src = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
+    img.className = 'img';
+    
+    const title = document.createElement('p');
+    title.textContent = image.title;
+    title.className = 'img-title';
+    
+    const imgWrapper = document.createElement('div');
+    imgWrapper.className = 'img-wrapper';
+    
+    imgWrapper.appendChild(img);
+    imgWrapper.appendChild(title);
+    
+    container.appendChild(imgWrapper);
 });
 
 window.addEventListener('scroll', function() {
@@ -38,8 +48,8 @@ window.addEventListener('scroll', function() {
             header.style.height = '4vh';
             instagramLogo.style.height = '60%';
         } else if (window.innerWidth <= 1023){
-            header.style.height = '6vh';
-            instagramLogo.style.height = '50%';
+            header.style.height = '7vh';
+            instagramLogo.style.height = '65%';
         } else {
             header.style.height = '7.5vh';
             instagramLogo.style.height = '80%';
@@ -49,10 +59,10 @@ window.addEventListener('scroll', function() {
         headerLogo.src = "logo.png";
         if (window.innerWidth <= 767) {
             header.style.height = '8vh';
-            instagramLogo.style.height = '45%';
+            instagramLogo.style.height = '50%';
         } else if (window.innerWidth <= 1023) {
-            header.style.height = '12vh';
-            instagramLogo.style.height = '45%';
+            header.style.height = '14vh';
+            instagramLogo.style.height = '50%';
         } else {
             header.style.height = '15vh';
             instagramLogo.style.height = '50%';
