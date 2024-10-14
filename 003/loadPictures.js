@@ -1,6 +1,7 @@
 const imageIDs = [
     { id: '1Fm2R_TjqsiG-sNxiWp1onZJzqn0IqYsf', title: '20-06-1991' },
     { id: '1k9C633M8PNB6hFZF4ijhj4jD9x2vbXUA', title: '24-04-2024' },
+    { id: '1-E-ggzoQz1lXlzHhtDjhbFseIJZBUcKO', title: '2016-08-11' },
     { id: '1lSEIiig3EjoekfNszt3AmlpdoEWDuoj4', title: '2022-01-01' },
     { id: '1-E-ggzoQz1lXlzHhtDjhbFseIJZBUcKO', title: '2016-08-11' }
 ];
@@ -21,7 +22,7 @@ imageIDs.forEach(image => {
     img.src = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
     img.className = 'img';
     
-    const title = document.createElement('p');
+    const title = document.createElement('div');
     title.textContent = image.title;
     title.className = 'img-title';
     
@@ -36,37 +37,12 @@ imageIDs.forEach(image => {
 
 window.addEventListener('scroll', function() {
     const footer = document.getElementById('footer');
-    const header = document.querySelector('.header');
-    const headerLogo = document.getElementById('header-logo');
-    const instagramLogo = document.getElementById('instagram-logo');
     const scrollPosition = window.scrollY || window.pageYOffset;
 
     if (scrollPosition > 1) {
         footer.classList.add('footer-visible');
-        headerLogo.src = "logo-half-1.png";
-        if (window.innerWidth <= 767) {
-            header.style.height = '4vh';
-            instagramLogo.style.height = '60%';
-        } else if (window.innerWidth <= 1023){
-            header.style.height = '7vh';
-            instagramLogo.style.height = '65%';
-        } else {
-            header.style.height = '7.5vh';
-            instagramLogo.style.height = '80%';
-        }
     } else {
         footer.classList.remove('footer-visible');
-        headerLogo.src = "logo.png";
-        if (window.innerWidth <= 767) {
-            header.style.height = '8vh';
-            instagramLogo.style.height = '50%';
-        } else if (window.innerWidth <= 1023) {
-            header.style.height = '14vh';
-            instagramLogo.style.height = '50%';
-        } else {
-            header.style.height = '15vh';
-            instagramLogo.style.height = '50%';
-        }
     }
 });
 
