@@ -8,7 +8,7 @@ const imageIDs = [
 
 const container = document.getElementById('image-container');
 
-imageIDs.forEach(image => {
+imageIDs.forEach((image, index) => {
     /*
     sz=s32: 32x32 pixels
     sz=s64: 64x64 pixels
@@ -28,7 +28,8 @@ imageIDs.forEach(image => {
     
     const imgWrapper = document.createElement('div');
     imgWrapper.className = 'img-wrapper';
-    
+    imgWrapper.id = `img-${index + 1}`;
+
     imgWrapper.appendChild(img);
     imgWrapper.appendChild(title);
     
