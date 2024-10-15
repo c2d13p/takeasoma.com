@@ -99,14 +99,6 @@ h1 {
     text-decoration: underline;
 }
 
-.footer-logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 90%;
-    object-fit: contain;
-}
-
 @media only screen and (max-width: 1023px) {
     .header {
         height: 12vh;
