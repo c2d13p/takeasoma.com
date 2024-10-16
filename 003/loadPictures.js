@@ -21,6 +21,7 @@ imageIDs.forEach((image, index) => {
     const img = document.createElement('img');
     img.src = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
     img.className = 'img';
+    img.setAttribute('data-ambient', '');
     
     const title = document.createElement('div');
     title.textContent = image.title;
@@ -63,3 +64,6 @@ function updateTimeLeft() {
 }
 
 updateTimeLeft();
+
+var ambient = new Ambient ({blur: 20, retainAttributes: true, includeCSS: false});
+ambient.mount ();
