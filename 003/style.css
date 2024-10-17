@@ -3,15 +3,16 @@
 body, html {
     margin: 0;
     font-family: "Rubik Mono One";
-    background-color: #FFF0F5;
+    background-color: #ffffff;
+    overflow-x: hidden;
 }
 
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FFF0F5;
     position: sticky;
+    background-color: #ffffff;
     top: 0;
     height: 14vh;
     z-index: 15;
@@ -46,33 +47,41 @@ h1 {
     padding-bottom: 6vh;
 }
 
-.img-wrapper {
-    margin: 0rem;
+.img-container {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.img-wrapper {
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: contain;
+}
+
 .img {
-    max-height: 72vh;
+    max-height: 76vh;
     max-width: 50vw;
-    object-fit: cover;
-    display: block;
+    -webkit-backdrop-filter: blur(25px) saturate(3);
+    backdrop-filter: blur(25px) saturate(3);
+    /* These lines prevent the border box from clipping the blur effect */
+    padding: 70px;
+    margin: -70px;
 }
 
 .img-title {
-    text-align: left;
     font-size: 1.1em;  
     margin: 6px 0px 0px 8px;
+    z-index: 10;
 }
 
-.footer {
+  .footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFF0F5;
     position: fixed;
+    background-color: #ffffff;
     bottom: 0;
     box-sizing: border-box;
     width: 100%;
@@ -96,10 +105,6 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-.footer a:hover {
-    text-decoration: underline;
-}
-
 @media only screen and (max-width: 1023px) {
     .header {
         height: 12vh;
@@ -120,7 +125,7 @@ h1 {
         padding-bottom: 6vh;
     }
 
-    .img-wrapper {
+    .img-container {
         height: 80vh;
     }
     
@@ -161,18 +166,18 @@ h1 {
         padding-bottom: 5vh;
     }
     
-    .img-wrapper {
+    .img-container {
         height: 80vh;
     }
 
     .img {
         max-height: 70vh;
-        max-width: 98vw;
+        max-width: 95vw;
     }
     
     .img-title {
         font-size: 0.75em;  
-        margin: 4px 0px 0px 8px;
+        margin: 0px 0px 0px 10px;
     }
 
     .footer {
