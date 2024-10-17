@@ -61,16 +61,20 @@ button {
     margin: 0;
 }
 
-.digital {
-    font-size: 30em;
-    text-align: center;
-    color: #333333;
+.image {
+    max-height: 80vh;
+    max-width: 80vw;
 }
 
-.top {
+.placeholder {
+    z-index: 5;
+}
+
+.time {
     z-index: 10;
 }
-.placeholder {
-    color: #CCCCCC;
-    z-index: 5;
+
+.divider {
+    z-index: 15;
+    transition: visibility 0.3s ease;
 }
