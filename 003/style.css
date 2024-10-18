@@ -57,12 +57,13 @@ h1 {
 .img-wrapper {
     background-repeat: no-repeat;
     background-position: center; 
-    background-size: contain;
+    background-size: contain;   
 }
 
 .img {
     max-height: 76vh;
     max-width: 50vw;
+    background-color: rgba(255, 255, 255, 0.01);
     -webkit-backdrop-filter: blur(25px) saturate(3);
     backdrop-filter: blur(25px) saturate(3);
     /* These lines prevent the border box from clipping the blur effect */
@@ -72,8 +73,8 @@ h1 {
 
 .img-title {
     font-size: 1.1em;  
-    margin: 6px 0px 0px 8px;
-    z-index: 10;
+    margin: 4px 0px 0px 10px;
+    z-index: 15;
 }
 
   .footer {
@@ -126,17 +127,17 @@ h1 {
     }
 
     .img-container {
-        height: 80vh;
+        height: 90vh;
     }
     
     .img {
         max-height: 70vh;
-        max-width: 98vw;
+        max-width: 80vw;
     }
     
     .img-title {
         font-size: 1em;  
-        margin: 6px 0px 0px 8px;
+        margin: 2px 0px 0px 8px;
     }
 
     .footer {
@@ -177,7 +178,7 @@ h1 {
     
     .img-title {
         font-size: 0.75em;  
-        margin: 0px 0px 0px 10px;
+        margin: 0px 0px 0px 6px;
     }
 
     .footer {
