@@ -1,9 +1,5 @@
 const imageIDs = [
-    { id: '1Fm2R_TjqsiG-sNxiWp1onZJzqn0IqYsf', title: '20-06-1991' },
-    { id: '1k9C633M8PNB6hFZF4ijhj4jD9x2vbXUA', title: '24-04-2024' },
-    { id: '1-E-ggzoQz1lXlzHhtDjhbFseIJZBUcKO', title: '2016-08-11' },
-    { id: '1lSEIiig3EjoekfNszt3AmlpdoEWDuoj4', title: '2022-01-01' },
-    { id: '1-E-ggzoQz1lXlzHhtDjhbFseIJZBUcKO', title: '2016-08-11' }
+    /*{ id: '13evbU-anKkbSqMbsj3yx1VM87hcLYrT8', title: '' }*/
 ];
 
 function updateTimeLeft() {
