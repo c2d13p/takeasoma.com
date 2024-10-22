@@ -30,7 +30,7 @@ a {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;  
+    align-items: flex-start;  
     justify-content: center;
 }
 
