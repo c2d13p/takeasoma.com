@@ -19,6 +19,10 @@ a {
     background-color: #003B00;
 }
 
+.first {
+    margin-bottom: 12vh;
+}
+
 .footer {
     width: 100%;
     height: 10vh;
@@ -96,6 +100,10 @@ a {
         padding: 0.4rem;
     }
 
+    .first {
+        margin-bottom: 10vh;
+    }
+
     .footer{
         height: 8vh;
         font-size: 1.7em;
@@ -114,6 +122,10 @@ a {
     
     .blog {
         padding: 0.5rem;
+    }
+
+    .first {
+        margin-bottom: 8vh;
     }
 
     .footer{
