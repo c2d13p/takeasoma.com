@@ -23,9 +23,11 @@ body, html {
     object-fit: contain;
 }
 
-.instagram-logo {
+#instagram-logo {
     position: absolute;
     right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
     height: 50%;
 }
 
@@ -77,7 +79,7 @@ h1 {
     z-index: 15;
 }
 
-  .footer {
+.footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
