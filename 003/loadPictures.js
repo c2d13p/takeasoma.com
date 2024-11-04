@@ -1,6 +1,6 @@
 const imageIDs = [
-    { id: '1RV5GM2wAGE-qI7vQtIKCFlGNUBhsHJ5t', title: '2024-10-28' },
-    { id: '1UVM92qrwufXVOxIs4smZWvbf8VhKv02f', title: '2024-11-04' }
+    { id: '1UVM92qrwufXVOxIs4smZWvbf8VhKv02f', title: '2024-11-04' },
+    { id: '1RV5GM2wAGE-qI7vQtIKCFlGNUBhsHJ5t', title: '2024-10-28' }
 ];
 
 function updateTimeLeft() {
