@@ -19,26 +19,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="controls header">
-        <!--<button>ENG</button>-->
-        <!--<button>ANALOGUE</button>-->
+    <div id="header">
+        <button id="mode-toggle" class="top right"></button>
     </div>
 
-    <div class="container">
-        <div id="digital">
-            <img src="placeholder-light-mode.png" draggable="false" class="image placeholder" id="placeholder">
-            <img src="time-light-mode.png" draggable="false" class="image time" id="time">
-            <img src="divider-light-mode.png" draggable="false" class="image divider" id="divider">
-        </div>
-
-        <div id="analogue">
-
-        </div>
+    <div id="clock" class="container">
+            <img draggable="false" id="background" style="z-index: 5">
+            <img draggable="false" id="time" style="z-index: 10">
+            <img draggable="false" id="second" style="z-index: 15; transition: visibility 0.3s ease;">
     </div>
 
-    <div class="controls footer">
-        <a href="../">LIST</a>
-        <!--<a href="../">SHOP</a>-->
+    <div id="footer">
+        <a class="bottom left" href="../">LIST</a>
     </div>
 
     <script src="manageTime.js"></script>
