@@ -154,8 +154,7 @@ h1 {
         height: 8vh;
     }
 
-    .instagram-logo {
-        height: 50%;
+    #instagram-logo {
         right: 1rem;
     }
 
