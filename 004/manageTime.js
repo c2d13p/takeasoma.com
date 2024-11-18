@@ -59,7 +59,7 @@ function loadMode() {
     document.body.style.fontWeight = fontWeight
 
     if (theme === 'dark') {
-        document.body.style.backgroundColor = mode === 'digital' ? '#000000': '#333333';
+        document.body.style.backgroundColor = mode === 'digital' ? '#000000': '#242124';
         document.querySelectorAll('a').forEach(a => a.style.color = mode === 'digital' ? '#F92C27': '#ffffff');
         document.querySelectorAll('button').forEach(button => button.style.color = mode === 'digital' ? '#F92C27': '#ffffff');
     } else {
