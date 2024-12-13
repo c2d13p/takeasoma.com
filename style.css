@@ -40,6 +40,38 @@ a {
     text-align: end;
 }
 
+#cookie-banner {
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    background-color: #ffffff; 
+    padding: 0.8rem; 
+    display: flex; 
+    box-sizing: border-box;
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 1000;
+}
+
+#cookie-banner-text {
+    margin: 0rem 0.4rem;
+    font-size: 0.8em;
+    font-family: 'Courier New', monospace;
+}
+
+#accept-cookies {
+    background-color: #000000;
+    color: #ffffff; 
+    border: solid 1px #ffffff; 
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+#accept-cookies:hover {
+    background-color: #ffffff;
+    color: #000000; 
+    border: solid 1px #000000; 
+}
+
 @media only screen and (max-width: 1023px) {
     .box {
         height: 10vh;
