@@ -2,6 +2,7 @@ body {
     font-family: 'Courier New', monospace;
     font-size: 1rem;
     width: 60vw;
+    max-width: 1000px;
     text-align: justify;
     margin: 2rem auto;
 }
@@ -9,7 +10,7 @@ body {
 @media only screen and (max-width: 1023px) {
     body {
         font-size: 0.9em;
-        width: 70vw;
+        width: 80vw;
         margin: 1.6rem auto;
     }
 }
@@ -17,7 +18,7 @@ body {
 @media only screen and (max-width: 767px) {
     body {
         font-size: 0.9em;
-        width: 80vw;
+        width: 86vw;
         margin: 1rem auto;
     }
 }
