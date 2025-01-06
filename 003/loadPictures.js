@@ -1,4 +1,5 @@
 const imageIDs = [
+    { id: '1CJriCD69qytzfnonrplMvkSSBZxfxfI9', title: '2025-01-06'},
     { id: '1osm5DE7KGT-zMtKTa1Ou5s_NkRBLUbmZ', title: '2024-12-30'},
     { id: '1xlR87J8ZU71wUjNgyaakKzWmX1uqjxEm', title: '2024-12-23'},
     { id: '1GXOTpzNeRu8jGWZjG0Sf2bzDspdxYZ8u', title: '2024-12-16'},
