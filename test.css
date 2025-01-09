@@ -1,0 +1,44 @@
+* {box-sizing: border-box;}
+
+body {
+    border: 3px solid red;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    border: 2px solid yellow;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    padding: 1em;
+}
+
+.footer-right {
+    text-align: end;
+}
+
+.soma,
+.footer-link {
+    text-decoration: none;
+}
+
+.soma {
+    border: 1px solid magenta;
+    font-size: 1.5rem;
+    padding: 1em;
+}
+
+.footer-link {
+    display: block;
+}
