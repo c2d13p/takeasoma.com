@@ -1,74 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solutions for the human being">
-    <meta name="keywords" content="soma, solutions, human being">
-    <meta property="og:title" content="TAKE A SOMA">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.takeasoma.com/"> 
-    <meta property="og:image" content="icons/apple-touch-icon-list.png">
-    <meta property="og:description" content="Solutions for the human being">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Solutions for the human being" />
+    <meta name="keywords" content="soma, solutions, human being" />
+    <meta property="og:title" content="TAKE A SOMA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.takeasoma.com/" />
+    <meta property="og:image" content="icons/apple-touch-icon-list.png" />
+    <meta property="og:description" content="Solutions for the human being" />
     <title>TAKE A SOMA</title>
-    <link rel="icon" href="icons/light-mode-favicon-list.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="icon" href="icons/dark-mode-favicon-list.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="shortcut icon" href="icons/light-mode-favicon-list.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="shortcut icon" href="icons/dark-mode-favicon-list.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="apple-touch-icon" href="icons/apple-touch-icon-list.png">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="icon"
+      href="icons/light-mode-favicon-list.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="icons/dark-mode-favicon-list.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="icons/light-mode-favicon-list.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="icons/dark-mode-favicon-list.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon-list.png" />
+    <link rel="stylesheet" href="style.css" />
     <script src="loadMonthStyle.js" defer></script>
-    <script src="https://cdn.counter.dev/script.js" data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960" data-utcoffset="1"></script>
-</head>
-<body>
-    <a href="/001/">
-        <div class="box"><h1>001 WHO IS CREATING WHO</h1></div>
-    </a>
-    <a href="/002/">
-        <div class="box"><h1>002 TIME ON EARTH</h1></div>
-    </a>
-    <a href="/003/">
-        <div class="box"><h1>003 SUNSETS & TREES</h1></div>
-    </a>
-    <a href="/004/">
-        <div class="box"><h1>004 WHEN</h1></div>
-    </a>
+    <script
+      src="https://cdn.counter.dev/script.js"
+      data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960"
+      data-utcoffset="1"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <a href="/001/" class="soma">001 Who is creating who</a>
+      <a href="/002/" class="soma">002 Time on earth</a>
+      <a href="/003/" class="soma">003 Sunsets & trees</a>
+      <a href="/004/" class="soma">004 When</a>
+    </main>
 
-    <div class="footer">
-        <div class="footer-left">
-            <div><a href="/privacy-policy/"><b>PRIVACY</b></a></div>
-            <div><a href="/cookie-policy/"><b>COOKIE</b></a></div>
-        </div>
-        <div class="footer-right">
-            <div><a href="/blog/"><b>BLOG</b></a></div>
-            <div><a href="mailto:whichsoma@gmail.com"><b>@</b></a></div>
-        </div>
-    </div>
+    <footer>
+      <div class="footer-left">
+        <a href="/privacy-policy/" class="footer-link">Privacy</a>
+        <a href="/cookie-policy/" class="footer-link">Cookie</a>
+      </div>
+      <div class="footer-right">
+        <a href="/blog/" class="footer-link">Blog</a>
+        <a href="mailto:whichsoma@gmail.com" class="footer-link">@</a>
+      </div>
+    </footer>
 
     <div id="cookie-banner">
-        <div id="cookie-banner-text">
-            This website uses technical cookies and anonymous analytics cookies to improve 
-            functionality and collect statistical data. 
-            By continuing to use the site, you agree to the use of these cookies. 
-            For more information, see our <a href="/privacy-policy/">privacy policy</a>
-            and our <a href="/cookie-policy/">cookie policy</a>.
-        </div>
-        <div>
-            <button id="accept-cookies">
-                Okay
-            </button>
-        </div>
+      <div id="cookie-banner-text">
+        This website uses technical cookies and anonymous analytics cookies to
+        improve functionality and collect statistical data. By continuing to use
+        the site, you agree to the use of these cookies. For more information,
+        see our <a href="/privacy-policy/">privacy policy</a> and our
+        <a href="/cookie-policy/">cookie policy</a>.
+      </div>
+      <div>
+        <button id="accept-cookies">Okay</button>
+      </div>
     </div>
 
     <script>
-        document.getElementById('accept-cookies').addEventListener('click', function() {
-            document.getElementById('cookie-banner').style.display = 'none';
-            document.cookie = "cookiesAccepted=true; max-age=31536000; path=/";
+      document
+        .getElementById("accept-cookies")
+        .addEventListener("click", function () {
+          document.getElementById("cookie-banner").style.display = "none";
+          document.cookie = "cookiesAccepted=true; max-age=31536000; path=/";
         });
-    
-        if (document.cookie.split(';').some((item) => item.trim().startsWith('cookiesAccepted=true'))) {
-            document.getElementById('cookie-banner').style.display = 'none';
-        }
+
+      if (
+        document.cookie
+          .split(";")
+          .some((item) => item.trim().startsWith("cookiesAccepted=true"))
+      ) {
+        document.getElementById("cookie-banner").style.display = "none";
+      }
     </script>
-</body>
+  </body>
 </html>
