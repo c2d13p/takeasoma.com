@@ -63,17 +63,15 @@
       </div>
     </footer>
 
-    <div id="cookie-banner">
-      <div id="cookie-banner-text">
+    <div class="cookie-banner" id="cookie-banner">
+      <p>
         This website uses technical cookies and anonymous analytics cookies to
         improve functionality and collect statistical data. By continuing to use
         the site, you agree to the use of these cookies. For more information,
         see our <a href="/privacy-policy/">privacy policy</a> and our
         <a href="/cookie-policy/">cookie policy</a>.
-      </div>
-      <div>
-        <button id="accept-cookies">Okay</button>
-      </div>
+      </p>
+      <button id="accept-cookies">Okay</button>
     </div>
 
     <script>
@@ -89,7 +87,7 @@
           .split(";")
           .some((item) => item.trim().startsWith("cookiesAccepted=true"))
       ) {
-        document.getElementById("cookie-banner").style.display = "none";
+        //document.getElementById("cookie-banner").style.display = "none";
       }
     </script>
   </body>

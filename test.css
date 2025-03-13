@@ -77,38 +77,36 @@ footer {
   text-decoration: underline;
 }
 
-#cookie-banner {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+.cookie-banner {
   background-color: #ffffff;
-  padding: 0.8rem;
-  display: flex;
-  box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
+  bottom: 0;
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.625rem, 0.538rem + 0.4348vw, 0.875rem);
+  padding: 0.6em;
+  position: fixed;
 }
 
-#cookie-banner-text {
-  margin: 0rem 0.4rem;
-  font-size: 0.8em;
-  font-family: "Courier New", monospace;
+.cookie-banner p {
+  margin: 0.6em;
   text-align: justify;
 }
 
-#accept-cookies {
+.cookie-banner button {
   background-color: #000000;
+  border: solid 2px #ffffff;
   color: #ffffff;
-  border: solid 1px #ffffff;
-  padding: 10px 20px;
   cursor: pointer;
+  display: block;
+  font-size: clamp(0.75rem, 0.663rem + 0.4348vw, 1rem);
+  margin: 0 auto;
+  padding: 0.6em 1.2em;
 }
 
-#accept-cookies:hover {
+.cookie-banner button:hover,
+.cookie-banner button:focus {
   background-color: #ffffff;
   color: #000000;
-  border: solid 1px #000000;
+  border: solid 2px #000000;
 }
 
 /*january, black*/
