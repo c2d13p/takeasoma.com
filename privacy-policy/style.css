@@ -1,24 +1,9 @@
 body {
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    width: 60vw;
-    max-width: 1000px;
-    text-align: justify;
-    margin: 2rem auto;
-}
-
-@media only screen and (max-width: 1023px) {
-    body {
-        font-size: 0.9em;
-        width: 70vw;
-        margin: 1.6rem auto;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    body {
-        font-size: 0.9em;
-        width: 86vw;
-        margin: 1rem auto;
-    }
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+  font-size: clamp(0.875rem, 0.7917rem + 0.4167vw, 1rem);
+  margin: 2em auto;
+  padding-inline: clamp(1.5rem, 0.5rem + 5vw, 3rem);
+  text-align: justify;
+  max-width: 900px;
 }
