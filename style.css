@@ -1,14 +1,15 @@
 :root {
   --body-bg-clr: #edece8;
-  --body-font-size: clamp(1.5rem, 1.1429rem + 1.7857vw, 2.75rem);
+  --body-font-size: clamp(1.25rem, 0.7672rem + 2.4138vw, 2.125rem);
   --font-family: "Courier New", monospace;
   --font-weight: bold;
   --footer-bg-clr: #034488;
   --footer-clr: #fffcf6;
-  --footer-font-size: clamp(1.25rem, 0.9643rem + 1.4286vw, 2.25rem);
+  --footer-font-size: clamp(1.125rem, 0.6422rem + 2.4138vw, 2rem);
   --soma-bg-img: linear-gradient(#ccdde8, #edece8);
-  --soma-bg-clr-hover: #178fd6;
+  --soma-bg-clr-hover: #034488;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #034488;
   --soma-clr: #034488;
   --soma-clr-hover: #fffcf6;
 }
@@ -27,13 +28,15 @@ body {
   letter-spacing: 1px;
   line-height: 1.6;
   justify-content: space-between;
-  margin: 0;
+  margin: 0 auto;
   min-height: 100dvh;
+  width: min(100% - 1em, 900px)
 }
 
 main {
   display: flex;
   flex-direction: column;
+  margin-block: 0.4em;
 }
 
 a {
@@ -43,8 +46,12 @@ a {
 
 .soma {
   background-image: var(--soma-bg-img);
+  border: 0.2px solid var(--soma-border-clr);
+  border-radius: 100vmax;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   color: var(--soma-clr);
-  padding: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
+  margin-block: 0.2em;
+  padding: 0.6em 1.4em;
 }
 
 .soma:hover,
@@ -56,10 +63,13 @@ a {
 
 footer {
   background-color: var(--footer-bg-clr);
+  border-radius: 1em;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   display: flex;
   font-size: var(--footer-font-size);
   justify-content: space-between;
-  padding: clamp(0.75rem, 0.6429rem + 0.5357vw, 1.125rem);
+  margin-bottom: 0.6em;
+  padding: 0.6em;
 }
 
 .footer-right {
@@ -69,7 +79,7 @@ footer {
 .footer-link {
   color: var(--footer-clr);
   display: block;
-  margin: clamp(0.25rem, 0.2143rem + 0.1786vw, 0.375rem);
+  margin: 0.25em;
 }
 
 .footer-link:hover,
@@ -78,13 +88,24 @@ footer {
 }
 
 .cookie-banner {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   bottom: 0;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
   font-family: "Courier New", monospace;
-  font-size: clamp(0.625rem, 0.538rem + 0.4348vw, 0.875rem);
+  font-size: clamp(0.6875rem, 0.5841rem + 0.5172vw, 0.875rem);
   font-weight: normal;
+  left: 0;
   padding: 0.6em;
   position: fixed;
+  width: 100%;
+}
+
+.cookie-content {
+  margin: 0 auto;
+  width: min(100% - 1em, 900px);
 }
 
 .cookie-banner p {
@@ -94,7 +115,8 @@ footer {
 
 .cookie-banner button {
   background-color: #000000;
-  border: solid 2px #ffffff;
+  border: solid 2px #000000;
+  border-radius: 100vmax;
   color: #ffffff;
   cursor: pointer;
   display: block;
@@ -107,7 +129,6 @@ footer {
 .cookie-banner button:focus {
   background-color: #ffffff;
   color: #000000;
-  border: solid 2px #000000;
 }
 
 /*january, black*/
@@ -119,6 +140,7 @@ footer {
   --soma-bg-img: linear-gradient(#708090, #91a3b0);
   --soma-bg-clr-hover: #8c92ac;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #36454f;
   --soma-clr: #36454f;
   --soma-clr-hover: #fffcf6;
 }
@@ -132,6 +154,7 @@ footer {
   --soma-bg-img: linear-gradient(#fffafa, #a4dded);
   --soma-bg-clr-hover: #191970;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #191970;
   --soma-clr: #191970;
   --soma-clr-hover: #f0ffff;
 }
@@ -145,6 +168,7 @@ footer {
   --soma-bg-img: linear-gradient(#afe7b2, #d0f0c0);
   --soma-bg-clr-hover: #01796f;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #01796f;
   --soma-clr: #01796f;
   --soma-clr-hover: #f0fff0;
 }
@@ -158,6 +182,7 @@ footer {
   --soma-bg-img: linear-gradient(#f2bdcd, #ffdae9);
   --soma-bg-clr-hover: #ed7a9b;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #ed7a9b;
   --soma-clr: #ed7a9b;
   --soma-clr-hover: #fff0f5;
 }
@@ -171,6 +196,7 @@ footer {
   --soma-bg-img: linear-gradient(#fffacd, #fada5e);
   --soma-bg-clr-hover: #00bfff;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #00bfff;
   --soma-clr: #00bfff;
   --soma-clr-hover: #e4d00a;
 }
@@ -184,6 +210,7 @@ footer {
   --soma-bg-img: linear-gradient(#ccdde8, #edece8);
   --soma-bg-clr-hover: #178fd6;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #178fd6;
   --soma-clr: #178fd6;
   --soma-clr-hover: #fffcf6;
 }
@@ -197,6 +224,7 @@ footer {
   --soma-bg-img: linear-gradient(#fcf75e, #fada5e);
   --soma-bg-clr-hover: #ef9b0f;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #ef9b0f;
   --soma-clr: #ef9b0f;
   --soma-clr-hover: #fffacd;
 }
@@ -210,6 +238,7 @@ footer {
   --soma-bg-img: linear-gradient(#ff8f00, #ffa000);
   --soma-bg-clr-hover: #ec5800;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #ec5800;
   --soma-clr: #ec5800;
   --soma-clr-hover: #ffa500;
 }
@@ -223,6 +252,7 @@ footer {
   --soma-bg-img: linear-gradient(#e0b0ff, #ccccff);
   --soma-bg-clr-hover: #702963;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #702963;
   --soma-clr: #702963;
   --soma-clr-hover: #e6e6fa;
 }
@@ -236,6 +266,7 @@ footer {
   --soma-bg-img: linear-gradient(#dbd7d2, #e5e4e2);
   --soma-bg-clr-hover: #ad958e;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #ad958e;
   --soma-clr: #ad958e;
   --soma-clr-hover: #f5f5f5;
 }
@@ -249,6 +280,7 @@ footer {
   --soma-bg-img: linear-gradient(#c46210, #ed9121);
   --soma-bg-clr-hover: #592720;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #592720;
   --soma-clr: #592720;
   --soma-clr-hover: #cc7f3b;
 }
@@ -262,6 +294,7 @@ footer {
   --soma-bg-img: linear-gradient(#fffafa, #99ffff);
   --soma-bg-clr-hover: #ff0800;
   --soma-bg-img-hover: none;
+  --soma-border-clr: #ff0800;
   --soma-clr: #ff0800;
   --soma-clr-hover: #fffafa;
 }
