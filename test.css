@@ -1,8 +1,7 @@
-
 :root {
-  --accent-clr-1: #00FF41;
-  --accent-clr-2: #003B00;
-  --accent-clr-3: #0D0208;
+  --accent-clr-1: #00ff41;
+  --accent-clr-2: #003b00;
+  --accent-clr-3: #0d0208;
   --article-title-fs: clamp(1.125rem, 0.8491rem + 1.3793vw, 1.625rem);
   --article-paragraph-fs: clamp(1rem, 0.8621rem + 0.6897vw, 1.25rem);
   --form-fs: clamp(1rem, 0.7241rem + 1.3793vw, 1.5rem);
@@ -28,7 +27,7 @@ form {
   justify-content: space-between;
   margin: 1em auto;
   padding: 1em;
-  width: min(100% - 4em, 600px);  
+  width: min(100% - 4em, 600px);
 }
 
 input {
@@ -40,7 +39,7 @@ input {
   font-family: inherit;
   font-size: var(--form-fs);
   padding-block: 0.5em;
-  text-align: center;   
+  text-align: center;
 }
 
 ::placeholder {
@@ -61,7 +60,8 @@ button {
   padding-block: 0.5em;
 }
 
-button:hover, button:focus {
+button:hover,
+button:focus {
   background-color: var(--accent-clr-2);
   color: var(--accent-clr-1);
 }
@@ -74,7 +74,8 @@ article {
   padding: 1.4em;
 }
 
-article:hover, article:focus {
+article:hover,
+article:focus {
   background-color: var(--accent-clr-2);
   border-color: var(--accent-clr-1);
 }
@@ -83,7 +84,8 @@ article a {
   color: inherit;
 }
 
-article a:hover, article a:focus {
+article a:hover,
+article a:focus {
   font-weight: bold;
 }
 
@@ -91,7 +93,8 @@ article:last-of-type {
   margin-bottom: 6em;
 }
 
-h1, p {
+h1,
+p {
   margin: 0;
 }
 
@@ -114,7 +117,6 @@ footer {
   width: 100%;
 }
 
-
 footer a {
   align-items: center;
   background-color: var(--accent-clr-2);
@@ -129,7 +131,8 @@ footer a {
   width: 3.2em;
 }
 
-footer a:hover, footer a:focus {
+footer a:hover,
+footer a:focus {
   background-color: var(--accent-clr-1);
   color: var(--accent-clr-2);
 }

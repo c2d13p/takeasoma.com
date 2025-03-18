@@ -1,61 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog about soma">
-    <meta name="keywords" content="soma, blog">
-    <meta property="og:title" content="BLOG SOMA">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.takeasoma.com/blog"> 
-    <meta property="og:image" content="../icons/apple-touch-icon-blog.png">
-    <meta property="og:description" content="Blog about soma">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Blog about soma" />
+    <meta name="keywords" content="soma, blog" />
+    <meta property="og:title" content="BLOG SOMA" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.takeasoma.com/blog" />
+    <meta property="og:image" content="../icons/apple-touch-icon-blog.png" />
+    <meta property="og:description" content="Blog about soma" />
     <title>BLOG</title>
-    <link rel="icon" href="../icons/light-mode-favicon-blog.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="icon" href="../icons/dark-mode-favicon-blog.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/light-mode-favicon-blog.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/dark-mode-favicon-blog.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../icons/apple-touch-icon-blog.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.counter.dev/script.js" data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960" data-utcoffset="1"></script>
-</head>
-<body>
-    <div class="subscription">
-        I want to receive new blog entries by
-        <select id="subscription-type">
-            <option value="email">email</option>
-            <option value="sms">SMS</option>
-        </select>
-        @
-        <input type="text" id="subscription-input" name="entry.1743896453" placeholder="email or phone number">
-        ->
-        <button id="subscribe-button">subscribe</button>
-    </div>
-    <div class="blog"><b>2024-11-06</b> When Σoma <a href="../004">004</a>. Inspired by <a href="https://en.wikipedia.org/wiki/The_Power_of_Now" target="_blank">this book</a>.</div>
-    <div class="blog"><b>2024-10-28</b> <a href="https://www.instagram.com/p/DBqaslvIGp9/" target="_blank">First picture</a> of <a href="../003/">Sunsets & Trees</a> is out!</div>
-    <div class="blog"><b>2024-10-22</b> Σoma <a href="../003/">003</a> is a collection of Sunsets & Trees, first picture out next Monday 28th October.</div>
-    <div class="blog"><b>2024-09-26</b> Σoma <a href="../002/">002</a>: calculate your time on earth.</div>
-    <div class="blog"><b>2024-09-09</b> Σoma <a href="../001/">001</a> is out! Who is creating who?</div>
-    <div class="blog"><b>2024-08-29</b> And fonts.</div>
-    <div class="blog"><b>2024-08-28</b> The homepage has a different colour scheme for each month.</div>
-    <div class="blog"><b>2024-08-20</b> Went to Casole d'Elsa while visiting grandma and found out about the artist Paolo Morandi:
-        his book "<a href="https://www.libroco.it/dl/Paolo-Morandi/96-rue-de-La-Fontaine/9788893990356/Il-Dubbio/cw417173732569594.html" target="_blank">Il dubbio</a>" is highly recommended.
-    </div>
-    <div class="blog"><b>2024-08-08</b> You can now subscribe to these updates via email or text.</div>
-    <div class="blog"><b>2024-08-07</b> Pill icons added. "<a href="https://www.youtube.com/watch?v=TKZVUtvjBdM" target="_blank">White Rabbit</a>" by Jefferson Airplane is such a great song by the way.</div>
-    <div class="blog first"><b>2024-08-01</b> On a hot summer day, we are live.</div>
+    <link
+      rel="icon"
+      href="../icons/light-mode-favicon-blog.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../icons/dark-mode-favicon-blog.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/light-mode-favicon-blog.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/dark-mode-favicon-blog.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="../icons/apple-touch-icon-blog.png" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdn.counter.dev/script.js"
+      data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960"
+      data-utcoffset="1"
+    ></script>
+  </head>
+  <body>
+    <form method="POST">
+      <input type="email" placeholder="Your @" id="email" />
+      <button class="button" id="subscribe-button">Subscribe</button>
+    </form>
 
-    <div class="footer">
-        <div><a href="../"><b>&lt; LIST</b></a></div>
-    </div>
+    <main>
+      <article>
+        <h1>2024-11-06</h1>
+        <p>
+          When Σoma <a href="../004">004</a>. Inspired by
+          <a
+            href="https://en.wikipedia.org/wiki/The_Power_of_Now"
+            target="_blank"
+            >this book</a
+          >.
+        </p>
+      </article>
+      <article>
+        <h1>2024-10-28</h1>
+        <p>
+          <a href="https://www.instagram.com/p/DBqaslvIGp9/" target="_blank"
+            >First picture</a
+          >
+          of <a href="../003/">Sunsets & Trees</a> is out!
+        </p>
+      </article>
+      <article>
+        <h1>2024-10-22</h1>
+        <p>
+          Σoma <a href="../003/">003</a> is a collection of Sunsets & Trees,
+          first picture out next Monday 28th October.
+        </p>
+      </article>
+      <article>
+        <h1>2024-09-26</h1>
+        <p>Σoma <a href="../002/">002</a>: calculate your time on earth.</p>
+      </article>
+      <article>
+        <h1>2024-09-09</h1>
+        <p>Σoma <a href="../001/">001</a> is out! Who is creating who?</p>
+      </article>
+      <article>
+        <h1>2024-08-29</h1>
+        <p>And fonts.</p>
+      </article>
+      <article>
+        <h1>2024-08-28</h1>
+        <p>The homepage has a different colour scheme for each month.</p>
+      </article>
+      <article>
+        <h1>2024-08-20</h1>
+        <p>
+          Went to Casole d'Elsa while visiting grandma and found out about the
+          artist Paolo Morandi: his book "<a
+            href="https://www.libroco.it/dl/Paolo-Morandi/96-rue-de-La-Fontaine/9788893990356/Il-Dubbio/cw417173732569594.html"
+            target="_blank"
+            >Il dubbio</a
+          >" is highly recommended.
+        </p>
+      </article>
+      <article>
+        <h1>2024-08-08</h1>
+        <p>You can now subscribe to these updates via email or text.</p>
+      </article>
+      <article>
+        <h1>2024-08-07</h1>
+        <p>
+          Pill icons added. "<a
+            href="https://www.youtube.com/watch?v=TKZVUtvjBdM"
+            target="_blank"
+            >White Rabbit</a
+          >" by Jefferson Airplane is such a great song by the way.
+        </p>
+      </article>
+      <article>
+        <h1>2024-08-01</h1>
+        <p>On a hot summer day, we are live.</p>
+      </article>
+    </main>
+
+    <footer>
+      <a href="../"><b>&lt;</b></a>
+    </footer>
 
     <!-- Hidden form for Google Forms submission -->
-    <form id="hidden-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdkLoCKWndH8UwAdzG5zNb3hEGs4zRNjlbGSvVQQcOo08yYbA/formResponse?" target="hidden_iframe" style="display:none;">
-        <input type="hidden" name="entry.1743896453" id="hidden-entry">
-        <input type="submit" value="Submit">
+    <form
+      id="hidden-form"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSdkLoCKWndH8UwAdzG5zNb3hEGs4zRNjlbGSvVQQcOo08yYbA/formResponse?"
+      target="hidden_iframe"
+      style="display: none"
+    >
+      <input type="hidden" name="entry.1743896453" id="hidden-entry" />
+      <input type="submit" value="Submit" />
     </form>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <iframe
+      name="hidden_iframe"
+      id="hidden_iframe"
+      style="display: none"
+    ></iframe>
 
     <script src="subscribe.js"></script>
-</body>
+  </body>
 </html>

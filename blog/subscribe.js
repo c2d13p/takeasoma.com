@@ -1,21 +1,22 @@
-document.getElementById('subscribe-button').addEventListener('click', subscribe);
+document
+  .getElementById("subscribe-button")
+  .addEventListener("click", subscribe);
 
 function subscribe() {
-    var type = document.getElementById('subscription-type').value;
-    var input = document.getElementById('subscription-input').value;
-    var button = document.getElementById('subscribe-button');
+  var email = document.getElementById("email").value;
+  var button = document.getElementById("subscribe-button");
 
-    if (input.trim() === "") {
-        alert("please enter an email or phone number");
-        return;
-    }
+  if (email.trim() === "") {
+    alert("Please enter an email");
+    return;
+  }
 
-    console.log(`New subscription by ${type} @ ${input}`);
+  console.log(`New subscription ${email}`);
 
-    // Fill the hidden form input and submit it
-    document.getElementById('hidden-entry').value = input;
-    document.getElementById('hidden-form').submit();
+  // Fill the hidden form input and submit it
+  document.getElementById("hidden-entry").value = email;
+  document.getElementById("hidden-form").submit();
 
-    button.textContent = "subscribed!";
-    button.disabled = true;
+  button.textContent = "Subscribed!";
+  button.disabled = true;
 }
