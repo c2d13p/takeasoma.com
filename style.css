@@ -1,11 +1,13 @@
 :root {
   --body-bg-clr: #edece8;
-  --body-font-size: clamp(1.25rem, 0.7672rem + 2.4138vw, 2.125rem);
+  --body-fs: clamp(1.25rem, 1rem + 1.25vw, 2.125rem);
+  --cookie-banner-fs: clamp(0.6875rem, 0.6339rem + 0.2679vw, 0.875rem);
+  --cookie-banner-button-fs: clamp(0.75rem, 0.6786rem + 0.3571vw, 1rem);
   --font-family: "Courier New", monospace;
   --font-weight: bold;
   --footer-bg-clr: #034488;
   --footer-clr: #fffcf6;
-  --footer-font-size: clamp(1.125rem, 0.6422rem + 2.4138vw, 2rem);
+  --footer-fs: clamp(1.125rem, 0.875rem + 1.25vw, 2rem);
   --soma-bg-img: linear-gradient(#ccdde8, #edece8);
   --soma-bg-clr-hover: #034488;
   --soma-bg-img-hover: none;
@@ -23,14 +25,14 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--font-family);
-  font-size: var(--body-font-size);
+  font-size: var(--body-fs);
   font-weight: var(--font-weight);
   letter-spacing: 1px;
   line-height: 1.6;
   justify-content: space-between;
   margin: 0 auto;
   min-height: 100dvh;
-  width: min(100% - 1em, 900px)
+  width: min(100% - 1em, 900px);
 }
 
 main {
@@ -66,7 +68,7 @@ footer {
   border-radius: 1em;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   display: flex;
-  font-size: var(--footer-font-size);
+  font-size: var(--footer-fs);
   justify-content: space-between;
   margin-bottom: 0.6em;
   padding: 0.6em;
@@ -95,7 +97,7 @@ footer {
   bottom: 0;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
   font-family: "Courier New", monospace;
-  font-size: clamp(0.6875rem, 0.5841rem + 0.5172vw, 0.875rem);
+  font-size: var(--cookie-banner-fs);
   font-weight: normal;
   left: 0;
   padding: 0.6em;
@@ -120,7 +122,7 @@ footer {
   color: #ffffff;
   cursor: pointer;
   display: block;
-  font-size: clamp(0.75rem, 0.663rem + 0.4348vw, 1rem);
+  font-size: var(--cookie-banner-button-fs);
   margin: 0 auto;
   padding: 0.6em 1.2em;
 }
