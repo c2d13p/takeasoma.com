@@ -1,45 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Who is creating who">
-    <meta name="keywords" content="soma, solutions, human being">
-    <meta property="og:title" content="WHO IS CREATING WHO">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.takeasoma.com/001"> 
-    <meta property="og:image" content="../icons/apple-touch-icon-soma-001.png">
-    <meta property="og:description" content="Soma 001">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="description" content="Who is creating who" />
+    <meta name="keywords" content="soma, solutions, human being" />
+    <meta property="og:title" content="WHO IS CREATING WHO" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.takeasoma.com/001" />
+    <meta
+      property="og:image"
+      content="../icons/apple-touch-icon-soma-001.png"
+    />
+    <meta property="og:description" content="Soma 001" />
     <title>WHO IS CREATING WHO</title>
-    <link rel="icon" href="../icons/light-mode-favicon-soma-001.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="icon" href="../icons/dark-mode-favicon-soma-001.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/light-mode-favicon-soma-001.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/dark-mode-favicon-soma-001.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../icons/apple-touch-icon-soma-001.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.counter.dev/script.js" data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960" data-utcoffset="1"></script>
-</head>
-<body>
-    <div class="menu header">
-        <div>
-            <button id="decreaseSpeed"><b> - </b></button>
-            <button id="increaseSpeed"><b> + </b></button>
-        </div>
-        <div>
-            <button id="invertSpin"><b> ↻ </b></button>
-        </div>
-    </div>
-    
-    <div class="container">
-        <img src="circular-writing.png" draggable="false" class="image clockwise" id="image1">
-        <img src="creation-of-adam.png" draggable="false" class="image anticlockwise" id="image2">
-    </div>
+    <link
+      rel="icon"
+      href="../icons/light-mode-favicon-soma-001.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../icons/dark-mode-favicon-soma-001.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/light-mode-favicon-soma-001.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/dark-mode-favicon-soma-001.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../icons/apple-touch-icon-soma-001.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="controlImageSpin.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/31e1076c4c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.counter.dev/script.js"
+      data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960"
+      data-utcoffset="1"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <button id="decreaseSpeed">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button id="increaseSpeed">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </div>
+      <div class="header-right">
+        <button id="invertSpin">
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+      </div>
+    </header>
 
-    <div class="menu footer">
-        <a href="../"><b><span class="triangle left-tip"></span> LIST</b></a>
-        <!--<a href="/shop"><b>SHOP <span class="triangle right-tip"></span></b></a>-->
-    </div>
+    <img src="text.png" draggable="false" class="clockwise" id="text" />
+    <img src="image.png" draggable="false" class="anticlockwise" id="image" />
 
-    <script src="manageImageSpin.js"></script>
-</body>
+    <footer>
+      <a href="../"
+        ><button><i class="fa-solid fa-angle-left"></i></button
+      ></a>
+    </footer>
+  </body>
 </html>
