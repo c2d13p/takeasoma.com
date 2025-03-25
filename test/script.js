@@ -57,7 +57,9 @@ function toggleMode(mode) {
 function loadMode() {
   const mode = getCookie("mode") || "digital";
   const theme =
-    new Date().getHours() >= 20 || new Date().getHours() < 8 ? "dark" : "light";
+    new Date().getHours() >= 15 || new Date().getHours() < 8 ? "dark" : "light";
+
+  document.body.classList.toggle("dark", theme === "dark");
 
   ["background", "time", "second"].forEach((id) => {
     const element = document.getElementById(id);

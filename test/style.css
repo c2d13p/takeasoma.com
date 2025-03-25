@@ -1,13 +1,23 @@
 :root {
-  --bg-clr: rgb(250, 250, 250);
-  --dropdown-menu-border-clr: rgb(229, 229, 234);
+  --bg-clr: rgb(242, 242, 242);
+  --dropdown-menu-border-clr: rgb(181, 181, 181);
   --dropdown-menu-bg-clr: rgb(245, 245, 245);
+  --dropdown-menu-item-clr: rgb(10, 10, 10);
   --dropdown-menu-item-fs: clamp(1.125rem, 0.9464rem + 0.8929vw, 1.75rem);
-  --icon-bg-clr: rgb(243, 243, 243);
-  --icon-bg-clr-active: rgb(174, 174, 178);
-  --icon-clr: rgb(58, 58, 60);
+  --icon-bg-clr: rgb(225, 225, 225);
+  --icon-bg-clr-active: rgb(174, 174, 174);
+  --icon-clr: rgb(58, 58, 58);
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
-  --menu-item-clr: rgb(10, 10, 10);
+}
+
+.dark {
+  --bg-clr: rgb(19, 19, 19);
+  --dropdown-menu-border-clr: rgb(97, 97, 97);
+  --dropdown-menu-bg-clr: rgb(30, 30, 30);
+  --dropdown-menu-item-clr: rgb(225, 225, 225);
+  --icon-bg-clr: rgb(46, 46, 46);
+  --icon-bg-clr-active: rgb(100, 100, 100);
+  --icon-clr: rgb(149, 149, 149);
 }
 
 * {
@@ -20,6 +30,7 @@ body {
 }
 
 body {
+  background-color: var(--bg-clr);
   display: flex;
   flex-direction: column;
   height: 100dvh;
@@ -93,7 +104,7 @@ a {
 .menu-item {
   background-color: transparent;
   border: none;
-  color: var(--menu-item-clr);
+  color: var(--dropdown-menu-item-clr);
   cursor: pointer;
   display: flex;
   font-size: var(--dropdown-menu-item-fs);
@@ -101,11 +112,10 @@ a {
 }
 
 .menu-item:not(:last-child) {
-  border-bottom: 2px solid var(--dropdown-menu-border-clr);
+  border-bottom: 1px solid var(--dropdown-menu-border-clr);
 }
 
 main > img {
-  border: 1px solid red;
   inset: 50%;
   max-height: 90%;
   max-width: 90%;
