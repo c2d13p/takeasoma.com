@@ -13,32 +13,29 @@
   </head>
   <body>
     <header>
-      <div class="header-left">
-        <button id="decreaseSpeed">
-          <i class="fa-solid fa-minus"></i>
-        </button>
-        <button id="increaseSpeed">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-      </div>
-      <div class="header-right">
-        <button id="invertSpin">
-          <i class="fa-solid fa-rotate"></i>
-        </button>
+      <button class="round-button" id="switcher">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+      <div class="dropdown-menu">
+        <button class="menu-item" id="analogue">Analogue</button>
+        <button class="menu-item" id="digital">Digital</button>
       </div>
     </header>
 
-    <img src="../001/text.png" draggable="false" class="clockwise" id="text" />
-    <img
-      src="../001/image.png"
-      draggable="false"
-      class="anticlockwise"
-      id="image"
-    />
+    <main>
+      <img draggable="false" id="background" style="z-index: 1" />
+      <img draggable="false" id="time" style="z-index: 2" />
+      <img
+        draggable="false"
+        id="second"
+        style="z-index: 3; transition: visibility 0.3s ease"
+      />
+    </main>
 
     <footer>
       <a href="../"
-        ><button><i class="fa-solid fa-angle-left"></i></button
+        ><button class="round-button">
+          <i class="fa-solid fa-angle-left"></i></button
       ></a>
     </footer>
   </body>

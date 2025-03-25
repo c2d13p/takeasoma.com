@@ -1,138 +1,92 @@
-const text = document.getElementById("text");
-const image = document.getElementById("image");
-const increaseSpeedBtn = document.getElementById("increaseSpeed");
-const decreaseSpeedBtn = document.getElementById("decreaseSpeed");
-const invertSpinBtn = document.getElementById("invertSpin");
+document.addEventListener("DOMContentLoaded", () => {
+  const switcher = document.getElementById("switcher");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
+  const analogueMode = document.getElementById("analogue");
+  const digitalMode = document.getElementById("digital");
 
-let currentDuration = 61;
-let intervalId;
-let isClockwiseText = true;
-let isClockwiseImage = false;
-
-function getSpeedStep() {
-  if (currentDuration <= 10) return 1;
-  else if (currentDuration <= 20) return 2;
-  else if (currentDuration <= 60) return 3;
-  else if (currentDuration <= 120) return 5;
-  else return 10;
-}
-
-function updateAnimationDuration(duration) {
-  text.style.animationDuration = `${duration}s`;
-  image.style.animationDuration = `${duration}s`;
-}
-
-function increaseSpeed() {
-  let speedStep = getSpeedStep();
-  if (currentDuration > 1) {
-    currentDuration -= speedStep;
-    updateAnimationDuration(currentDuration);
-  }
-}
-
-function decreaseSpeed() {
-  let speedStep = getSpeedStep();
-  if (currentDuration < 300) {
-    currentDuration += speedStep;
-    updateAnimationDuration(currentDuration);
-  }
-}
-
-function startIncreasingSpeed() {
-  clearInterval(intervalId);
-  intervalId = setInterval(increaseSpeed, 100);
-}
-
-function startDecreasingSpeed() {
-  clearInterval(intervalId);
-  intervalId = setInterval(decreaseSpeed, 100);
-}
-
-function stopChangingSpeed() {
-  clearInterval(intervalId);
-}
-
-increaseSpeedBtn.addEventListener("click", increaseSpeed);
-decreaseSpeedBtn.addEventListener("click", decreaseSpeed);
-increaseSpeedBtn.addEventListener("pointerdown", startIncreasingSpeed);
-increaseSpeedBtn.addEventListener("pointerup", stopChangingSpeed);
-increaseSpeedBtn.addEventListener("pointerleave", stopChangingSpeed);
-increaseSpeedBtn.addEventListener("pointercancel", stopChangingSpeed);
-decreaseSpeedBtn.addEventListener("pointerdown", startDecreasingSpeed);
-decreaseSpeedBtn.addEventListener("pointerup", stopChangingSpeed);
-decreaseSpeedBtn.addEventListener("pointerleave", stopChangingSpeed);
-decreaseSpeedBtn.addEventListener("pointercancel", stopChangingSpeed);
-
-function stopRotation() {
-  text.style.animationPlayState = "paused";
-  image.style.animationPlayState = "paused";
-}
-
-function resumeRotation() {
-  text.style.animationPlayState = "running";
-  image.style.animationPlayState = "running";
-}
-
-function invertSpin() {
-  if (isClockwiseText) {
-    text.classList.remove("clockwise");
-    text.classList.add("anticlockwise");
-  } else {
-    text.classList.remove("anticlockwise");
-    text.classList.add("clockwise");
-  }
-
-  if (isClockwiseImage) {
-    image.classList.remove("clockwise");
-    image.classList.add("anticlockwise");
-  } else {
-    image.classList.remove("anticlockwise");
-    image.classList.add("clockwise");
-  }
-
-  isClockwiseText = !isClockwiseText;
-  isClockwiseImage = !isClockwiseImage;
-}
-
-text.addEventListener("pointerdown", stopRotation);
-text.addEventListener("pointerup", resumeRotation);
-text.addEventListener("pointercancel", resumeRotation);
-text.addEventListener("pointerleave", resumeRotation);
-image.addEventListener("pointerdown", stopRotation);
-image.addEventListener("pointerup", resumeRotation);
-image.addEventListener("pointercancel", resumeRotation);
-image.addEventListener("pointerleave", resumeRotation);
-
-invertSpinBtn.addEventListener("click", invertSpin);
-
-document.body.style.webkitTouchCallout = "none";
-document.body.style.webkitUserSelect = "none";
-
-document.addEventListener(
-  "dblclick",
-  function (event) {
-    event.preventDefault();
-  },
-  { passive: false }
-);
-
-document.getElementById("text").ondragstart = function () {
-  return false;
-};
-document.getElementById("image").ondragstart = function () {
-  return false;
-};
-
-window.oncontextmenu = function (event) {
-  event.preventDefault();
-  event.stopPropagation();
-  return false;
-};
-
-window.addEventListener("load", () => {
-  document.querySelectorAll("img").forEach((img) => {
-    img.style.display = "none";
-    void img.offsetHeight;
-    img.style.display = "block";
+  switcher.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("active");
   });
+
+  document.addEventListener("click", (e) => {
+    if (!dropdownMenu.contains(e.target) && !switcher.contains(e.target)) {
+      dropdownMenu.classList.remove("active");
+    }
+  });
+
+  const toggleMode = (mode) => {
+    setCookie("mode", mode, 365);
+    loadMode();
+    dropdownMenu.classList.remove("active");
+  };
+
+  analogueMode.addEventListener("click", () => toggleMode("analogue"));
+  digitalMode.addEventListener("click", () => toggleMode("digital"));
+
+  loadMode();
 });
+
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+  const expires = "Expires=" + d.toUTCString();
+  document.cookie = `${name}=${value}; ${expires}; path=/`;
+}
+
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i].trim();
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+function toggleMode(mode) {
+  if (mode === "analogue") {
+    setCookie("mode", "analogue", 365);
+    loadMode();
+  } else {
+    setCookie("mode", "digital", 365);
+    loadMode();
+  }
+}
+
+function loadMode() {
+  const mode = getCookie("mode") || "digital";
+  const theme =
+    new Date().getHours() >= 20 || new Date().getHours() < 8 ? "dark" : "light";
+
+  ["background", "time", "second"].forEach((id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.src = `../004/img/${mode}-${id}-${theme}.png`;
+      element.className = "";
+      element.classList.add(mode);
+    }
+  });
+}
+
+function manageSecond() {
+  const mode = getCookie("mode") || "digital";
+  const second = document.getElementById("second");
+
+  if (mode === "digital") {
+    if (second.style.visibility === "hidden") {
+      second.style.visibility = "visible";
+    } else {
+      second.style.visibility = "hidden";
+    }
+  } else {
+    second.style.visibility = "visible";
+    second.style.transform = "rotate(5deg)";
+    setTimeout(() => {
+      second.style.transform = "rotate(0deg)";
+    }, 100); // Adjust this timing for how long you want the "attempt" to last
+  }
+}
+
+setInterval(loadMode, 300000);
+setInterval(manageSecond, 1000);

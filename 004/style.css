@@ -1,90 +1,94 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,400,500,600,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,400,500,600,700&display=swap");
 
 @font-face {
-    font-family: 'Ticking Timebomb BB';
-    src: url('fonts/TickingTimebombBB.eot');
-    src: url('fonts/TickingTimebombBB.eot?#iefix') format('embedded-opentype'),
-        url('fonts/TickingTimebombBB.woff2') format('woff2'),
-        url('fonts/TickingTimebombBB.woff') format('woff'),
-        url('fonts/TickingTimebombBB.ttf') format('truetype'),
-        url('fonts/TickingTimebombBB.svg#TickingTimebombBB') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Ticking Timebomb BB";
+  src: url("fonts/TickingTimebombBB.eot");
+  src: url("fonts/TickingTimebombBB.eot?#iefix") format("embedded-opentype"),
+    url("fonts/TickingTimebombBB.woff2") format("woff2"),
+    url("fonts/TickingTimebombBB.woff") format("woff"),
+    url("fonts/TickingTimebombBB.ttf") format("truetype"),
+    url("fonts/TickingTimebombBB.svg#TickingTimebombBB") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 2em;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
 }
 
-.top, .bottom {
-    position: absolute;
-    padding: 0.2rem 0.4rem;
+.top,
+.bottom {
+  position: absolute;
+  padding: 0.2rem 0.4rem;
 }
 
 .top {
-    top: 0;
+  top: 0;
 }
 
 .bottom {
-    bottom: 0;
+  bottom: 0;
 }
 
 .right {
-    right: 0;
+  right: 0;
 }
 
 .left {
-    left: 0;
+  left: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-family: "Ticking Timebomb BB";
-    font-size: 1em;
-    padding: 0;
-}  
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: "Ticking Timebomb BB";
+  font-size: 1em;
+  padding: 0;
+}
 
 .container * {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
 }
 
 img {
-    max-height: 80vh;
-    max-width: 75vw;
+  max-height: 80vh;
+  max-width: 75vw;
 }
 
 @media only screen and (max-width: 1023px) {
-    html, body {
-        font-size: 1.8em;
-    }
+  html,
+  body {
+    font-size: 1.8em;
+  }
 
-    img {
-        max-height: 85vh;
-        max-width: 85vw;
-    }
+  img {
+    max-height: 85vh;
+    max-width: 85vw;
+  }
 }
 
 @media only screen and (max-width: 767px) {
-    html, body {
-        font-size: 1.4em;
-    }
+  html,
+  body {
+    font-size: 1.4em;
+  }
 
-    img {
-        max-height: 95vh;
-        max-width: 95vw;
-    }
+  img {
+    max-height: 95vh;
+    max-width: 95vw;
+  }
 }

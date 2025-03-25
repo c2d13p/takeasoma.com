@@ -21,8 +21,8 @@ body {
   height: 100dvh;
   justify-content: space-between;
   margin: 0 auto;
+  max-width: 1440px;
   position: relative;
-  width: min(100%, 1440px);
 }
 
 header,
@@ -55,7 +55,7 @@ button {
   display: flex;
   height: calc(var(--icon-size) * 2);
   justify-content: center;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition: transform 0.15s ease;
   width: calc(var(--icon-size) * 2);
 }
 
