@@ -15,9 +15,9 @@
   --dropdown-menu-border-clr: rgb(97, 97, 97);
   --dropdown-menu-bg-clr: rgb(30, 30, 30);
   --dropdown-menu-item-clr: rgb(225, 225, 225);
-  --icon-bg-clr: rgb(46, 46, 46);
+  --icon-bg-clr: rgb(50, 50, 50);
   --icon-bg-clr-active: rgb(100, 100, 100);
-  --icon-clr: rgb(149, 149, 149);
+  --icon-clr: rgb(238, 44, 48);
 }
 
 * {
@@ -60,13 +60,16 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
 .round-button {
   align-items: center;
   background-color: var(--icon-bg-clr);
   border-radius: 100vmax;
-  border: none;
-  cursor: pointer;
-  display: flex;
   height: calc(var(--icon-size) * 2);
   justify-content: center;
   transition: transform 0.15s ease;
@@ -83,6 +86,8 @@ a {
   border-radius: 12px;
   box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.3),
     0 0 25px -15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Display",
     "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   opacity: 0;
@@ -103,10 +108,7 @@ a {
 
 .menu-item {
   background-color: transparent;
-  border: none;
   color: var(--dropdown-menu-item-clr);
-  cursor: pointer;
-  display: flex;
   font-size: var(--dropdown-menu-item-fs);
   padding: 0.8em 2.6em 0.8em 0.8em;
 }

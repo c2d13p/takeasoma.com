@@ -1,39 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="When">
-    <meta name="keywords" content="soma, solutions, human being">
-    <meta property="og:title" content="WHEN">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.takeasoma.com/004"> 
-    <meta property="og:image" content="../icons/apple-touch-icon-soma-004.png">
-    <meta property="og:description" content="Soma 004">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="description" content="When" />
+    <meta name="keywords" content="soma, solutions, human being" />
+    <meta property="og:title" content="WHEN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.takeasoma.com/004" />
+    <meta
+      property="og:image"
+      content="../icons/apple-touch-icon-soma-004.png"
+    />
+    <meta property="og:description" content="Soma 004" />
     <title>WHEN</title>
-    <link rel="icon" href="../icons/light-mode-favicon-soma-004.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="icon" href="../icons/dark-mode-favicon-soma-004.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/light-mode-favicon-soma-004.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/dark-mode-favicon-soma-004.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../icons/apple-touch-icon-soma-004.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.counter.dev/script.js" data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960" data-utcoffset="1"></script>
-</head>
-<body>
-    <div id="header">
-        <button id="mode-toggle" class="top right"></button>
-    </div>
+    <link
+      rel="icon"
+      href="../icons/light-mode-favicon-soma-004.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../icons/dark-mode-favicon-soma-004.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/light-mode-favicon-soma-004.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/dark-mode-favicon-soma-004.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../icons/apple-touch-icon-soma-004.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="controlSecond.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/31e1076c4c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.counter.dev/script.js"
+      data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960"
+      data-utcoffset="1"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <button class="round-button" id="switcher">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+      <div class="dropdown-menu">
+        <button class="menu-item" id="analogue">Analogue</button>
+        <button class="menu-item" id="digital">Digital</button>
+      </div>
+    </header>
 
-    <div id="clock" class="container">
-            <img draggable="false" id="background" style="z-index: 5">
-            <img draggable="false" id="time" style="z-index: 10">
-            <img draggable="false" id="second" style="z-index: 15; transition: visibility 0.3s ease;">
-    </div>
+    <main>
+      <img draggable="false" id="background" style="z-index: 1" />
+      <img draggable="false" id="time" style="z-index: 2" />
+      <img
+        draggable="false"
+        id="second"
+        style="z-index: 3; transition: visibility 0.3s ease"
+      />
+    </main>
 
-    <div id="footer">
-        <a class="bottom left" href="../">LIST</a>
-    </div>
-
-    <script src="manageTime.js"></script>
-</body>
+    <footer>
+      <a href="../"
+        ><button class="round-button">
+          <i class="fa-solid fa-angle-left"></i></button
+      ></a>
+    </footer>
+  </body>
 </html>

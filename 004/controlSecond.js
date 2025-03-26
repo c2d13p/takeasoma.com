@@ -57,14 +57,14 @@ function toggleMode(mode) {
 function loadMode() {
   const mode = getCookie("mode") || "digital";
   const theme =
-    new Date().getHours() >= 9 || new Date().getHours() < 8 ? "dark" : "light";
+    new Date().getHours() >= 20 || new Date().getHours() < 8 ? "dark" : "light";
 
   document.body.classList.toggle("dark", theme === "dark");
 
   ["background", "time", "second"].forEach((id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.src = `../004/img/${mode}-${id}-${theme}.png`;
+      element.src = `images/${mode}-${id}-${theme}.png`;
       element.className = "";
       element.classList.add(mode);
     }
