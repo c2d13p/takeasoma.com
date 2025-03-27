@@ -12,24 +12,31 @@
     ></script>
   </head>
   <body>
+    <dialog>
+      <form method="POST">
+        <p class="question">
+          What is the datetime<br />
+          of your birth?
+        </p>
+        <input type="datetime-local" min="1908-05-23T00:00" required />
+        <button class="enter-button">Enter</button>
+      </form>
+    </dialog>
+
     <header>
-      <button class="round-button" id="switcher">
-        <i class="fa-solid fa-ellipsis"></i>
+      <button class="round-button" id="settings">
+        <i class="fa-solid fa-cog"></i>
       </button>
-      <div class="dropdown-menu">
-        <button class="menu-item" id="analogue">Analogue</button>
-        <button class="menu-item" id="digital">Digital</button>
-      </div>
     </header>
 
     <main>
-      <img draggable="false" id="background" style="z-index: 1" />
-      <img draggable="false" id="time" style="z-index: 2" />
-      <img
-        draggable="false"
-        id="second"
-        style="z-index: 3; transition: visibility 0.3s ease"
-      />
+      <button class="arrow-button" id="arrow-up">︿</button>
+      <p class="time">
+        You have<br />
+        <span class="time-bigger">100 days</span><br />
+        On earth
+      </p>
+      <button class="arrow-button" id="arrow-down">﹀</button>
     </main>
 
     <footer>

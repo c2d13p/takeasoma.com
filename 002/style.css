@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata');
-@import url('https://fonts.googleapis.com/css?family=Allura');
-@import url('https://fonts.googleapis.com/css?family=Chakra+Petch');
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
+@import url("https://fonts.googleapis.com/css?family=Allura");
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch");
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -20,37 +21,41 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center; 
+  text-align: center;
   width: 95vmin;
   height: 95vmin;
   border-radius: 50%;
   border: none;
   background-color: #1f1f1f;
-  background: radial-gradient(circle at 100px 100px, rgba(255, 215, 0, 0.8), rgba(31, 31, 31, 0.8));
+  background: radial-gradient(
+    circle at 100px 100px,
+    rgba(255, 215, 0, 0.8),
+    rgba(31, 31, 31, 0.8)
+  );
   box-shadow: 0 0 50px #ffd700;
   -webkit-animation: animate-border 10s linear infinite;
-          animation: animate-border 10s linear infinite;
+  animation: animate-border 10s linear infinite;
 }
 
 @-webkit-keyframes animate-border {
   0% {
     -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
   100% {
     -webkit-filter: hue-rotate(360deg);
-            filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
 
 @keyframes animate-border {
   0% {
     -webkit-filter: hue-rotate(0deg);
-            filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
   }
   100% {
     -webkit-filter: hue-rotate(360deg);
-            filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
 
@@ -81,7 +86,7 @@ input[type="datetime-local"] {
   box-shadow: 0 0 30px #ffd700;
   padding: 0.6rem;
 }
-  
+
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
@@ -104,17 +109,29 @@ button:disabled {
   color: transparent;
   animation: none;
 }
-  
+
 button:enabled {
   color: #f9f8f5;
 }
-  
+
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  60% { opacity: 0.5; }
-  80%, 90% { opacity: 0; }
-  95% { opacity: 0.75; }
-  100% { opacity: 1; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  80%,
+  90% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .time {
@@ -133,161 +150,169 @@ button:enabled {
   font-size: 1.2em;
 }
 
-#up-arrow, #down-arrow {
+#up-arrow,
+#down-arrow {
   cursor: pointer;
   font-size: 6em;
   text-align: center;
   font-weight: bold;
   color: #f9f8f5;
 }
-  
-#cog, #list {
+
+#cog,
+#list {
   position: absolute;
   width: 40px;
   height: 40px;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 #cog {
   top: 1rem;
   right: 1rem;
 }
-  
+
 #list {
   bottom: 1rem;
   left: 1rem;
 }
 
 @media only screen and (max-width: 1023px) {
-    .question {
-      margin: 1em auto 2.6rem;
-      font-size: 2em;
-    }
-  
-    input[type="datetime-local"] {
-      margin: 0 auto 2rem;
-      padding: 0.6rem;
-      font-size: 1.4em;
-    }
-  
-    button {
-      margin: 0 auto 3rem;
-      font-size: 2rem;
-    }
-  
-    .time {
-      font-size: 3em;
-      line-height: 8rem;
-    }
-    
-    .time-bigger {
-      font-size: 1.6em;
-    }
-
-    .quote {
-      font-size: 1.2em;
-    }
-  
-    #up-arrow, #down-arrow {
-      font-size: 4.6em;
-    }
-  
-    #cog, #list {
-      width: 35px;
-      height: 35px;
-    }
-  }
-  
-  @media only screen and (max-width: 767px) {
-    .question {
-      margin: 2em auto 1.6rem;
-      font-size: 1.2em;
-      line-height: 1.6rem;
-    }
-
-    .mobile-break::after {
-      content: "";
-      display: block;
-    }
-  
-    input[type="datetime-local"] {
-      margin: 0 auto 1.6rem;
-      padding: 0.6rem;
-      font-size: 1em;
-    }
-  
-    button {
-      margin: 0 auto 3rem;
-      font-size: 1.4rem;
-    }
-  
-    .time {
-      font-size: 1.8em;
-      line-height: 4.8rem;
-    }
-    
-    .time-bigger {
-      font-size: 1.4em;
-    }
-
-    .quote {
-      font-size: 1em;
-    }
-  
-    #up-arrow, #down-arrow {
-      font-size: 3em;
-      font-weight: normal;
-    }
-  
-    #cog, #list {
-      width: 25px;
-      height: 25px;
-    }
+  .question {
+    margin: 1em auto 2.6rem;
+    font-size: 2em;
   }
 
-  @media only screen and (max-width: 375px) {
-    .question {
-      margin: 1.2em auto 1.6rem;
-      font-size: 1.2em;
-      line-height: 1.6rem;
-    }
-
-    .mobile-break::after {
-      content: "";
-      display: block;
-    }
-  
-    input[type="datetime-local"] {
-      margin: 0 auto 1.6rem;
-      padding: 0.4rem;
-      font-size: 1em;
-    }
-  
-    button {
-      margin: 0 auto 3rem;
-      font-size: 1.4rem;
-    }
-  
-    .time {
-      font-size: 1.4em;
-      line-height: 4rem;
-    }
-    
-    .time-bigger {
-      font-size: 1.4em;
-    }
-
-    .quote {
-      font-size: 1em;
-    }
-  
-    #up-arrow, #down-arrow {
-      font-size: 2.2em;
-      font-weight: normal;
-    }
-  
-    #cog, #list {
-      width: 25px;
-      height: 25px;
-    }
+  input[type="datetime-local"] {
+    margin: 0 auto 2rem;
+    padding: 0.6rem;
+    font-size: 1.4em;
   }
+
+  button {
+    margin: 0 auto 3rem;
+    font-size: 2rem;
+  }
+
+  .time {
+    font-size: 3em;
+    line-height: 8rem;
+  }
+
+  .time-bigger {
+    font-size: 1.6em;
+  }
+
+  .quote {
+    font-size: 1.2em;
+  }
+
+  #up-arrow,
+  #down-arrow {
+    font-size: 4.6em;
+  }
+
+  #cog,
+  #list {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .question {
+    margin: 2em auto 1.6rem;
+    font-size: 1.2em;
+    line-height: 1.6rem;
+  }
+
+  .mobile-break::after {
+    content: "";
+    display: block;
+  }
+
+  input[type="datetime-local"] {
+    margin: 0 auto 1.6rem;
+    padding: 0.6rem;
+    font-size: 1em;
+  }
+
+  button {
+    margin: 0 auto 3rem;
+    font-size: 1.4rem;
+  }
+
+  .time {
+    font-size: 1.8em;
+    line-height: 4.8rem;
+  }
+
+  .time-bigger {
+    font-size: 1.4em;
+  }
+
+  .quote {
+    font-size: 1em;
+  }
+
+  #up-arrow,
+  #down-arrow {
+    font-size: 3em;
+    font-weight: normal;
+  }
+
+  #cog,
+  #list {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .question {
+    margin: 1.2em auto 1.6rem;
+    font-size: 1.2em;
+    line-height: 1.6rem;
+  }
+
+  .mobile-break::after {
+    content: "";
+    display: block;
+  }
+
+  input[type="datetime-local"] {
+    margin: 0 auto 1.6rem;
+    padding: 0.4rem;
+    font-size: 1em;
+  }
+
+  button {
+    margin: 0 auto 3rem;
+    font-size: 1.4rem;
+  }
+
+  .time {
+    font-size: 1.4em;
+    line-height: 4rem;
+  }
+
+  .time-bigger {
+    font-size: 1.4em;
+  }
+
+  .quote {
+    font-size: 1em;
+  }
+
+  #up-arrow,
+  #down-arrow {
+    font-size: 2.2em;
+    font-weight: normal;
+  }
+
+  #cog,
+  #list {
+    width: 25px;
+    height: 25px;
+  }
+}
