@@ -3,16 +3,23 @@
 @import url("https://fonts.googleapis.com/css?family=Chakra+Petch");
 
 :root {
-  --arrow-fs: clamp(1.5rem, 0.5rem + 5vw, 5rem);
-  --enter-button-fs: ;
+  --arrow-fs: clamp(2.5rem, 1.6071rem + 4.4643vw, 5.625rem);
+  --bg-clr-light: #fff8e7;
+  --bg-clr-dark: #171717;
+  --enter-button-fs: clamp(1.875rem, 1.3393rem + 2.6786vw, 3.75rem);
+  --gradient-light-clr: rgba(255, 215, 0, 0.8);
+  --gradient-dark-clr: rgba(31, 31, 31, 0.8);
   --icon-bg-clr: rgb(229, 229, 234);
   --icon-bg-clr-active: rgb(174, 174, 178);
   --icon-clr: rgb(58, 58, 60);
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
-  --question-fs: ;
-  --quote-fs: ;
-  --time-fs: clamp(2.5rem, 1.0714rem + 7.1429vw, 7.5rem);
-  --time-bigger-fs: ;
+  --input-fs: clamp(1rem, 0.4643rem + 2.6786vw, 2.875rem);
+  --question-fs: clamp(1.375rem, 0.8036rem + 2.8571vw, 3.375rem);
+  --quote-fs: clamp(2.125rem, 1.3036rem + 4.1071vw, 5rem);
+  --shadow-clr: #ffd700;
+  --text-clr: #f9f8f5;
+  --time-fs: clamp(1.875rem, 1.0536rem + 4.1071vw, 4.75rem);
+  --time-bigger-fs: clamp(2.25rem, 1.2857rem + 4.8214vw, 5.625rem);
 }
 
 * {
@@ -20,8 +27,8 @@
 }
 
 body {
-  background-color: #fff8e7;
-  color: #f9f8f5;
+  background-color: var(--bg-clr-light);
+  color: var(--text-clr);
   display: grid;
   margin: 0 auto;
   max-width: 1440px;
@@ -44,11 +51,11 @@ footer {
 
 dialog {
   border: none;
-  color: #f9f8f5;
+  color: var(--text-clr);
 }
 
 dialog::backdrop {
-  background-color: #171717;
+  background-color: var(--bg-clr-dark);
 }
 
 form {
@@ -62,32 +69,17 @@ form {
   width: 100%;
 }
 
-input[type="datetime-local"] {
-  background-color: transparent;
-  border: 2px solid inherit;
-  border-radius: 50px;
-  box-shadow: 0 0 30px #ffd700;
-  color: inherit;
-  font-weight: bold;
-  margin: 0;
-  padding: 0.6rem;
-}
-
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
 main,
 dialog {
-  animation: animate-border 10s linear infinite;
+  animation: rotate-color 10s linear infinite;
   aspect-ratio: 1 / 1;
   background: radial-gradient(
     circle at 100px 100px,
-    rgba(255, 215, 0, 0.8),
-    rgba(31, 31, 31, 0.8)
+    var(--gradient-light-clr),
+    var(--gradient-dark-clr)
   );
   border-radius: 100vmax;
-  box-shadow: 0 0 50px #ffd700;
+  box-shadow: 0 0 50px var(--shadow-clr);
   height: 95vmin;
   text-align: center;
   width: 95vmin;
@@ -95,13 +87,13 @@ dialog {
 
 main {
   align-items: center;
-  background-color: #fff8e7;
+  background-color: var(--bg-clr-light);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-@keyframes animate-border {
+@keyframes rotate-color {
   0% {
     -webkit-filter: hue-rotate(0deg);
     filter: hue-rotate(0deg);
@@ -112,29 +104,46 @@ main {
   }
 }
 
-/* ------ Paragraphs ------ */
+/* ------ Paragraphs and inputs ------ */
 
 p {
   margin: 0;
-  outline: 3px solid orange;
 }
 
 .question {
-  filter: drop-shadow(0 0 50px #ffd700);
+  filter: drop-shadow(0 0 50px var(--shadow-clr));
   font-family: "Inconsolata";
   font-size: var(--question-fs);
+  line-height: 1.4;
+}
+
+input[type="datetime-local"] {
+  background-color: transparent;
+  border: 2px solid inherit;
+  border-radius: 50px;
+  box-shadow: 0 0 30pxvar (--shadow-clr);
+  color: inherit;
+  font-size: var(--input-fs);
+  font-weight: bold;
+  margin: 0;
+  padding: 0.6rem;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 .time {
   font-family: "Chakra Petch";
   font-size: var(--time-fs);
+  line-height: 2;
 }
 
 .time-bigger {
   font-size: var(--time-bigger-fs);
 }
 
-.quote {
+.time {
   font-family: "Allura";
   font-size: var(--quote-fs);
 }
@@ -160,17 +169,15 @@ button {
   color: inherit;
   font-size: var(--arrow-fs);
   font-weight: bold;
-  border: 1px solid magenta;
 }
 
 .enter-button {
   animation: blink 3s infinite;
   color: inherit;
-  filter: drop-shadow(0 0 50px #ffd700);
+  filter: drop-shadow(0 0 50px var(--shadow-clr));
   font-family: inherit;
   font-size: var(--enter-button-fs);
   font-weight: bold;
-  border: 3px solid red;
 }
 
 button:disabled {
