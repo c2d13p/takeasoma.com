@@ -1,9 +1,12 @@
+const arrowDown = document.getElementById("arrow-down");
+const arrowUp = document.getElementById("arrow-up");
 const dialog = document.querySelector("dialog");
 const birthInput = document.querySelector(
   "dialog input[type='datetime-local']"
 );
 const enterButton = document.querySelector(".enter-button");
 const settingsButton = document.getElementById("settings");
+const timeDisplay = document.querySelector(".time");
 
 let birthDatetimeCookie = getCookie("birthDatetime");
 let currentMode = "days";
@@ -39,8 +42,8 @@ settingsButton.addEventListener("click", () => {
   if (birthDatetime) {
     const date = new Date(birthDatetime);
     const formattedDatetime = formatDateForInput(date);
-    birthDatetimeInput.value = formattedDatetime;
-    enterButton.disabled = !birthDatetimeInput.value;
+    birthInput.value = formattedDatetime;
+    enterButton.disabled = !birthInput.value;
   } else {
     birthDatetimeInput.value = "";
   }
@@ -56,8 +59,8 @@ function formatDateForInput(date) {
   return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-birthDatetimeInput.addEventListener("input", function () {
-  enterButton.disabled = !birthDatetimeInput.value;
+birthInput.addEventListener("input", function () {
+  enterButton.disabled = !birthInput.value;
 });
 
 enterButton.addEventListener("click", handleEnterButton);
@@ -70,11 +73,12 @@ document.addEventListener("keydown", (event) => {
 });
 
 function handleEnterButton() {
-  const birthDatetime = new Date(birthDatetimeInput.value);
+  const birthDatetime = new Date(birthInput.value);
   if (isNaN(birthDatetime)) return;
 
   setCookie("birthDatetime", birthDatetime.toISOString(), 365);
   updateTimeDisplay(birthDatetime, currentMode);
+  dialog.close();
 }
 
 function updateTimeDisplay(birthDatetime, mode) {
@@ -139,18 +143,30 @@ function cycleTimeDisplay(direction) {
   updateTimeDisplay(birthDatetime, currentMode);
 }
 
-upArrow.addEventListener("click", function () {
+arrowUp.addEventListener("click", function () {
+  if (timeDisplay.innerHTML.includes("quote")) {
+    restoreTime();
+  }
   cycleTimeDisplay("up");
 });
 
-downArrow.addEventListener("click", function () {
+arrowDown.addEventListener("click", function () {
+  if (timeDisplay.innerHTML.includes("quote")) {
+    restoreTime();
+  }
   cycleTimeDisplay("down");
 });
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowUp") {
+    if (timeDisplay.innerHTML.includes("quote")) {
+      restoreTime();
+    }
     cycleTimeDisplay("up");
   } else if (event.key === "ArrowDown") {
+    if (timeDisplay.innerHTML.includes("quote")) {
+      restoreTime();
+    }
     cycleTimeDisplay("down");
   }
 });
@@ -167,7 +183,7 @@ timeDisplay.addEventListener("click", () => {
 
 function showQuote() {
   originalTimeText = timeDisplay.innerHTML;
-  timeDisplay.innerHTML = `<span class="quote">It's not the ${currentMode}<br> in your life that counts;<br> it's the life in your ${currentMode}</span>`;
+  timeDisplay.innerHTML = `<p class="quote">It's not the ${currentMode}<br> in your life that counts;<br> it's the life in your ${currentMode}</p>`;
 }
 
 function restoreTime() {
