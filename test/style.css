@@ -9,17 +9,15 @@
   --enter-button-fs: clamp(1.875rem, 1.3393rem + 2.6786vw, 3.75rem);
   --gradient-light-clr: rgba(255, 215, 0, 0.8);
   --gradient-dark-clr: rgba(31, 31, 31, 0.8);
-  --icon-bg-clr: rgb(229, 229, 234);
-  --icon-bg-clr-active: rgb(174, 174, 178);
-  --icon-clr: rgb(58, 58, 60);
+  --icon-clr: #f9f8f5;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
   --input-fs: clamp(1rem, 0.4643rem + 2.6786vw, 2.875rem);
-  --question-fs: clamp(1.375rem, 0.8036rem + 2.8571vw, 3.375rem);
-  --quote-fs: clamp(2.125rem, 1.3036rem + 4.1071vw, 5rem);
+  --question-fs: clamp(1.375rem, 0.875rem + 2.5vw, 3.125rem);
+  --quote-fs: clamp(1.375rem, 0.6964rem + 3.3929vw, 3.75rem);
   --shadow-clr: #ffd700;
   --text-clr: #f9f8f5;
-  --time-fs: clamp(1.875rem, 1.0536rem + 4.1071vw, 4.75rem);
-  --time-bigger-fs: clamp(2.25rem, 1.2857rem + 4.8214vw, 5.625rem);
+  --time-fs: clamp(1.625rem, 0.7321rem + 4.4643vw, 4.75rem);
+  --time-bigger-fs: clamp(2.125rem, 1.1964rem + 4.6429vw, 5.375rem);
 }
 
 * {
@@ -49,21 +47,12 @@ footer {
   position: absolute;
 }
 
-dialog {
-  border: none;
-  color: var(--text-clr);
-}
-
-dialog::backdrop {
-  background-color: var(--bg-clr-dark);
-}
-
 form {
   align-items: center;
   display: flex;
   flex-direction: column;
   font-family: "Inconsolata";
-  gap: 2em;
+  gap: clamp(1.25rem, 0.3571rem + 4.4643vw, 4.375rem);
   height: 100%;
   justify-content: center;
   width: 100%;
@@ -78,11 +67,17 @@ dialog {
     var(--gradient-light-clr),
     var(--gradient-dark-clr)
   );
+  border: none;
   border-radius: 100vmax;
   box-shadow: 0 0 50px var(--shadow-clr);
+  color: var(--text-clr);
   height: 95vmin;
   text-align: center;
-  width: 95vmin;
+  width: 95vmi;
+}
+
+dialog::backdrop {
+  background-color: var(--bg-clr-dark);
 }
 
 main {
@@ -120,13 +115,12 @@ p {
 input[type="datetime-local"] {
   background-color: transparent;
   border: 2px solid var(--text-clr);
-  border-radius: 50px;
+  border-radius: 100vmax;
   box-shadow: 0 0 30px var(--shadow-clr);
   color: inherit;
   font-family: inherit;
   font-size: var(--input-fs);
   font-weight: bold;
-  margin: 0;
   padding: 0.6rem;
 }
 
@@ -137,7 +131,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 .time {
   font-family: "Chakra Petch";
   font-size: var(--time-fs);
-  line-height: 2;
+  line-height: 1.8;
   text-transform: capitalize;
 }
 
@@ -189,7 +183,12 @@ button:disabled {
 
 .round-button {
   align-items: center;
-  background-color: var(--icon-bg-clr);
+  animation: rotate-color 10s linear infinite;
+  background: radial-gradient(
+    circle at 100px 100px,
+    var(--gradient-light-clr),
+    var(--gradient-dark-clr)
+  );
   border-radius: 100vmax;
   display: flex;
   height: calc(var(--icon-size) * 2);
@@ -199,7 +198,6 @@ button:disabled {
 }
 
 .round-button:active {
-  background-color: var(--icon-bg-clr-active);
   transform: scale(0.95);
 }
 
