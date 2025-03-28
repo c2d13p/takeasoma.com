@@ -24,11 +24,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   background-color: var(--bg-clr);
   display: flex;
@@ -56,7 +51,9 @@ i {
   font-size: var(--icon-size);
 }
 
-a {
+a,
+a:focus {
+  outline: none;
   text-decoration: none;
 }
 
@@ -76,8 +73,10 @@ button {
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active {
+.round-button:active,
+.round-button:focus {
   background-color: var(--icon-bg-clr-active);
+  outline: none;
   transform: scale(0.95);
 }
 

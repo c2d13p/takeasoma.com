@@ -41,7 +41,9 @@ main {
   margin-block: 0.4em;
 }
 
-a {
+a,
+a:focus {
+  outline: none;
   text-decoration: none;
   text-transform: uppercase;
 }

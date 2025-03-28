@@ -10,11 +10,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -43,7 +38,9 @@ i {
   font-size: var(--icon-size);
 }
 
-a {
+a,
+a:focus {
+  outline: none;
   text-decoration: none;
 }
 
@@ -60,8 +57,10 @@ button {
   width: calc(var(--icon-size) * 2);
 }
 
-button:active {
+button:active,
+button:focus {
   background-color: var(--icon-bg-clr-active);
+  outline: none;
   transform: scale(0.95);
 }
 
