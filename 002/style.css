@@ -2,88 +2,127 @@
 @import url("https://fonts.googleapis.com/css?family=Allura");
 @import url("https://fonts.googleapis.com/css?family=Chakra+Petch");
 
-html,
+:root {
+  --arrow-fs: clamp(2.5rem, 1.6071rem + 4.4643vw, 5.625rem);
+  --bg-clr-light: #fff8e7;
+  --bg-clr-dark: #171717;
+  --enter-button-fs: clamp(1.875rem, 1.3393rem + 2.6786vw, 3.75rem);
+  --gradient-light-clr: rgba(255, 215, 0, 0.8);
+  --gradient-dark-clr: rgba(31, 31, 31, 0.8);
+  --icon-clr: #f9f8f5;
+  --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
+  --input-fs: clamp(1rem, 0.4643rem + 2.6786vw, 2.875rem);
+  --question-fs: clamp(1.375rem, 0.875rem + 2.5vw, 3.125rem);
+  --quote-fs: clamp(1.625rem, 0.9821rem + 3.2143vw, 3.875rem);
+  --shadow-clr: rgb(255, 215, 0);
+  --text-clr: #f9f8f5;
+  --time-fs: clamp(1.625rem, 0.7321rem + 4.4643vw, 4.75rem);
+  --time-bigger-fs: clamp(2.125rem, 1.1964rem + 4.6429vw, 5.375rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+  background-color: var(--bg-clr-light);
+  color: var(--text-clr);
+  display: grid;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 100dvh;
+  place-items: center;
+  position: relative;
+}
+
+header {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+footer {
+  bottom: 1em;
+  left: 1em;
+  position: absolute;
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inconsolata";
+  gap: clamp(1.25rem, 0.3571rem + 4.4643vw, 4.375rem);
   height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+main,
+dialog {
+  animation: rotate-color 10s linear infinite;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(
+    circle at 100px 100px,
+    var(--gradient-light-clr),
+    var(--gradient-dark-clr)
+  );
+  border: none;
+  border-radius: 100vmax;
+  box-shadow: 0 0 50px var(--shadow-clr);
+  color: var(--text-clr);
+  height: 92vmin;
+  text-align: center;
+  width: 92vmin;
+}
+
+dialog::backdrop {
+  background-color: var(--bg-clr-dark);
+}
+
+main {
+  align-items: center;
+  background-color: var(--bg-clr-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@keyframes rotate-color {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* ------ Paragraphs and inputs ------ */
+
+p {
   margin: 0;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #171717;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 95vmin;
-  height: 95vmin;
-  border-radius: 50%;
-  border: none;
-  background-color: #1f1f1f;
-  background: radial-gradient(
-    circle at 100px 100px,
-    rgba(255, 215, 0, 0.8),
-    rgba(31, 31, 31, 0.8)
-  );
-  box-shadow: 0 0 50px #ffd700;
-  -webkit-animation: animate-border 10s linear infinite;
-  animation: animate-border 10s linear infinite;
-}
-
-@-webkit-keyframes animate-border {
-  0% {
-    -webkit-filter: hue-rotate(0deg);
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    -webkit-filter: hue-rotate(360deg);
-    filter: hue-rotate(360deg);
-  }
-}
-
-@keyframes animate-border {
-  0% {
-    -webkit-filter: hue-rotate(0deg);
-    filter: hue-rotate(0deg);
-  }
-  100% {
-    -webkit-filter: hue-rotate(360deg);
-    filter: hue-rotate(360deg);
-  }
-}
-
-.hidden {
-  display: none;
-  visibility: hidden;
-}
-
 .question {
-  margin: 0 auto 2.8rem;
+  filter: drop-shadow(0 0 50px var(--shadow-clr));
   font-family: "Inconsolata";
-  font-size: 2.2em;
-  color: #f9f8f5;
-  filter: drop-shadow(0 0 50px #ffd700);
+  font-size: var(--question-fs);
+  line-height: 1.4;
 }
 
 input[type="datetime-local"] {
-  margin: 0 auto 2rem;
-  font-family: "Inconsolata";
-  font-size: 1.4em;
-  font-weight: bold;
-  min-width: 160px;
-  min-height: 20px;
   background-color: transparent;
-  color: #f9f8f5;
-  border: 2px solid #f9f8f5;
-  border-radius: 50px;
-  box-shadow: 0 0 30px #ffd700;
+  border: 2px solid var(--text-clr);
+  border-radius: 100vmax;
+  box-shadow: 0 0 30px var(--shadow-clr);
+  color: inherit;
+  font-family: inherit;
+  font-size: var(--input-fs);
+  font-weight: bold;
+  min-height: 2em;
+  min-width: 10em;
   padding: 0.6rem;
 }
 
@@ -91,17 +130,54 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
+.time {
+  font-family: "Chakra Petch";
+  font-size: var(--time-fs);
+  line-height: 2;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.time-bigger {
+  font-size: var(--time-bigger-fs);
+}
+
+.quote {
+  font-family: "Allura";
+  font-size: var(--quote-fs);
+  text-transform: none;
+}
+
+/* ------ Icons and buttons ------ */
+
+i {
+  color: var(--icon-clr);
+  font-size: var(--icon-size);
+}
+
+a,
+a:focus {
+  text-decoration: none;
+}
+
 button {
-  margin: 0 auto;
-  font-size: 2.4rem;
-  font-family: "Inconsolata";
-  font-weight: bold;
-  filter: drop-shadow(0 0 50px #ffd700);
-  background-color: transparent;
-  color: #f9f8f5;
+  background: none;
   border: none;
   cursor: pointer;
+}
+
+.arrow-button {
+  color: inherit;
+  font-size: var(--arrow-fs);
+}
+
+.enter-button {
   animation: blink 3s infinite;
+  color: inherit;
+  filter: drop-shadow(0 0 50px var(--shadow-clr));
+  font-family: inherit;
+  font-size: var(--enter-button-fs);
+  font-weight: bold;
 }
 
 button:disabled {
@@ -110,8 +186,29 @@ button:disabled {
   animation: none;
 }
 
-button:enabled {
-  color: #f9f8f5;
+button:focus {
+  outline: none;
+}
+
+.round-button {
+  align-items: center;
+  animation: rotate-color 10s linear infinite;
+  background: radial-gradient(
+    circle at 100px 100px,
+    var(--gradient-light-clr),
+    var(--gradient-dark-clr)
+  );
+  border-radius: 100vmax;
+  display: flex;
+  height: calc(var(--icon-size) * 2);
+  justify-content: center;
+  transition: transform 0.15s ease;
+  width: calc(var(--icon-size) * 2);
+}
+
+.round-button:active,
+.round-button:focus {
+  transform: scale(0.95);
 }
 
 @keyframes blink {
@@ -131,188 +228,5 @@ button:enabled {
   }
   100% {
     opacity: 1;
-  }
-}
-
-.time {
-  font-family: "Chakra Petch";
-  font-size: 3.4em;
-  line-height: 9rem;
-  color: #f9f8f5;
-}
-
-.time-bigger {
-  font-size: 1.6em;
-}
-
-.quote {
-  font-family: "Allura";
-  font-size: 1.2em;
-}
-
-#up-arrow,
-#down-arrow {
-  cursor: pointer;
-  font-size: 6em;
-  text-align: center;
-  font-weight: bold;
-  color: #f9f8f5;
-}
-
-#cog,
-#list {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
-
-#cog {
-  top: 1rem;
-  right: 1rem;
-}
-
-#list {
-  bottom: 1rem;
-  left: 1rem;
-}
-
-@media only screen and (max-width: 1023px) {
-  .question {
-    margin: 1em auto 2.6rem;
-    font-size: 2em;
-  }
-
-  input[type="datetime-local"] {
-    margin: 0 auto 2rem;
-    padding: 0.6rem;
-    font-size: 1.4em;
-  }
-
-  button {
-    margin: 0 auto 3rem;
-    font-size: 2rem;
-  }
-
-  .time {
-    font-size: 3em;
-    line-height: 8rem;
-  }
-
-  .time-bigger {
-    font-size: 1.6em;
-  }
-
-  .quote {
-    font-size: 1.2em;
-  }
-
-  #up-arrow,
-  #down-arrow {
-    font-size: 4.6em;
-  }
-
-  #cog,
-  #list {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .question {
-    margin: 2em auto 1.6rem;
-    font-size: 1.2em;
-    line-height: 1.6rem;
-  }
-
-  .mobile-break::after {
-    content: "";
-    display: block;
-  }
-
-  input[type="datetime-local"] {
-    margin: 0 auto 1.6rem;
-    padding: 0.6rem;
-    font-size: 1em;
-  }
-
-  button {
-    margin: 0 auto 3rem;
-    font-size: 1.4rem;
-  }
-
-  .time {
-    font-size: 1.8em;
-    line-height: 4.8rem;
-  }
-
-  .time-bigger {
-    font-size: 1.4em;
-  }
-
-  .quote {
-    font-size: 1em;
-  }
-
-  #up-arrow,
-  #down-arrow {
-    font-size: 3em;
-    font-weight: normal;
-  }
-
-  #cog,
-  #list {
-    width: 25px;
-    height: 25px;
-  }
-}
-
-@media only screen and (max-width: 375px) {
-  .question {
-    margin: 1.2em auto 1.6rem;
-    font-size: 1.2em;
-    line-height: 1.6rem;
-  }
-
-  .mobile-break::after {
-    content: "";
-    display: block;
-  }
-
-  input[type="datetime-local"] {
-    margin: 0 auto 1.6rem;
-    padding: 0.4rem;
-    font-size: 1em;
-  }
-
-  button {
-    margin: 0 auto 3rem;
-    font-size: 1.4rem;
-  }
-
-  .time {
-    font-size: 1.4em;
-    line-height: 4rem;
-  }
-
-  .time-bigger {
-    font-size: 1.4em;
-  }
-
-  .quote {
-    font-size: 1em;
-  }
-
-  #up-arrow,
-  #down-arrow {
-    font-size: 2.2em;
-    font-weight: normal;
-  }
-
-  #cog,
-  #list {
-    width: 25px;
-    height: 25px;
   }
 }

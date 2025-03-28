@@ -1,42 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Time On Earth">
-    <meta name="keywords" content="soma, solutions, human being">
-    <meta property="og:title" content="TIME ON EARTH">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.takeasoma.com/002"> 
-    <meta property="og:image" content="../icons/apple-touch-icon-soma-002.png">
-    <meta property="og:description" content="Soma 002">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="description" content="Time On Earth" />
+    <meta name="keywords" content="soma, solutions, human being" />
+    <meta property="og:title" content="TIME ON EARTH" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.takeasoma.com/002" />
+    <meta
+      property="og:image"
+      content="../icons/apple-touch-icon-soma-002.png"
+    />
+    <meta property="og:description" content="Soma 002" />
     <title>TIME ON EARTH</title>
-    <link rel="icon" href="../icons/light-mode-favicon-soma-002.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="icon" href="../icons/dark-mode-favicon-soma-002.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/light-mode-favicon-soma-002.ico" media="(prefers-color-scheme: light)" type="image/x-icon">
-    <link rel="shortcut icon" href="../icons/dark-mode-favicon-soma-002.ico" media="(prefers-color-scheme: dark)" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../icons/apple-touch-icon-soma-002.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.counter.dev/script.js" data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960" data-utcoffset="1"></script>
-</head>
-<body>
-    <div class="container">
-        <h1 class="question" id="question">What is the <span class="mobile-break">datetime</span> of your birth?</h1>
-        <input type="datetime-local" id="birth-datetime" min="1908-05-23T00:00" required>
-        <button id="enter-button" disabled>Enter</button>
+    <link
+      rel="icon"
+      href="../icons/light-mode-favicon-soma-002.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="icon"
+      href="../icons/dark-mode-favicon-soma-002.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/light-mode-favicon-soma-002.ico"
+      media="(prefers-color-scheme: light)"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="../icons/dark-mode-favicon-soma-002.ico"
+      media="(prefers-color-scheme: dark)"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="../icons/apple-touch-icon-soma-002.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="trackTimeOnEarth.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/31e1076c4c.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.counter.dev/script.js"
+      data-id="d0b009bd-c682-4734-a63f-ca06ec6ff960"
+      data-utcoffset="1"
+    ></script>
+  </head>
+  <body>
+    <dialog>
+      <form method="dialog">
+        <p class="question">
+          What is the datetime<br />
+          of your birth?
+        </p>
+        <input type="datetime-local" min="1908-05-23T00:00" required />
+        <button class="enter-button">Enter</button>
+      </form>
+    </dialog>
 
-        <div id="result-screen" class="hidden">
-            <span id="up-arrow">︿</span>
-            <div id="time-on-earth" class="time"></div>
-            <span id="down-arrow">﹀</span>
-        </div>
-    </div>
+    <header>
+      <button class="round-button" id="settings">
+        <i class="fa-solid fa-cog"></i>
+      </button>
+    </header>
 
-    <div id="controls" class="hidden">
-        <img id="cog" src="cog.png" />
-        <a href="../"><img id="list" src="list.png" /></a>
-    </div>
+    <main>
+      <button class="arrow-button" id="arrow-up">︿</button>
+      <p class="time">
+        You have<br />
+        <span class="time-bigger"></span><br />
+        on earth
+      </p>
+      <button class="arrow-button" id="arrow-down">﹀</button>
+    </main>
 
-    <script src="calculateTimeOnEarth.js"></script>
-</body>
+    <footer>
+      <a href="../"
+        ><button class="round-button">
+          <i class="fa-solid fa-angle-left"></i></button
+      ></a>
+    </footer>
+  </body>
 </html>
