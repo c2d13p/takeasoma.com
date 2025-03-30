@@ -136,3 +136,9 @@ window.addEventListener("load", () => {
     img.style.display = "block";
   });
 });
+
+document.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", function () {
+    this.blur();
+  });
+});

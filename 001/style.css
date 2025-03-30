@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow: hidden;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -17,7 +22,6 @@ body {
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1440px;
-  overflow: hidden;
   position: relative;
 }
 
