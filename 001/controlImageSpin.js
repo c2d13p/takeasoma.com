@@ -22,18 +22,23 @@ function updateAnimationDuration(duration) {
   image.style.animationDuration = `${duration}s`;
 }
 
+function toggleRotationClass(element, isClockwise) {
+  element.classList.remove(isClockwise ? "clockwise" : "anticlockwise");
+  element.classList.add(isClockwise ? "anticlockwise" : "clockwise");
+}
+
 function increaseSpeed() {
-  let speedStep = getSpeedStep();
+  const speedStep = getSpeedStep();
   if (currentDuration > 1) {
-    currentDuration -= speedStep;
+    currentDuration = Math.max(1, currentDuration - speedStep);
     updateAnimationDuration(currentDuration);
   }
 }
 
 function decreaseSpeed() {
-  let speedStep = getSpeedStep();
+  const speedStep = getSpeedStep();
   if (currentDuration < 300) {
-    currentDuration += speedStep;
+    currentDuration = Math.min(300, currentDuration + speedStep);
     updateAnimationDuration(currentDuration);
   }
 }
@@ -52,78 +57,48 @@ function stopChangingSpeed() {
   clearInterval(intervalId);
 }
 
-increaseSpeedBtn.addEventListener("click", increaseSpeed);
-decreaseSpeedBtn.addEventListener("click", decreaseSpeed);
-increaseSpeedBtn.addEventListener("pointerdown", startIncreasingSpeed);
-increaseSpeedBtn.addEventListener("pointerup", stopChangingSpeed);
-increaseSpeedBtn.addEventListener("pointerleave", stopChangingSpeed);
-increaseSpeedBtn.addEventListener("pointercancel", stopChangingSpeed);
-decreaseSpeedBtn.addEventListener("pointerdown", startDecreasingSpeed);
-decreaseSpeedBtn.addEventListener("pointerup", stopChangingSpeed);
-decreaseSpeedBtn.addEventListener("pointerleave", stopChangingSpeed);
-decreaseSpeedBtn.addEventListener("pointercancel", stopChangingSpeed);
-
-function stopRotation() {
-  text.style.animationPlayState = "paused";
-  image.style.animationPlayState = "paused";
-}
-
-function resumeRotation() {
-  text.style.animationPlayState = "running";
-  image.style.animationPlayState = "running";
+function setRotationState(state) {
+  text.style.animationPlayState = state;
+  image.style.animationPlayState = state;
 }
 
 function invertSpin() {
-  if (isClockwiseText) {
-    text.classList.remove("clockwise");
-    text.classList.add("anticlockwise");
-  } else {
-    text.classList.remove("anticlockwise");
-    text.classList.add("clockwise");
-  }
-
-  if (isClockwiseImage) {
-    image.classList.remove("clockwise");
-    image.classList.add("anticlockwise");
-  } else {
-    image.classList.remove("anticlockwise");
-    image.classList.add("clockwise");
-  }
+  toggleRotationClass(text, isClockwiseText);
+  toggleRotationClass(image, isClockwiseImage);
 
   isClockwiseText = !isClockwiseText;
   isClockwiseImage = !isClockwiseImage;
 }
 
-text.addEventListener("pointerdown", stopRotation);
-text.addEventListener("pointerup", resumeRotation);
-text.addEventListener("pointercancel", resumeRotation);
-text.addEventListener("pointerleave", resumeRotation);
-image.addEventListener("pointerdown", stopRotation);
-image.addEventListener("pointerup", resumeRotation);
-image.addEventListener("pointercancel", resumeRotation);
-image.addEventListener("pointerleave", resumeRotation);
+increaseSpeedBtn.addEventListener("click", increaseSpeed);
+decreaseSpeedBtn.addEventListener("click", decreaseSpeed);
+
+increaseSpeedBtn.addEventListener("pointerdown", startIncreasingSpeed);
+decreaseSpeedBtn.addEventListener("pointerdown", startDecreasingSpeed);
+
+["pointerup", "pointerleave", "pointercancel"].forEach((event) => {
+  increaseSpeedBtn.addEventListener(event, stopChangingSpeed);
+  decreaseSpeedBtn.addEventListener(event, stopChangingSpeed);
+});
+
+[text, image].forEach((element) => {
+  element.addEventListener("pointerdown", () => setRotationState("paused"));
+  ["pointerup", "pointercancel", "pointerleave"].forEach((event) => {
+    element.addEventListener(event, () => setRotationState("running"));
+  });
+  element.ondragstart = () => false;
+});
 
 invertSpinBtn.addEventListener("click", invertSpin);
 
 document.body.style.webkitTouchCallout = "none";
 document.body.style.webkitUserSelect = "none";
 
-document.addEventListener(
-  "dblclick",
-  function (event) {
-    event.preventDefault();
-  },
-  { passive: false }
-);
+document.addEventListener("dblclick", (event) => event.preventDefault(), {
+  passive: false,
+});
 
-document.getElementById("text").ondragstart = function () {
-  return false;
-};
-document.getElementById("image").ondragstart = function () {
-  return false;
-};
-
-window.oncontextmenu = function (event) {
+window.oncontextmenu = (event) => {
   event.preventDefault();
   event.stopPropagation();
   return false;
@@ -132,7 +107,7 @@ window.oncontextmenu = function (event) {
 window.addEventListener("load", () => {
   document.querySelectorAll("img").forEach((img) => {
     img.style.display = "none";
-    void img.offsetHeight;
+    void img.offsetHeight; // Force reflow
     img.style.display = "block";
   });
 });
