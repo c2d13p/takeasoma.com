@@ -17,3 +17,24 @@ function load() {
 }
 
 setInterval(load, 300000);
+
+document.body.style.webkitTouchCallout = "none";
+document.body.style.webkitUserSelect = "none";
+
+document.addEventListener("dblclick", (event) => event.preventDefault(), {
+  passive: false,
+});
+
+window.addEventListener("load", () => {
+  document.querySelectorAll("img").forEach((img) => {
+    img.style.display = "none";
+    void img.offsetHeight; // Force reflow
+    img.style.display = "block";
+  });
+});
+
+document.querySelectorAll("button").forEach((button) => {
+  button.addEventListener("click", function () {
+    this.blur();
+  });
+});
