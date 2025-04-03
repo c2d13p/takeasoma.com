@@ -85,7 +85,13 @@ main {
   background-color: var(--bg-clr-light);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
+}
+
+@media (orientation: landscape) and (max-height: 700px) {
+  main {
+    justify-content: center;
+  }
 }
 
 @keyframes rotate-color {
