@@ -4,7 +4,7 @@
   --icon-bg-clr-active: rgb(174, 174, 174);
   --icon-clr: rgb(58, 58, 58);
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
-  --padding: clamp(0.625rem, 0.2321rem + 1.9643vw, 2rem);
+  --padding: clamp(0.75rem, -0.4643rem + 6.0714vw, 5rem);
 }
 
 .dark {
