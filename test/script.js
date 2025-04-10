@@ -1,215 +1,269 @@
-const TimeTracker = {
-  elements: {
-    arrowDown: document.getElementById("arrow-down"),
-    arrowUp: document.getElementById("arrow-up"),
-    dialog: document.querySelector("dialog"),
-    birthInput: document.querySelector("dialog input[type='datetime-local']"),
-    enterButton: document.querySelector(".enter-button"),
-    settingsButton: document.getElementById("settings"),
-    timeDisplay: document.querySelector(".time"),
-  },
+document.addEventListener("DOMContentLoaded", () => {
+  // Cache DOM elements
+  const img = document.querySelector("img");
+  const imgWrapper = document.querySelector(".img-wrapper");
+  const previousBtn = document.getElementById("previous");
+  const nextBtn = document.getElementById("next");
+  const playBtn = document.getElementById("play");
 
-  modes: ["days", "hours", "minutes", "years", "months", "weeks"],
-  currentMode: "days",
-  originalTimeText: "",
+  // Create the dialogs and append to body
+  const openingDialog = createOpeningDialog();
+  const slideshowDialog = createSlideshowDialog();
+  document.body.appendChild(openingDialog);
+  document.body.appendChild(slideshowDialog);
 
-  init() {
-    this.setupEventListeners();
-    this.checkInitialState();
-  },
+  // State management
+  let images = [];
+  let currentIndex = 0;
+  let slideshowInterval = null;
+  let touchStartX = 0;
+  let touchEndX = 0;
 
-  setupEventListeners() {
-    this.elements.settingsButton.addEventListener("click", () =>
-      this.openSettingsDialog()
-    );
-    this.elements.birthInput.addEventListener("input", () =>
-      this.validateInput()
-    );
-    this.elements.enterButton.addEventListener("click", () =>
-      this.handleEnterButton()
-    );
-    this.elements.arrowUp.addEventListener("click", () =>
-      this.cycleTimeDisplay("up")
-    );
-    this.elements.arrowDown.addEventListener("click", () =>
-      this.cycleTimeDisplay("down")
-    );
-    this.elements.timeDisplay.addEventListener("click", () =>
-      this.toggleQuote()
-    );
+  // Cookie functions
+  const cookies = {
+    set(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
+      const expires = "Expires=" + d.toUTCString();
+      document.cookie = `${name}=${value}; ${expires}; path=/`;
+    },
 
-    document.addEventListener("keydown", (event) => {
-      if (
-        event.key === "Enter" &&
-        document.activeElement.tagName !== "BUTTON"
-      ) {
-        event.preventDefault();
-        this.handleEnterButton();
+    get(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        const c = ca[i].trim();
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
       }
-      if (event.key === "ArrowUp") this.cycleTimeDisplay("up");
-      if (event.key === "ArrowDown") this.cycleTimeDisplay("down");
+      return null;
+    },
+  };
+
+  // Dialog creation functions
+  function createOpeningDialog() {
+    const dialog = document.createElement("dialog");
+    dialog.className = "opening-dialog";
+    dialog.innerHTML = `
+      <img src="logo.png" />
+      <h1 id="next-image-message"></h1>
+    `;
+    return dialog;
+  }
+
+  function createSlideshowDialog() {
+    const dialog = document.createElement("dialog");
+    dialog.className = "slideshow-dialog";
+    dialog.innerHTML = `
+        <img id="slideshow-img" src="">
+    `;
+
+    dialog.addEventListener("click", () => {
+      stopSlideshow();
+      dialog.close();
     });
 
-    document.addEventListener("dblclick", (event) => event.preventDefault(), {
-      passive: false,
-    });
-  },
+    return dialog;
+  }
 
-  checkInitialState() {
-    const birthDatetimeCookie = this.getCookie("birthDatetime");
+  // Opening dialog functions
+  function showOpeningDialog() {
+    const today = new Date().toDateString();
+    const lastShown = cookies.get("OpeningDialogLastShown");
 
-    if (!birthDatetimeCookie) {
-      this.elements.dialog.showModal();
-      this.validateInput();
+    // Show dialog only once per day
+    if (lastShown !== today) {
+      const nextImageMessage = document.getElementById("next-image-message");
+      nextImageMessage.textContent = getNextImageMessage();
+
+      openingDialog.showModal();
+
+      // Close dialog after 2 seconds
+      setTimeout(() => {
+        openingDialog.close();
+      }, 2000);
+
+      cookies.set("openingDialogLastShown", today, 1);
+    }
+  }
+
+  function getNextImageMessage() {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+
+    // Calculate days until next Monday (1)
+    const daysUntilNextMonday = dayOfWeek === 1 ? 0 : (8 - dayOfWeek) % 7;
+
+    if (daysUntilNextMonday === 0) {
+      return "New image out today";
+    } else if (daysUntilNextMonday === 1) {
+      return "New image out tomorrow";
     } else {
-      const birthDatetime = new Date(birthDatetimeCookie);
-      this.updateTimeDisplay(birthDatetime, this.currentMode);
+      return `New image out in ${daysUntilNextMonday} days`;
     }
-  },
+  }
 
-  setCookie(name, value, days) {
-    const d = new Date();
-    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-    const expires = "Expires=" + d.toUTCString();
-    document.cookie = `${name}=${value}; ${expires}; path=/`;
-  },
+  // Slideshow functions
+  function startSlideshow() {
+    const slideshowImg = document.getElementById("slideshow-img");
 
-  getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i].trim();
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    slideshowImg.src = img.src;
+    slideshowDialog.showModal();
+
+    // Start automatic image change
+    slideshowInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateImage();
+      slideshowImg.src = img.src;
+    }, 5000);
+  }
+
+  function stopSlideshow() {
+    if (slideshowInterval) {
+      clearInterval(slideshowInterval);
+      slideshowInterval = null;
     }
-    return null;
-  },
+  }
 
-  openSettingsDialog() {
-    this.elements.birthInput.disabled = true;
-    this.elements.dialog.showModal();
-    setTimeout(() => {
-      this.elements.birthInput.disabled = false;
-    }, 10);
+  function updateImage() {
+    const image = images[currentIndex];
+    if (!image) return;
 
-    const birthDatetime = this.getCookie("birthDatetime");
-    if (birthDatetime) {
-      const date = new Date(birthDatetime);
-      this.elements.birthInput.value = this.formatDateForInput(date);
-      this.elements.enterButton.disabled = !this.elements.birthInput.value;
-    } else {
-      this.elements.birthInput.value = "";
-    }
-  },
+    const url = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
 
-  validateInput() {
-    this.elements.enterButton.disabled = !this.elements.birthInput.value;
-  },
+    // Preload image
+    const preloadImg = new Image();
+    preloadImg.onload = () => {
+      img.src = url;
+      imgWrapper.style.backgroundImage = `url('${url}')`;
 
-  formatDateForInput(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    const hours = String(date.getHours()).padStart(2, "0");
-    const minutes = String(date.getMinutes()).padStart(2, "0");
+      // Update slideshow image if slideshow is active
+      const slideshowImg = document.getElementById("slideshow-img");
+      if (slideshowDialog.open && slideshowImg) {
+        slideshowImg.src = url;
+      }
 
-    return `${year}-${month}-${day}T${hours}:${minutes}`;
-  },
+      cookies.set("currentIndex", currentIndex, 1);
+    };
+    preloadImg.onerror = () => {
+      console.error(`Failed to load image: ${url}`);
+      goToNext();
+    };
+    preloadImg.src = url;
+  }
 
-  handleEnterButton() {
-    if (!this.elements.birthInput.checkValidity()) {
-      this.elements.birthInput.reportValidity();
-      return;
-    }
+  function goToPrevious() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateImage();
+  }
 
-    const birthDatetime = new Date(this.elements.birthInput.value);
-    this.setCookie("birthDatetime", birthDatetime.toISOString());
-    this.updateTimeDisplay(birthDatetime, this.currentMode);
-    this.elements.dialog.close();
-  },
+  function goToNext() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage();
+  }
 
-  updateTimeDisplay(birthDatetime, mode) {
-    const timeBiggerDisplay = document.querySelector(".time-bigger");
-    const now = new Date();
-    let diff;
+  // Event listeners for buttons
+  previousBtn.addEventListener("click", goToPrevious);
+  nextBtn.addEventListener("click", goToNext);
+  playBtn.addEventListener("click", startSlideshow);
 
-    switch (mode) {
-      case "days":
-        diff = Math.floor((now - birthDatetime) / (1000 * 60 * 60 * 24));
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    switch (e.key) {
+      case "ArrowLeft":
+      case "ArrowUp":
+        goToPrevious();
         break;
-      case "hours":
-        diff = Math.floor((now - birthDatetime) / (1000 * 60 * 60));
+      case "ArrowRight":
+      case "ArrowDown":
+        goToNext();
         break;
-      case "minutes":
-        diff = Math.floor((now - birthDatetime) / (1000 * 60));
-        break;
-      case "years":
-        diff = now.getFullYear() - birthDatetime.getFullYear();
-        if (
-          now <
-          new Date(
-            now.getFullYear(),
-            birthDatetime.getMonth(),
-            birthDatetime.getDate()
-          )
-        ) {
-          diff--;
+      case "Escape":
+        if (slideshowDialog.open) {
+          stopSlideshow();
+          slideshowDialog.close();
         }
         break;
-      case "months":
-        diff =
-          (now.getFullYear() - birthDatetime.getFullYear()) * 12 +
-          (now.getMonth() - birthDatetime.getMonth());
-        if (now.getDate() < birthDatetime.getDate()) {
-          diff--;
-        }
-        break;
-      case "weeks":
-        diff = Math.floor((now - birthDatetime) / (1000 * 60 * 60 * 24 * 7));
-        break;
     }
+  });
 
-    timeBiggerDisplay.innerHTML = `${diff.toLocaleString()} ${
-      mode.charAt(0).toUpperCase() + mode.slice(1)
-    }`;
-  },
+  // Touch swipe handling
+  function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+  }
 
-  cycleTimeDisplay(direction) {
-    if (this.elements.timeDisplay.innerHTML.includes("quote")) {
-      this.restoreTime();
-    }
-    const currentIndex = this.modes.indexOf(this.currentMode);
-    const newIndex =
-      direction === "down"
-        ? (currentIndex + 1) % this.modes.length
-        : (currentIndex - 1 + this.modes.length) % this.modes.length;
+  function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+  }
 
-    this.currentMode = this.modes[newIndex];
-    const birthDatetime = new Date(this.getCookie("birthDatetime"));
-    this.updateTimeDisplay(birthDatetime, this.currentMode);
-  },
+  function handleSwipe() {
+    const swipeThreshold = 50; // Minimum distance for a swipe to register
+    const swipeDistance = touchEndX - touchStartX;
 
-  toggleQuote() {
-    if (this.elements.timeDisplay.innerHTML.includes("quote")) {
-      this.restoreTime();
+    if (Math.abs(swipeDistance) < swipeThreshold) return; // Ignore small movements
+
+    if (swipeDistance > 0) {
+      // Swipe right - go to previous image
+      goToPrevious();
     } else {
-      this.showQuote();
+      // Swipe left - go to next image
+      goToNext();
     }
-  },
+  }
 
-  showQuote() {
-    this.originalTimeText = this.elements.timeDisplay.innerHTML;
-    this.elements.timeDisplay.innerHTML = `
-      <span class="quote">
-        It's not the ${this.currentMode}<br> 
-        in your life that counts;<br> 
-        it's the life in your ${this.currentMode}
-      </span>`;
-  },
+  // Add touch event listeners
+  imgWrapper.addEventListener("touchstart", handleTouchStart, {
+    passive: true,
+  });
+  imgWrapper.addEventListener("touchend", handleTouchEnd, { passive: true });
 
-  restoreTime() {
-    this.elements.timeDisplay.innerHTML = this.originalTimeText;
-  },
-};
+  // Initialize application
+  function init() {
+    fetch("test.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (!Array.isArray(data) || data.length === 0) {
+          throw new Error("Invalid data format or empty data");
+        }
 
-// Initialize the TimeTracker
-document.addEventListener("DOMContentLoaded", () => TimeTracker.init());
+        images = data;
+
+        // Restore last position from cookie
+        const savedIndex = parseInt(cookies.get("currentIndex"), 10);
+        currentIndex =
+          isNaN(savedIndex) || savedIndex >= images.length ? 0 : savedIndex;
+
+        updateImage();
+
+        // Preload next few images for smoother experience
+        preloadNextImages(3);
+
+        // Show welcome dialog if needed
+        showOpeningDialog();
+      })
+      .catch((error) => {
+        console.error("Failed to load images:", error);
+        imgWrapper.textContent =
+          "Failed to load images. Please try again later.";
+      });
+  }
+
+  function preloadNextImages(count) {
+    for (let i = 1; i <= count; i++) {
+      const nextIndex = (currentIndex + i) % images.length;
+      const nextImage = images[nextIndex];
+      if (nextImage) {
+        const preloadImg = new Image();
+        preloadImg.src = `https://drive.google.com/thumbnail?id=${nextImage.id}&sz=s1024`;
+      }
+    }
+  }
+
+  // Start the app
+  init();
+});
