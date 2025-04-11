@@ -14,11 +14,30 @@ body {
   background-color: var(--bg-clr);
   display: grid;
   font-family: var(--ff);
+  grid-template-columns: auto 1fr auto;
   grid-template-rows: auto 1fr auto;
   height: 100dvh;
   margin: 0 auto;
   max-width: 1440px;
   position: relative;
+}
+
+@media (orientation: landscape) {
+  body {
+    grid-template-areas:
+      "header-left header header-right"
+      "controls main ."
+      "footer-left footer footer-right";
+  }
+}
+
+@media (orientation: portrait) {
+  body {
+    grid-template-areas:
+      "header-left header header-right"
+      ". main ."
+      "footer-left controls footer-right";
+  }
 }
 
 .backdrop-blur-layer {
@@ -46,18 +65,11 @@ footer {
 }
 
 header {
-  justify-content: end;
+  grid-area: header-right;
 }
 
 footer {
-  place-items: center;
-  position: relative;
-}
-
-footer a {
-  position: absolute;
-  left: 1em;
-  bottom: 1em;
+  grid-area: footer-left;
 }
 
 .controls {
@@ -66,9 +78,20 @@ footer a {
   border-radius: 100vmax;
   display: flex;
   gap: 1em;
+  grid-area: controls;
   height: calc(var(--icon-size) * 2);
   justify-content: space-evenly;
+  place-self: center;
   width: calc(var(--icon-size) * 2 * 3);
+  z-index: 1;
+}
+
+@media (orientation: landscape) {
+  .controls {
+    flex-direction: column;
+    height: calc(var(--icon-size) * 2 * 3);
+    width: calc(var(--icon-size) * 2);
+  }
 }
 
 i {
@@ -109,6 +132,7 @@ button {
 }
 
 main {
+  grid-area: main;
   overflow: hidden;
   width: 100%;
 }
