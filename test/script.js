@@ -68,19 +68,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Opening dialog functions
   function showOpeningDialog() {
     const today = new Date().toDateString();
-    const lastShown = cookies.get("OpeningDialogLastShown");
+    const lastShown = cookies.get("openingDialogLastShown");
 
     // Show dialog only once per day
-    if (lastShown !== today) {
+    if (lastShown == today) {
       const nextImageMessage = document.getElementById("next-image-message");
-      nextImageMessage.textContent = getNextImageMessage();
+      nextImageMessage.innerHTML = getNextImageMessage();
 
       openingDialog.showModal();
 
-      // Close dialog after 2 seconds
+      // Close dialog after 3 seconds
       setTimeout(() => {
         openingDialog.close();
-      }, 2000);
+      }, 3000);
 
       cookies.set("openingDialogLastShown", today, 1);
     }
@@ -94,11 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const daysUntilNextMonday = dayOfWeek === 1 ? 0 : (8 - dayOfWeek) % 7;
 
     if (daysUntilNextMonday === 0) {
-      return "New image out today";
+      return "New image out<br>today";
     } else if (daysUntilNextMonday === 1) {
-      return "New image out tomorrow";
+      return "New image out<br>tomorrow";
     } else {
-      return `New image out in ${daysUntilNextMonday} days`;
+      return `New image out<br>in ${daysUntilNextMonday} days`;
     }
   }
 
@@ -251,6 +251,20 @@ document.addEventListener("DOMContentLoaded", () => {
         imgWrapper.textContent =
           "Failed to load images. Please try again later.";
       });
+
+    // Prevent defaults
+    document.body.style.webkitTouchCallout = "none";
+    document.body.style.webkitUserSelect = "none";
+
+    document.addEventListener("dblclick", (event) => event.preventDefault(), {
+      passive: false,
+    });
+
+    window.oncontextmenu = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    };
   }
 
   function preloadNextImages(count) {

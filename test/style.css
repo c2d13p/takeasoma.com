@@ -3,11 +3,17 @@
 :root {
   --bg-clr: #ffffff;
   --controls-bg-gradient: linear-gradient(#d5514d, #693856);
-  --controls-icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
+  --controls-icon-size: clamp(1.25rem, 1.0357rem + 1.0714vw, 2rem);
   --ff: "Rubik Mono One";
   --icon-bg-gradient: linear-gradient(#ff8d11, #d5514d, #693856);
   --icon-clr: #f9f8f5;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
+  --main-height-size: min(calc(100% - 7.5rem), 800px);
+  --main-width-size: min(
+    calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)),
+    800px
+  );
+  --opening-dialog-fs: clamp(1.5rem, 0.6786rem + 4.1071vw, 4.375rem);
 }
 
 body {
@@ -25,9 +31,9 @@ body {
 @media (orientation: landscape) {
   body {
     grid-template-areas:
-      "header-left header header-right"
+      "header-left main header-right"
       "controls main ."
-      "footer-left footer footer-right";
+      "footer-left main footer-right";
   }
 }
 
@@ -35,7 +41,7 @@ body {
   body {
     grid-template-areas:
       "header-left header header-right"
-      ". main ."
+      "main main main"
       "footer-left controls footer-right";
   }
 }
@@ -54,14 +60,9 @@ body {
 
 header,
 footer {
+  padding: 1em;
   position: relative;
   z-index: 1;
-}
-
-header,
-footer {
-  display: grid;
-  padding: 1em;
 }
 
 header {
@@ -77,20 +78,20 @@ footer {
   background: var(--controls-bg-gradient);
   border-radius: 100vmax;
   display: flex;
-  gap: 1em;
+  gap: 0.3em;
   grid-area: controls;
-  height: calc(var(--icon-size) * 2);
+  height: calc(var(--controls-icon-size) * 2);
   justify-content: space-evenly;
   place-self: center;
-  width: calc(var(--icon-size) * 2 * 3);
+  width: calc(var(--controls-icon-size) * 2 * 3);
   z-index: 1;
 }
 
 @media (orientation: landscape) {
   .controls {
     flex-direction: column;
-    height: calc(var(--icon-size) * 2 * 3);
-    width: calc(var(--icon-size) * 2);
+    height: calc(var(--controls-icon-size) * 2 * 3);
+    width: calc(var(--controls-icon-size) * 2);
   }
 }
 
@@ -133,8 +134,10 @@ button {
 
 main {
   grid-area: main;
+  height: var(--main-height-size);
   overflow: hidden;
-  width: 100%;
+  place-self: center;
+  width: var(--main-width-size);
 }
 
 .img-wrapper {
@@ -155,43 +158,42 @@ img {
   z-index: 1;
 }
 
+/* ------ Dialogs ------ */
+
 dialog {
   background: none;
   border: none;
+  outline: none;
 }
 
 .opening-dialog {
-  max-width: 50%;
+  max-width: var(--main-width-size);
   text-align: center;
 }
 
 .opening-dialog::backdrop {
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: saturate(180%) blur(10px);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .opening-dialog h1 {
   background: -webkit-linear-gradient(#7d7697, #ff8d11, #d5514d, #693856);
   background-clip: text;
-  font-size: 2rem;
+  font-size: var(--opening-dialog-fs);
+  line-height: 1.1;
   -webkit-text-fill-color: transparent;
 }
 
 .slideshow-dialog {
   cursor: pointer;
-  max-width: 800px;
-  max-height: 90vh;
-  width: 90%;
 }
 
 .slideshow-dialog::backdrop {
-  backdrop-filter: blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
   background-color: rgba(0, 0, 0, 0.9);
 }
 
 .slideshow-dialog img {
   height: auto;
   max-height: 80vh;
-  object-fit: contain;
-  width: 100%;
 }
