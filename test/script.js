@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let slideshowInterval = null;
   let touchStartX = 0;
   let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
 
   // Cookie functions
   const cookies = {
@@ -168,14 +170,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Keyboard navigation
   document.addEventListener("keydown", (e) => {
+    const isLandscape = window.innerWidth > window.innerHeight;
+
     switch (e.key) {
       case "ArrowLeft":
+        if (!isLandscape) goToPrevious();
+        break;
       case "ArrowUp":
-        goToPrevious();
+        if (isLandscape) goToPrevious();
         break;
       case "ArrowRight":
+        if (!isLandscape) goToNext();
+        break;
       case "ArrowDown":
-        goToNext();
+        if (isLandscape) goToNext();
         break;
       case "Escape":
         if (slideshowDialog.open) {
@@ -189,25 +197,39 @@ document.addEventListener("DOMContentLoaded", () => {
   // Touch swipe handling
   function handleTouchStart(e) {
     touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
   }
 
   function handleTouchEnd(e) {
     touchEndX = e.changedTouches[0].clientX;
+    touchEndY = e.changedTouches[0].clientY;
     handleSwipe();
   }
 
   function handleSwipe() {
     const swipeThreshold = 50; // Minimum distance for a swipe to register
-    const swipeDistance = touchEndX - touchStartX;
+    const isLandscape = window.innerWidth > window.innerHeight;
 
-    if (Math.abs(swipeDistance) < swipeThreshold) return; // Ignore small movements
+    if (isLandscape) {
+      // In landscape mode, respond to vertical swipes
+      const swipeDistanceY = touchEndY - touchStartY;
+      if (Math.abs(swipeDistanceY) < swipeThreshold) return; // Ignore small movements
 
-    if (swipeDistance > 0) {
-      // Swipe right - go to previous image
-      goToPrevious();
+      if (swipeDistanceY > 0) {
+        goToPrevious(); // Swipe down - go to previous image
+      } else {
+        goToNext(); // Swipe up - go to next image
+      }
     } else {
-      // Swipe left - go to next image
-      goToNext();
+      // In portrait mode, respond to horizontal swipes
+      const swipeDistanceX = touchEndX - touchStartX;
+      if (Math.abs(swipeDistanceX) < swipeThreshold) return; // Ignore small movements
+
+      if (swipeDistanceX > 0) {
+        goToPrevious(); // Swipe right - go to previous image
+      } else {
+        goToNext(); // Swipe left - go to next image
+      }
     }
   }
 
@@ -219,6 +241,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize application
   function init() {
+    // Prevent defaults
+    document.addEventListener(
+      "touchmove",
+      function (event) {
+        // Prevent default only for touch events that aren't on scrollable elements
+        if (!isScrollableElement(event.target)) {
+          event.preventDefault();
+        }
+      },
+      { passive: false }
+    );
+
+    function isScrollableElement(element) {
+      // Check if the element or any of its parents has overflow that allows scrolling
+      while (element && element !== document.body) {
+        const style = window.getComputedStyle(element);
+        const overflow = style.getPropertyValue("overflow");
+        const overflowY = style.getPropertyValue("overflow-y");
+
+        if (
+          overflow === "auto" ||
+          overflow === "scroll" ||
+          overflowY === "auto" ||
+          overflowY === "scroll"
+        ) {
+          return true;
+        }
+        element = element.parentElement;
+      }
+      return false;
+    }
+
+    document.body.style.webkitTouchCallout = "none";
+    document.body.style.webkitUserSelect = "none";
+
+    document.addEventListener("dblclick", (event) => event.preventDefault(), {
+      passive: false,
+    });
+
+    window.oncontextmenu = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    };
+
     fetch("test.json")
       .then((response) => {
         if (!response.ok) {
@@ -251,20 +318,6 @@ document.addEventListener("DOMContentLoaded", () => {
         imgWrapper.textContent =
           "Failed to load images. Please try again later.";
       });
-
-    // Prevent defaults
-    document.body.style.webkitTouchCallout = "none";
-    document.body.style.webkitUserSelect = "none";
-
-    document.addEventListener("dblclick", (event) => event.preventDefault(), {
-      passive: false,
-    });
-
-    window.oncontextmenu = (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      return false;
-    };
   }
 
   function preloadNextImages(count) {

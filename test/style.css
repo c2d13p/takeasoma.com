@@ -100,6 +100,30 @@ i {
   font-size: var(--icon-size);
 }
 
+@media (orientation: landscape) {
+  #previous i.fa-solid.fa-angle-up,
+  #next i.fa-solid.fa-angle-down {
+    display: inline-block;
+  }
+
+  #previous i.fa-solid.fa-angle-left,
+  #next i.fa-solid.fa-angle-right {
+    display: none;
+  }
+}
+
+@media (orientation: portrait) {
+  #previous i.fa-solid.fa-angle-up,
+  #next i.fa-solid.fa-angle-down {
+    display: none;
+  }
+
+  #previous i.fa-solid.fa-angle-left,
+  #next i.fa-solid.fa-angle-right {
+    display: inline-block;
+  }
+}
+
 .controls button i {
   font-size: var(--controls-icon-size);
 }
