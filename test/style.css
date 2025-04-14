@@ -8,11 +8,6 @@
   --icon-bg-gradient: linear-gradient(#ff8d11, #d5514d, #693856);
   --icon-clr: #f9f8f5;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
-  --main-height-size: min(calc(100% - 7.5rem), 800px);
-  --main-width-size: min(
-    calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)),
-    800px
-  );
   --opening-dialog-fs: clamp(1.5rem, 0.6786rem + 4.1071vw, 4.375rem);
 }
 
@@ -158,10 +153,22 @@ button {
 
 main {
   grid-area: main;
-  height: var(--main-height-size);
   overflow: hidden;
   place-self: center;
-  width: var(--main-width-size);
+}
+
+@media (orientation: landscape) {
+  main {
+    height: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
+    width: min(calc(100% - 7.5rem), 800px);
+  }
+}
+
+@media (orientation: portrait) {
+  main {
+    height: min(calc(100% - 7.5rem), 800px);
+    width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
+  }
 }
 
 .img-wrapper {
