@@ -5,6 +5,7 @@
   --controls-bg-gradient: linear-gradient(#d5514d, #693856);
   --controls-icon-size: clamp(1.25rem, 1.0357rem + 1.0714vw, 2rem);
   --ff: "Rubik Mono One";
+  --fs: clamp(0.625rem, 0.4464rem + 0.8929vw, 1.25rem);
   --icon-bg-gradient: linear-gradient(#ff8d11, #d5514d, #693856);
   --icon-clr: #f9f8f5;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
@@ -54,6 +55,16 @@ footer {
 
 header {
   grid-area: header-right;
+}
+
+.title {
+  color: #000;
+  font-size: var(--fs);
+  grid-area: header-left;
+  line-height: 1.4;
+  place-self: center;
+  text-align: right;
+  z-index: 1;
 }
 
 footer {

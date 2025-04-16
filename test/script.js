@@ -104,6 +104,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Format the date title with line breaks
+  function formatDateTitle(title) {
+    return title.replace(/ /g, "<br />");
+  }
+
   // Slideshow functions
   function startSlideshow() {
     const slideshowImg = document.getElementById("slideshow-img");
@@ -133,6 +138,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get the current image
     const currentImg = imgWrapper.querySelector("img");
+
+    // Update the title
+    const title = document.querySelector("p.title");
+    if (title && image.title) {
+      title.innerHTML = formatDateTitle(image.title);
+    }
 
     if (currentImg) {
       // 1. Add slide down animation to current image
