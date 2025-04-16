@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Close dialog after 3 seconds
       setTimeout(() => {
         openingDialog.close();
-      }, 3000);
+      }, 2000);
 
       cookies.set("openingDialogLastShown", today, 1);
     }
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return false;
     }
-
+    /*
     document.body.style.webkitTouchCallout = "none";
     document.body.style.webkitUserSelect = "none";
 
@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
       event.stopPropagation();
       return false;
     };
-
+*/
     fetch("test.json")
       .then((response) => {
         if (!response.ok) {

@@ -153,20 +153,29 @@ button {
 
 main {
   grid-area: main;
+  height: min(calc(100% - 5rem), 800px);
   overflow: hidden;
   place-self: center;
+  width: min(calc(100% - 5rem), 800px);
 }
 
-@media (orientation: landscape) {
+@media (orientation: landscape) and (min-aspect-ratio: 3/2) {
   main {
     height: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
-    width: min(calc(100% - 7.5rem), 800px);
+    width: 100vmin;
   }
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (min-aspect-ratio: 2/3) {
   main {
-    height: min(calc(100% - 7.5rem), 800px);
+    height: 100vmin;
+    width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
+  }
+}
+
+@media (orientation: portrait) and (min-aspect-ratio: 2/4) {
+  main {
+    height: 90vmin;
     width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
   }
 }
@@ -194,7 +203,28 @@ img {
 dialog {
   background: none;
   border: none;
+  display: none;
+  opacity: 0;
   outline: none;
+  transition-property: overlay display opacity;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
+}
+
+dialog[open] {
+  display: block;
+  opacity: 1;
+}
+
+dialog::backdrop {
+  opacity: 0;
+  transition-property: overlay display opacity;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
+}
+
+dialog[open]::backdrop {
+  opacity: 1;
 }
 
 .opening-dialog {
@@ -227,4 +257,11 @@ dialog {
 .slideshow-dialog img {
   height: auto;
   max-height: 80vh;
+}
+
+@starting-style {
+  .slideshow-dialog[open],
+  .slideshow-dialog[open]::backdrop {
+    opacity: 0;
+  }
 }
