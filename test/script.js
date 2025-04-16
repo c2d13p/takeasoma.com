@@ -129,28 +129,69 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateImage() {
     const image = images[currentIndex];
     if (!image) return;
-
     const url = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
 
-    // Preload image
-    const preloadImg = new Image();
-    preloadImg.onload = () => {
-      img.src = url;
-      imgWrapper.style.backgroundImage = `url('${url}')`;
+    // Get the current image
+    const currentImg = imgWrapper.querySelector("img");
 
-      // Update slideshow image if slideshow is active
-      const slideshowImg = document.getElementById("slideshow-img");
-      if (slideshowDialog.open && slideshowImg) {
-        slideshowImg.src = url;
-      }
+    if (currentImg) {
+      // 1. Add slide down animation to current image
+      currentImg.classList.add("slide-down");
 
-      cookies.set("currentIndex", currentIndex, 1);
-    };
-    preloadImg.onerror = () => {
-      console.error(`Failed to load image: ${url}`);
-      goToNext();
-    };
-    preloadImg.src = url;
+      // 2. Wait for animation to finish
+      setTimeout(() => {
+        // 3. Preload the new image
+        const preloadImg = new Image();
+        preloadImg.onload = () => {
+          // 4. Change the src attribute
+          currentImg.src = url;
+          imgWrapper.style.backgroundImage = `url('${url}')`;
+
+          // 5. Remove slide-down and add slide-up
+          currentImg.classList.remove("slide-down");
+          currentImg.classList.add("slide-up");
+
+          // 6. Update slideshow image if slideshow is active
+          const slideshowImg = document.getElementById("slideshow-img");
+          if (slideshowDialog.open && slideshowImg) {
+            slideshowImg.src = url;
+          }
+
+          cookies.set("currentIndex", currentIndex, 1);
+        };
+
+        preloadImg.onerror = () => {
+          console.error(`Failed to load image: ${url}`);
+          goToNext();
+        };
+
+        preloadImg.src = url;
+      }, 500); // Wait for slide-down animation to complete
+    } else {
+      // First load with no current image
+      const preloadImg = new Image();
+      preloadImg.onload = () => {
+        img.src = url;
+        imgWrapper.style.backgroundImage = `url('${url}')`;
+
+        // Add slide-up animation
+        img.classList.add("slide-up");
+
+        const slideshowImg = document.getElementById("slideshow-img");
+        if (slideshowDialog.open && slideshowImg) {
+          slideshowImg.src = url;
+        }
+
+        cookies.set("currentIndex", currentIndex, 1);
+      };
+
+      preloadImg.onerror = () => {
+        console.error(`Failed to load image: ${url}`);
+        goToNext();
+      };
+
+      preloadImg.src = url;
+    }
   }
 
   function goToPrevious() {
