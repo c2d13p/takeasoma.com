@@ -168,19 +168,46 @@ button {
   top: 0;
   width: 100%;
   z-index: 0;
-
-  animation: slide-up 1s;
-  margin-top: 0%;
 }
 
 main {
   grid-area: main;
-  height: min(calc(100% - 5rem), 800px);
+  height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   place-self: center;
-  width: min(calc(100% - 5rem), 800px);
+  width: 100%;
 }
 
+.img-wrapper {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-origin: content-box;
+
+  box-sizing: border-box;
+  padding: 7rem;
+
+  position: relative;
+  transition: background-image 0.1s ease;
+}
+
+.img-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(25px) saturate(3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/*
 @media (orientation: landscape) and (min-aspect-ratio: 3/2) {
   main {
     height: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
@@ -201,45 +228,70 @@ main {
     width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
   }
 }
+*/
 
+/*
 .img-wrapper {
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  background-origin: content-box;
   display: flex;
   height: 100%;
   justify-content: center;
   width: 100%;
 
-  animation: slide-up 1s;
+  box-sizing: border-box;
+  padding: 5rem;
+
   margin-top: 0%;
 }
+  */
 
 img {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
   z-index: 1;
+  transform: translateY(0);
 }
 
 /* ------ Images animation ------ */
 
 @keyframes slide-up {
   from {
-    margin-top: -200%; /* Start from above (negative margin) */
+    transform: translateY(-400%);
   }
   to {
-    margin-top: 0%; /* End at normal position */
+    transform: translateY(0);
   }
 }
 
 @keyframes slide-down {
   from {
-    margin-top: 0%;
+    transform: translateY(0);
   }
   to {
-    margin-top: 200%;
+    transform: translateY(400%);
+  }
+}
+
+@keyframes bg-slide-up {
+  from {
+    background-position: center -100vh;
+  }
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes bg-slide-down {
+  from {
+    background-position: center center;
+  }
+  to {
+    background-position: center 100vh;
   }
 }
 
@@ -249,6 +301,14 @@ img {
 
 .img-wrapper img.slide-down {
   animation: slide-down 1s forwards;
+}
+
+.img-wrapper.bg-slide-up {
+  animation: bg-slide-up 1s forwards;
+}
+
+.img-wrapper.bg-slide-down {
+  animation: bg-slide-down 1s forwards;
 }
 
 /* ------ Dialogs ------ */

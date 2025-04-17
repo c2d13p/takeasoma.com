@@ -148,6 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (currentImg) {
       // 1. Add slide down animation to current image
       currentImg.classList.add("slide-down");
+      imgWrapper.classList.add("bg-slide-down");
 
       // 2. Wait for animation to finish
       setTimeout(() => {
@@ -158,9 +159,16 @@ document.addEventListener("DOMContentLoaded", () => {
           currentImg.src = url;
           imgWrapper.style.backgroundImage = `url('${url}')`;
 
-          // 5. Remove slide-down and add slide-up
+          // 5. Remove slide-down and add slide-up for both elements
           currentImg.classList.remove("slide-down");
+          imgWrapper.classList.remove("bg-slide-down");
           currentImg.classList.add("slide-up");
+          imgWrapper.classList.add("bg-slide-up");
+
+          // 6. Clear classes after animation completes
+          setTimeout(() => {
+            imgWrapper.classList.remove("bg-slide-up");
+          }, 1000);
 
           // 6. Update slideshow image if slideshow is active
           const slideshowImg = document.getElementById("slideshow-img");
@@ -187,6 +195,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Add slide-up animation
         img.classList.add("slide-up");
+        imgWrapper.classList.add("bg-slide-up");
+
+        // Clear classes after animation completes
+        setTimeout(() => {
+          imgWrapper.classList.remove("bg-slide-up");
+        }, 1000);
 
         const slideshowImg = document.getElementById("slideshow-img");
         if (slideshowDialog.open && slideshowImg) {
