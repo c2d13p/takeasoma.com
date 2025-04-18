@@ -299,6 +299,44 @@ img {
   }
 }
 
+/* New animations for portrait */
+@keyframes slide-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(-400%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes bg-slide-right {
+  from {
+    background-position: center center;
+  }
+  to {
+    background-position: 100vw center;
+  }
+}
+
+@keyframes bg-slide-left {
+  from {
+    background-position: -100vw center;
+  }
+  to {
+    background-position: center center;
+  }
+}
+
+/* Default animation classes (landscape) */
 .img-wrapper img.slide-up {
   animation: slide-up 1s forwards;
 }
@@ -313,6 +351,25 @@ img {
 
 .img-wrapper.bg-slide-down {
   animation: bg-slide-down 1s forwards;
+}
+
+/* Portrait mode overrides */
+@media (orientation: portrait) {
+  .img-wrapper img.slide-up {
+    animation: slide-left 1s forwards;
+  }
+
+  .img-wrapper img.slide-down {
+    animation: slide-right 1s forwards;
+  }
+
+  .img-wrapper.bg-slide-up {
+    animation: bg-slide-left 1s forwards;
+  }
+
+  .img-wrapper.bg-slide-down {
+    animation: bg-slide-right 1s forwards;
+  }
 }
 
 /* ------ Dialogs ------ */
