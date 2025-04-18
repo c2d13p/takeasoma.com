@@ -56,7 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const dialog = document.createElement("dialog");
     dialog.className = "slideshow-dialog";
     dialog.innerHTML = `
+      <div id="slideshow-image-wrapper">
         <img id="slideshow-img" src="">
+        </div>
     `;
 
     dialog.addEventListener("click", () => {
@@ -112,8 +114,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Slideshow functions
   function startSlideshow() {
     const slideshowImg = document.getElementById("slideshow-img");
+    const slideshowImgWrapper = document.getElementById(
+      "slideshow-image-wrapper"
+    );
 
     slideshowImg.src = img.src;
+    slideshowImgWrapper.style.backgroundImage = `url('${img.src}')`;
     slideshowDialog.showModal();
 
     // Start automatic image change
@@ -172,8 +178,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // 6. Update slideshow image if slideshow is active
           const slideshowImg = document.getElementById("slideshow-img");
+          const slideshowImgWrapper = document.getElementById(
+            "slideshow-image-wrapper"
+          );
           if (slideshowDialog.open && slideshowImg) {
-            slideshowImg.src = url;
+            // Apply fade effect to slideshow
+            slideshowImg.classList.add("slideshow-fade-out");
+            if (slideshowImgWrapper) {
+              slideshowImgWrapper.classList.add("slideshow-bg-fade-out");
+            }
+
+            setTimeout(() => {
+              slideshowImg.src = url;
+              if (slideshowImgWrapper) {
+                slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
+              }
+
+              slideshowImg.classList.remove("slideshow-fade-out");
+              slideshowImg.classList.add("slideshow-fade-in");
+
+              if (slideshowImgWrapper) {
+                slideshowImgWrapper.classList.remove("slideshow-bg-fade-out");
+                slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
+              }
+
+              setTimeout(() => {
+                slideshowImg.classList.remove("slideshow-fade-in");
+                if (slideshowImgWrapper) {
+                  slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
+                }
+              }, 1000);
+            }, 1000);
           }
 
           cookies.set("currentIndex", currentIndex, 1);
@@ -203,10 +238,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
 
         const slideshowImg = document.getElementById("slideshow-img");
+        const slideshowImgWrapper = document.getElementById(
+          "slideshow-image-wrapper"
+        );
         if (slideshowDialog.open && slideshowImg) {
+          slideshowImg.classList.add("slideshow-fade-in");
           slideshowImg.src = url;
-        }
 
+          if (slideshowImgWrapper) {
+            slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
+            slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
+
+            setTimeout(() => {
+              slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
+            }, 1000);
+          }
+
+          setTimeout(() => {
+            slideshowImg.classList.remove("slideshow-fade-in");
+          }, 1000);
+        }
         cookies.set("currentIndex", currentIndex, 1);
       };
 
