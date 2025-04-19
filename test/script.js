@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const previousBtn = document.getElementById("previous");
   const nextBtn = document.getElementById("next");
   const playBtn = document.getElementById("play");
+  const title = document.querySelector("p.title");
 
   // Create the dialogs and append to body
   const openingDialog = createOpeningDialog();
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let touchEndX = 0;
   let touchStartY = 0;
   let touchEndY = 0;
+  let isGoingForward = true; // Track direction of navigation
 
   // Cookie functions
   const cookies = {
@@ -56,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const dialog = document.createElement("dialog");
     dialog.className = "slideshow-dialog";
     dialog.innerHTML = `
-      <div id="slideshow-image-wrapper">
+      <div class="img-wrapper" id="slideshow-image-wrapper">
         <img id="slideshow-img" src="">
-        </div>
+      </div>
     `;
 
     dialog.addEventListener("click", () => {
@@ -75,13 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const lastShown = cookies.get("openingDialogLastShown");
 
     // Show dialog only once per day
-    if (lastShown == today) {
+    if (lastShown !== today) {
       const nextImageMessage = document.getElementById("next-image-message");
       nextImageMessage.innerHTML = getNextImageMessage();
-
       openingDialog.showModal();
 
-      // Close dialog after 3 seconds
+      // Close dialog after 2 seconds
       setTimeout(() => {
         openingDialog.close();
       }, 2000);
@@ -111,6 +112,121 @@ document.addEventListener("DOMContentLoaded", () => {
     return title.replace(/ /g, "<br />");
   }
 
+  // Direction-aware classes for animations
+  function getDirectionalClasses() {
+    const isLandscape = window.innerWidth > window.innerHeight;
+
+    if (isGoingForward) {
+      return {
+        imgOut: isLandscape ? "slide-out-down" : "slide-out-right",
+        imgIn: isLandscape ? "slide-in-up" : "slide-in-left",
+        bgOut: isLandscape ? "bg-slide-out-down" : "bg-slide-out-right",
+        bgIn: isLandscape ? "bg-slide-in-up" : "bg-slide-in-left",
+      };
+    } else {
+      return {
+        imgOut: isLandscape ? "slide-out-up" : "slide-out-left",
+        imgIn: isLandscape ? "slide-in-down" : "slide-in-right",
+        bgOut: isLandscape ? "bg-slide-out-up" : "bg-slide-out-left",
+        bgIn: isLandscape ? "bg-slide-in-down" : "bg-slide-in-right",
+      };
+    }
+  }
+
+  // Updated updateImage function with directional animations
+  function updateImage(isFirstLoad = false) {
+    const image = images[currentIndex];
+    if (!image) return;
+
+    const url = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
+
+    // Update the title if it exists
+    if (title && image.title) {
+      title.innerHTML = formatDateTitle(image.title);
+    }
+
+    if (isFirstLoad) {
+      // On first load, just set the image without animations
+      loadImage(url, () => {
+        img.src = url;
+        imgWrapper.style.backgroundImage = `url('${url}')`;
+        cookies.set("currentIndex", currentIndex, 1);
+      });
+    } else {
+      // Get directional classes based on navigation direction
+      const classes = getDirectionalClasses();
+
+      // Apply exit animations
+      img.className = classes.imgOut;
+      imgWrapper.className = `img-wrapper ${classes.bgOut}`;
+
+      setTimeout(() => {
+        loadImage(url, () => {
+          img.src = url;
+          imgWrapper.style.backgroundImage = `url('${url}')`;
+
+          // Clear existing classes and apply entrance animations
+          img.className = classes.imgIn;
+          imgWrapper.className = `img-wrapper ${classes.bgIn}`;
+
+          setTimeout(() => {
+            // Reset classes after animation completes
+            imgWrapper.className = "img-wrapper";
+          }, 1000);
+
+          // Update slideshow if it's active
+          updateSlideshowImage(url);
+
+          cookies.set("currentIndex", currentIndex, 1);
+        });
+      }, 500);
+    }
+  }
+
+  function updateSlideshowImage(url) {
+    // Only update if slideshow is active
+    if (slideshowDialog.open) {
+      const slideshowImg = document.getElementById("slideshow-img");
+      const slideshowImgWrapper = document.getElementById(
+        "slideshow-image-wrapper"
+      );
+
+      slideshowImg.classList.add("slideshow-fade-out");
+      slideshowImgWrapper.classList.add("slideshow-bg-fade-out");
+
+      setTimeout(() => {
+        slideshowImg.src = url;
+        slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
+
+        slideshowImg.classList.remove("slideshow-fade-out");
+        slideshowImgWrapper.classList.remove("slideshow-bg-fade-out");
+        slideshowImg.classList.add("slideshow-fade-in");
+        slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
+
+        setTimeout(() => {
+          slideshowImg.classList.remove("slideshow-fade-in");
+          slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
+        }, 1000);
+      }, 1000);
+    }
+  }
+
+  function loadImage(url, onLoad) {
+    const preloadImg = new Image();
+
+    preloadImg.onload = () => {
+      if (typeof onLoad === "function") onLoad();
+    };
+
+    preloadImg.onerror = () => {
+      console.error(`Failed to load image: ${url}`);
+      goToNext();
+    };
+
+    preloadImg.src = url;
+    return preloadImg;
+  }
+
   // Slideshow functions
   function startSlideshow() {
     const slideshowImg = document.getElementById("slideshow-img");
@@ -124,9 +240,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start automatic image change
     slideshowInterval = setInterval(() => {
+      isGoingForward = true; // Always move forward in slideshow
       currentIndex = (currentIndex + 1) % images.length;
       updateImage();
-      slideshowImg.src = img.src;
     }, 5000);
   }
 
@@ -137,181 +253,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function updateImage() {
-    const image = images[currentIndex];
-    if (!image) return;
-    const url = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
-
-    // Get the current image
-    const currentImg = imgWrapper.querySelector("img");
-
-    // Update the title
-    const title = document.querySelector("p.title");
-    if (title && image.title) {
-      title.innerHTML = formatDateTitle(image.title);
-    }
-
-    if (currentImg) {
-      // 1. Add slide down animation to current image
-      currentImg.classList.add("slide-down");
-      imgWrapper.classList.add("bg-slide-down");
-
-      // 2. Wait for animation to finish
-      setTimeout(() => {
-        // 3. Preload the new image
-        const preloadImg = new Image();
-        preloadImg.onload = () => {
-          // 4. Change the src attribute
-          currentImg.src = url;
-          imgWrapper.style.backgroundImage = `url('${url}')`;
-
-          // 5. Remove slide-down and add slide-up for both elements
-          currentImg.classList.remove("slide-down");
-          imgWrapper.classList.remove("bg-slide-down");
-          currentImg.classList.add("slide-up");
-          imgWrapper.classList.add("bg-slide-up");
-
-          // 6. Clear classes after animation completes
-          setTimeout(() => {
-            imgWrapper.classList.remove("bg-slide-up");
-          }, 1000);
-
-          // 6. Update slideshow image if slideshow is active
-          const slideshowImg = document.getElementById("slideshow-img");
-          const slideshowImgWrapper = document.getElementById(
-            "slideshow-image-wrapper"
-          );
-          if (slideshowDialog.open && slideshowImg) {
-            // Apply fade effect to slideshow
-            slideshowImg.classList.add("slideshow-fade-out");
-            if (slideshowImgWrapper) {
-              slideshowImgWrapper.classList.add("slideshow-bg-fade-out");
-            }
-
-            setTimeout(() => {
-              slideshowImg.src = url;
-              if (slideshowImgWrapper) {
-                slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
-              }
-
-              slideshowImg.classList.remove("slideshow-fade-out");
-              slideshowImg.classList.add("slideshow-fade-in");
-
-              if (slideshowImgWrapper) {
-                slideshowImgWrapper.classList.remove("slideshow-bg-fade-out");
-                slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
-              }
-
-              setTimeout(() => {
-                slideshowImg.classList.remove("slideshow-fade-in");
-                if (slideshowImgWrapper) {
-                  slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
-                }
-              }, 1000);
-            }, 1000);
-          }
-
-          cookies.set("currentIndex", currentIndex, 1);
-        };
-
-        preloadImg.onerror = () => {
-          console.error(`Failed to load image: ${url}`);
-          goToNext();
-        };
-
-        preloadImg.src = url;
-      }, 500); // Wait for slide-down animation to complete
-    } else {
-      // First load with no current image
-      const preloadImg = new Image();
-      preloadImg.onload = () => {
-        img.src = url;
-        imgWrapper.style.backgroundImage = `url('${url}')`;
-
-        // Add slide-up animation
-        img.classList.add("slide-up");
-        imgWrapper.classList.add("bg-slide-up");
-
-        // Clear classes after animation completes
-        setTimeout(() => {
-          imgWrapper.classList.remove("bg-slide-up");
-        }, 1000);
-
-        const slideshowImg = document.getElementById("slideshow-img");
-        const slideshowImgWrapper = document.getElementById(
-          "slideshow-image-wrapper"
-        );
-        if (slideshowDialog.open && slideshowImg) {
-          slideshowImg.classList.add("slideshow-fade-in");
-          slideshowImg.src = url;
-
-          if (slideshowImgWrapper) {
-            slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
-            slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
-
-            setTimeout(() => {
-              slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
-            }, 1000);
-          }
-
-          setTimeout(() => {
-            slideshowImg.classList.remove("slideshow-fade-in");
-          }, 1000);
-        }
-        cookies.set("currentIndex", currentIndex, 1);
-      };
-
-      preloadImg.onerror = () => {
-        console.error(`Failed to load image: ${url}`);
-        goToNext();
-      };
-
-      preloadImg.src = url;
-    }
-  }
-
   function goToPrevious() {
+    isGoingForward = false;
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     updateImage();
   }
 
   function goToNext() {
+    isGoingForward = true;
     currentIndex = (currentIndex + 1) % images.length;
     updateImage();
   }
 
-  // Event listeners for buttons
-  previousBtn.addEventListener("click", goToPrevious);
-  nextBtn.addEventListener("click", goToNext);
-  playBtn.addEventListener("click", startSlideshow);
-
-  // Keyboard navigation
-  document.addEventListener("keydown", (e) => {
-    const isLandscape = window.innerWidth > window.innerHeight;
-
-    switch (e.key) {
-      case "ArrowLeft":
-        if (!isLandscape) goToPrevious();
-        break;
-      case "ArrowUp":
-        if (isLandscape) goToPrevious();
-        break;
-      case "ArrowRight":
-        if (!isLandscape) goToNext();
-        break;
-      case "ArrowDown":
-        if (isLandscape) goToNext();
-        break;
-      case "Escape":
-        if (slideshowDialog.open) {
-          stopSlideshow();
-          slideshowDialog.close();
-        }
-        break;
-    }
-  });
-
-  // Touch swipe handling
+  // Navigation event handlers
   function handleTouchStart(e) {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
@@ -333,9 +287,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Math.abs(swipeDistanceY) < swipeThreshold) return; // Ignore small movements
 
       if (swipeDistanceY > 0) {
-        goToPrevious(); // Swipe down - go to previous image
+        goToNext(); // Swipe down - go to next image
       } else {
-        goToNext(); // Swipe up - go to next image
+        goToPrevious(); // Swipe up - go to previous image
       }
     } else {
       // In portrait mode, respond to horizontal swipes
@@ -343,21 +297,26 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Math.abs(swipeDistanceX) < swipeThreshold) return; // Ignore small movements
 
       if (swipeDistanceX > 0) {
-        goToPrevious(); // Swipe right - go to previous image
+        goToNext(); // Swipe right - go to next image
       } else {
-        goToNext(); // Swipe left - go to next image
+        goToPrevious(); // Swipe left - go to previous image
       }
     }
   }
 
-  // Add touch event listeners
-  imgWrapper.addEventListener("touchstart", handleTouchStart, {
-    passive: true,
-  });
-  imgWrapper.addEventListener("touchend", handleTouchEnd, { passive: true });
+  function preloadNextImages(count) {
+    for (let i = 1; i <= count; i++) {
+      const nextIndex = (currentIndex + i) % images.length;
+      const nextImage = images[nextIndex];
+      if (nextImage) {
+        const preloadImg = new Image();
+        preloadImg.src = `https://drive.google.com/thumbnail?id=${nextImage.id}&sz=s1024`;
+      }
+    }
+  }
 
-  // Initialize application
-  function init() {
+  // Security and default behavior management
+  function setupSecurityMeasures() {
     // Prevent defaults
     document.addEventListener(
       "touchmove",
@@ -370,26 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { passive: false }
     );
 
-    function isScrollableElement(element) {
-      // Check if the element or any of its parents has overflow that allows scrolling
-      while (element && element !== document.body) {
-        const style = window.getComputedStyle(element);
-        const overflow = style.getPropertyValue("overflow");
-        const overflowY = style.getPropertyValue("overflow-y");
-
-        if (
-          overflow === "auto" ||
-          overflow === "scroll" ||
-          overflowY === "auto" ||
-          overflowY === "scroll"
-        ) {
-          return true;
-        }
-        element = element.parentElement;
-      }
-      return false;
-    }
-    /*
+    // Prevent selection and context menu
     document.body.style.webkitTouchCallout = "none";
     document.body.style.webkitUserSelect = "none";
 
@@ -402,7 +342,73 @@ document.addEventListener("DOMContentLoaded", () => {
       event.stopPropagation();
       return false;
     };
-*/
+  }
+
+  function isScrollableElement(element) {
+    // Check if the element or any of its parents has overflow that allows scrolling
+    while (element && element !== document.body) {
+      const style = window.getComputedStyle(element);
+      const overflow = style.getPropertyValue("overflow");
+      const overflowY = style.getPropertyValue("overflow-y");
+
+      if (
+        overflow === "auto" ||
+        overflow === "scroll" ||
+        overflowY === "auto" ||
+        overflowY === "scroll"
+      ) {
+        return true;
+      }
+      element = element.parentElement;
+    }
+    return false;
+  }
+
+  // Set up event listeners
+  function setupEventListeners() {
+    // Button events
+    previousBtn.addEventListener("click", goToPrevious);
+    nextBtn.addEventListener("click", goToNext);
+    playBtn.addEventListener("click", startSlideshow);
+
+    // Touch events
+    imgWrapper.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    imgWrapper.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      const isLandscape = window.innerWidth > window.innerHeight;
+
+      switch (e.key) {
+        case "ArrowLeft":
+          if (!isLandscape) goToPrevious();
+          break;
+        case "ArrowUp":
+          if (isLandscape) goToPrevious();
+          break;
+        case "ArrowRight":
+          if (!isLandscape) goToNext();
+          break;
+        case "ArrowDown":
+          if (isLandscape) goToNext();
+          break;
+        case "Escape":
+          if (slideshowDialog.open) {
+            stopSlideshow();
+            slideshowDialog.close();
+          }
+          break;
+      }
+    });
+  }
+
+  // Main initialization function
+  function init() {
+    setupSecurityMeasures();
+    setupEventListeners();
+
     fetch("test.json")
       .then((response) => {
         if (!response.ok) {
@@ -420,9 +426,10 @@ document.addEventListener("DOMContentLoaded", () => {
         // Restore last position from cookie
         const savedIndex = parseInt(cookies.get("currentIndex"), 10);
         currentIndex =
-          isNaN(savedIndex) || savedIndex >= images.length ? 0 : savedIndex;
+          !isNaN(savedIndex) && savedIndex < images.length ? savedIndex : 0;
 
-        updateImage();
+        // Initial image load without animation
+        updateImage(true);
 
         // Preload next few images for smoother experience
         preloadNextImages(3);
@@ -435,17 +442,6 @@ document.addEventListener("DOMContentLoaded", () => {
         imgWrapper.textContent =
           "Failed to load images. Please try again later.";
       });
-  }
-
-  function preloadNextImages(count) {
-    for (let i = 1; i <= count; i++) {
-      const nextIndex = (currentIndex + i) % images.length;
-      const nextImage = images[nextIndex];
-      if (nextImage) {
-        const preloadImg = new Image();
-        preloadImg.src = `https://drive.google.com/thumbnail?id=${nextImage.id}&sz=s1024`;
-      }
-    }
   }
 
   // Start the app

@@ -2,18 +2,20 @@
 
 :root {
   --bg-clr: #ffffff;
-  --controls-bg-gradient: linear-gradient(#d5514d, #693856);
-  --controls-icon-size: clamp(1.25rem, 1.0357rem + 1.0714vw, 2rem);
+  --bg-controls-gradient: linear-gradient(#d5514d, #693856);
   --ff: "Rubik Mono One";
-  --fs: clamp(0.625rem, 0.4464rem + 0.8929vw, 1.25rem);
+  --fs-opening-dialog: clamp(1.5rem, 0.6786rem + 4.1071vw, 4.375rem);
+  --fs-title: clamp(0.625rem, 0.4464rem + 0.8929vw, 1.25rem);
   --icon-bg-gradient: linear-gradient(#ff8d11, #d5514d, #693856);
   --icon-clr: #f9f8f5;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
-  --opening-dialog-fs: clamp(1.5rem, 0.6786rem + 4.1071vw, 4.375rem);
-  --padding: 5em;
+  --icon-size-controls: clamp(1.25rem, 1.0357rem + 1.0714vw, 2rem);
+  --img-padding: clamp(1rem, -0.1429rem + 5.7143vw, 5rem);
 }
 
-/* ------ Body ------ */
+/* -------------------------------------------------------------------------- */
+/*                                Body and grid                               */
+/* -------------------------------------------------------------------------- */
 
 body {
   background-color: var(--bg-clr);
@@ -45,7 +47,27 @@ body {
   }
 }
 
-/* ------ Header and footer ------ */
+header {
+  grid-area: header-right;
+}
+
+footer {
+  grid-area: footer-left;
+}
+
+.title {
+  grid-area: header-left;
+  place-self: center;
+}
+
+main {
+  grid-area: main;
+  place-self: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Header and footer                           */
+/* -------------------------------------------------------------------------- */
 
 header,
 footer {
@@ -54,45 +76,37 @@ footer {
   z-index: 1;
 }
 
-header {
-  grid-area: header-right;
-}
-
 .title {
   color: #000;
-  font-size: var(--fs);
-  grid-area: header-left;
+  font-size: var(--fs-title);
   line-height: 1.4;
-  place-self: center;
   text-align: right;
   z-index: 1;
 }
 
-footer {
-  grid-area: footer-left;
-}
-
-/* ------ Buttons ------ */
+/* -------------------------------------------------------------------------- */
+/*                                Buttons                                     */
+/* -------------------------------------------------------------------------- */
 
 .controls {
   align-items: center;
-  background: var(--controls-bg-gradient);
+  background: var(--bg-controls-gradient);
   border-radius: 100vmax;
   display: flex;
   gap: 0.3em;
   grid-area: controls;
-  height: calc(var(--controls-icon-size) * 2);
+  height: calc(var(--icon-size-controls) * 2);
   justify-content: space-evenly;
   place-self: center;
-  width: calc(var(--controls-icon-size) * 2 * 3);
+  width: calc(var(--icon-size-controls) * 2 * 3);
   z-index: 1;
 }
 
 @media (orientation: landscape) {
   .controls {
     flex-direction: column;
-    height: calc(var(--controls-icon-size) * 2 * 3);
-    width: calc(var(--controls-icon-size) * 2);
+    height: calc(var(--icon-size-controls) * 2 * 3);
+    width: calc(var(--icon-size-controls) * 2);
   }
 }
 
@@ -126,7 +140,7 @@ i {
 }
 
 .controls button i {
-  font-size: var(--controls-icon-size);
+  font-size: var(--icon-size-controls);
 }
 
 a,
@@ -157,98 +171,53 @@ button {
   transform: scale(0.95);
 }
 
-/* ------ Images ------ */
-
-.backdrop-blur-layer {
-  background-color: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(25px) saturate(3);
-  height: 100%;
-  left: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 0;
-}
-
-main {
-  grid-area: main;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  place-self: center;
-  width: 100%;
-}
+/* -------------------------------------------------------------------------- */
+/*                                Images                                      */
+/* -------------------------------------------------------------------------- */
 
 .img-wrapper {
+  align-items: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   background-origin: content-box;
-
   box-sizing: border-box;
-  padding: var(--padding);
-
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  overflow: hidden;
+  padding-inline: var(--img-padding);
+  padding-block: var(--img-padding);
   position: relative;
-  transition: background-image 0.1s ease;
+  width: 100%;
 }
 
 .img-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: rgba(255, 255, 255, 0.01);
   backdrop-filter: blur(25px) saturate(3);
+  content: "";
+  height: 100%;
+  left: 0;
   pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
   z-index: 0;
 }
 
-/*
-@media (orientation: landscape) and (min-aspect-ratio: 3/2) {
-  main {
-    height: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
-    width: 100vmin;
+@media (orientation: portrait) and (min-aspect-ratio: 1/2) {
+  .img-wrapper {
+    padding-inline: calc(var(--img-padding));
+    padding-block: calc(var(--img-padding) * 3.5);
   }
 }
 
-@media (orientation: portrait) and (min-aspect-ratio: 2/3) {
-  main {
-    height: 100vmin;
-    width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
+@media (orientation: portrait) and (min-aspect-ratio: 3/2) {
+  .img-wrapper {
+    padding-inline: calc(var(--img-padding) * 3.5);
+    padding-block: calc(var(--img-padding));
   }
 }
-
-@media (orientation: portrait) and (min-aspect-ratio: 2/4) {
-  main {
-    height: 90vmin;
-    width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
-  }
-}
-*/
-
-/*
-.img-wrapper {
-  align-items: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-origin: content-box;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  width: 100%;
-
-  box-sizing: border-box;
-  padding: 5rem;
-
-  margin-top: 0%;
-}
-  */
 
 img {
   max-height: 100%;
@@ -257,122 +226,9 @@ img {
   z-index: 1;
 }
 
-.img-wrapper img {
-  transform: translateY(0);
-}
-
-/* ------ Images animation ------ */
-
-@keyframes slide-up {
-  from {
-    transform: translateY(-400%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-down {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(400%);
-  }
-}
-
-@keyframes bg-slide-up {
-  from {
-    background-position: center -100vh;
-  }
-  to {
-    background-position: center center;
-  }
-}
-
-@keyframes bg-slide-down {
-  from {
-    background-position: center center;
-  }
-  to {
-    background-position: center 100vh;
-  }
-}
-
-/* New animations for portrait */
-@keyframes slide-right {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(400%);
-  }
-}
-
-@keyframes slide-left {
-  from {
-    transform: translateX(-400%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes bg-slide-right {
-  from {
-    background-position: center center;
-  }
-  to {
-    background-position: 100vw center;
-  }
-}
-
-@keyframes bg-slide-left {
-  from {
-    background-position: -100vw center;
-  }
-  to {
-    background-position: center center;
-  }
-}
-
-/* Default animation classes (landscape) */
-.img-wrapper img.slide-up {
-  animation: slide-up 1s forwards;
-}
-
-.img-wrapper img.slide-down {
-  animation: slide-down 1s forwards;
-}
-
-.img-wrapper.bg-slide-up {
-  animation: bg-slide-up 1s forwards;
-}
-
-.img-wrapper.bg-slide-down {
-  animation: bg-slide-down 1s forwards;
-}
-
-/* Portrait mode overrides */
-@media (orientation: portrait) {
-  .img-wrapper img.slide-up {
-    animation: slide-left 1s forwards;
-  }
-
-  .img-wrapper img.slide-down {
-    animation: slide-right 1s forwards;
-  }
-
-  .img-wrapper.bg-slide-up {
-    animation: bg-slide-left 1s forwards;
-  }
-
-  .img-wrapper.bg-slide-down {
-    animation: bg-slide-right 1s forwards;
-  }
-}
-
-/* ------ Dialogs ------ */
+/* -------------------------------------------------------------------------- */
+/*                                Dialogs                                     */
+/* -------------------------------------------------------------------------- */
 
 dialog {
   background: none;
@@ -388,6 +244,13 @@ dialog {
 }
 
 dialog[open] {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100dvh;
+  max-height: 100%;
+  max-width: 1440px;
   opacity: 1;
 }
 
@@ -403,7 +266,7 @@ dialog[open]::backdrop {
 }
 
 .opening-dialog {
-  max-width: var(--main-width-size);
+  width: min(calc(100% - clamp(2rem, 0.4286rem + 7.8571vw, 7.5rem)), 800px);
   text-align: center;
 }
 
@@ -415,48 +278,13 @@ dialog[open]::backdrop {
 .opening-dialog h1 {
   background: -webkit-linear-gradient(#7d7697, #ff8d11, #d5514d, #693856);
   background-clip: text;
-  font-size: var(--opening-dialog-fs);
+  font-size: var(--fs-opening-dialog);
   line-height: 1.1;
   -webkit-text-fill-color: transparent;
 }
 
 .slideshow-dialog {
   cursor: pointer;
-  height: 100dvh;
-  max-width: 1440px;
-  max-height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#slideshow-image-wrapper {
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-origin: content-box;
-  box-sizing: border-box;
-  position: relative;
-  padding: var(--padding);
-}
-
-#slideshow-image-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(25px) saturate(3);
-  pointer-events: none;
-  z-index: 0;
 }
 
 .slideshow-dialog::backdrop {
@@ -470,56 +298,245 @@ dialog[open]::backdrop {
   }
 }
 
-/* Fade animations for slideshow */
-.slideshow-fade-in {
-  animation: slideshowFadeIn 1s ease-in-out forwards;
+/* -------------------------------------------------------------------------- */
+/*                                Animations                                 */
+/* -------------------------------------------------------------------------- */
+
+@keyframes slideFromUp {
+  from {
+    transform: translateY(-150%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-.slideshow-fade-out {
-  animation: slideshowFadeOut 1s ease-in-out forwards;
+@keyframes slideToDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(150%);
+  }
 }
 
+@keyframes slideFromDown {
+  from {
+    transform: translateY(150%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideToUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-150%);
+  }
+}
+
+@keyframes bgSlideFromUp {
+  from {
+    background-position: center -150vh;
+  }
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes bgSlideToDown {
+  from {
+    background-position: center center;
+  }
+  to {
+    background-position: center 150vh;
+  }
+}
+
+@keyframes bgSlideFromDown {
+  from {
+    background-position: center 150vh;
+  }
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes bgSlideToUp {
+  from {
+    background-position: center center;
+  }
+  to {
+    background-position: center -150vh;
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-150%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(150%);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    transform: translateX(150%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideToLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-150%);
+  }
+}
+
+@keyframes bgSlideFromLeft {
+  from {
+    background-position: -150vw center;
+  }
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes bgSlideToRight {
+  from {
+    background-position: center center;
+  }
+  to {
+    background-position: 150vw center;
+  }
+}
+
+@keyframes bgSlideFromRight {
+  from {
+    background-position: 150vw center;
+  }
+  to {
+    background-position: center center;
+  }
+}
+
+@keyframes bgSlideToLeft {
+  from {
+    background-position: center center;
+  }
+  to {
+    background-position: -150vw center;
+  }
+}
+
+.img-wrapper img.slide-in-up {
+  animation: slideFromUp 1s forwards;
+}
+
+.img-wrapper img.slide-out-down {
+  animation: slideToDown 1s forwards;
+}
+
+.img-wrapper img.slide-in-down {
+  animation: slideFromDown 1s forwards;
+}
+
+.img-wrapper img.slide-out-up {
+  animation: slideToUp 1s forwards;
+}
+
+/* Directional classes for background */
+.img-wrapper.bg-slide-in-up {
+  animation: bgSlideFromUp 1s forwards;
+}
+
+.img-wrapper.bg-slide-out-down {
+  animation: bgSlideToDown 1s forwards;
+}
+
+.img-wrapper.bg-slide-in-down {
+  animation: bgSlideFromDown 1s forwards;
+}
+
+.img-wrapper.bg-slide-out-up {
+  animation: bgSlideToUp 1s forwards;
+}
+
+@media (orientation: portrait) {
+  .img-wrapper img.slide-in-left {
+    animation: slideFromLeft 1s forwards;
+  }
+
+  .img-wrapper img.slide-out-right {
+    animation: slideToRight 1s forwards;
+  }
+
+  .img-wrapper img.slide-in-right {
+    animation: slideFromRight 1s forwards;
+  }
+
+  .img-wrapper img.slide-out-left {
+    animation: slideToLeft 1s forwards;
+  }
+
+  .img-wrapper.bg-slide-in-left {
+    animation: bgSlideFromLeft 1s forwards;
+  }
+
+  .img-wrapper.bg-slide-out-right {
+    animation: bgSlideToRight 1s forwards;
+  }
+
+  .img-wrapper.bg-slide-in-right {
+    animation: bgSlideFromRight 1s forwards;
+  }
+
+  .img-wrapper.bg-slide-out-left {
+    animation: bgSlideToLeft 1s forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.slideshow-fade-in,
 .slideshow-bg-fade-in {
-  animation: slideshowBgFadeIn 1s ease-in-out forwards;
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
+.slideshow-fade-out,
 .slideshow-bg-fade-out {
-  animation: slideshowBgFadeOut 1s ease-in-out forwards;
-}
-
-/* Animation keyframes */
-@keyframes slideshowFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideshowFadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideshowBgFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideshowBgFadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+  animation: fadeOut 1s ease-in-out forwards;
 }
