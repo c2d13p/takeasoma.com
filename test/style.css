@@ -11,6 +11,8 @@
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
   --icon-size-controls: clamp(1.25rem, 1.0357rem + 1.0714vw, 2rem);
   --img-padding: clamp(1rem, -0.1429rem + 5.7143vw, 5rem);
+  --max-position: 150%;
+  --max-bg-position: 150vh;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -302,215 +304,121 @@ dialog[open]::backdrop {
 /*                                Animations                                 */
 /* -------------------------------------------------------------------------- */
 
-@keyframes slideFromUp {
+@keyframes slideFrom {
   from {
-    transform: translateY(-150%);
+    transform: translate(var(--x, 0), var(--y, 0));
   }
   to {
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
 }
 
-@keyframes slideToDown {
+@keyframes slideTo {
   from {
-    transform: translateY(0);
+    transform: translate(0, 0);
   }
   to {
-    transform: translateY(150%);
+    transform: translate(var(--x, 0), var(--y, 0));
   }
 }
 
-@keyframes slideFromDown {
+@keyframes bgSlideFrom {
   from {
-    transform: translateY(150%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideToUp {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-150%);
-  }
-}
-
-@keyframes bgSlideFromUp {
-  from {
-    background-position: center -150vh;
+    background-position: var(--bg-x, center) var(--bg-y, center);
   }
   to {
     background-position: center center;
   }
 }
 
-@keyframes bgSlideToDown {
+@keyframes bgSlideTo {
   from {
     background-position: center center;
   }
   to {
-    background-position: center 150vh;
+    background-position: var(--bg-x, center) var(--bg-y, center);
   }
 }
 
-@keyframes bgSlideFromDown {
-  from {
-    background-position: center 150vh;
-  }
-  to {
-    background-position: center center;
-  }
+/* Transform Classes */
+.slide-in-up {
+  --y: calc(var(--max-position) * -1);
+  animation: slideFrom 1s forwards;
 }
 
-@keyframes bgSlideToUp {
-  from {
-    background-position: center center;
-  }
-  to {
-    background-position: center -150vh;
-  }
+.slide-out-down {
+  --y: var(--max-position);
+  animation: slideTo 1s forwards;
 }
 
-@keyframes slideFromLeft {
-  from {
-    transform: translateX(-150%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.slide-in-down {
+  --y: var(--max-position);
+  animation: slideFrom 1s forwards;
 }
 
-@keyframes slideToRight {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(150%);
-  }
+.slide-out-up {
+  --y: calc(var(--max-position) * -1);
+  animation: slideTo 1s forwards;
 }
 
-@keyframes slideFromRight {
-  from {
-    transform: translateX(150%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.slide-in-left {
+  --x: calc(var(--max-position) * -1);
+  animation: slideFrom 1s forwards;
 }
 
-@keyframes slideToLeft {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-150%);
-  }
+.slide-out-right {
+  --x: var(--max-position);
+  animation: slideTo 1s forwards;
 }
 
-@keyframes bgSlideFromLeft {
-  from {
-    background-position: -150vw center;
-  }
-  to {
-    background-position: center center;
-  }
+.slide-in-right {
+  --x: var(--max-position);
+  animation: slideFrom 1s forwards;
 }
 
-@keyframes bgSlideToRight {
-  from {
-    background-position: center center;
-  }
-  to {
-    background-position: 150vw center;
-  }
+.slide-out-left {
+  --x: calc(var(--max-position) * -1);
+  animation: slideTo 1s forwards;
 }
 
-@keyframes bgSlideFromRight {
-  from {
-    background-position: 150vw center;
-  }
-  to {
-    background-position: center center;
-  }
+.bg-slide-in-up {
+  --bg-y: calc(var(--max-bg-position) * -1);
+  animation: bgSlideFrom 1s forwards;
 }
 
-@keyframes bgSlideToLeft {
-  from {
-    background-position: center center;
-  }
-  to {
-    background-position: -150vw center;
-  }
+.bg-slide-out-down {
+  --bg-y: var(--max-bg-position);
+  animation: bgSlideTo 1s forwards;
 }
 
-.img-wrapper img.slide-in-up {
-  animation: slideFromUp 1s forwards;
+.bg-slide-in-down {
+  --bg-y: var(--max-bg-position);
+  animation: bgSlideFrom 1s forwards;
 }
 
-.img-wrapper img.slide-out-down {
-  animation: slideToDown 1s forwards;
+.bg-slide-out-up {
+  --bg-y: calc(var(--max-bg-position) * -1);
+  animation: bgSlideTo 1s forwards;
 }
 
-.img-wrapper img.slide-in-down {
-  animation: slideFromDown 1s forwards;
+.bg-slide-in-left {
+  --bg-x: calc(var(--max-bg-position) * -1);
+  animation: bgSlideFrom 1s forwards;
 }
 
-.img-wrapper img.slide-out-up {
-  animation: slideToUp 1s forwards;
+.bg-slide-out-right {
+  --bg-x: var(--max-bg-position);
+  animation: bgSlideTo 1s forwards;
 }
 
-/* Directional classes for background */
-.img-wrapper.bg-slide-in-up {
-  animation: bgSlideFromUp 1s forwards;
+.bg-slide-in-right {
+  --bg-x: var(--max-bg-position);
+  animation: bgSlideFrom 1s forwards;
 }
 
-.img-wrapper.bg-slide-out-down {
-  animation: bgSlideToDown 1s forwards;
-}
-
-.img-wrapper.bg-slide-in-down {
-  animation: bgSlideFromDown 1s forwards;
-}
-
-.img-wrapper.bg-slide-out-up {
-  animation: bgSlideToUp 1s forwards;
-}
-
-@media (orientation: portrait) {
-  .img-wrapper img.slide-in-left {
-    animation: slideFromLeft 1s forwards;
-  }
-
-  .img-wrapper img.slide-out-right {
-    animation: slideToRight 1s forwards;
-  }
-
-  .img-wrapper img.slide-in-right {
-    animation: slideFromRight 1s forwards;
-  }
-
-  .img-wrapper img.slide-out-left {
-    animation: slideToLeft 1s forwards;
-  }
-
-  .img-wrapper.bg-slide-in-left {
-    animation: bgSlideFromLeft 1s forwards;
-  }
-
-  .img-wrapper.bg-slide-out-right {
-    animation: bgSlideToRight 1s forwards;
-  }
-
-  .img-wrapper.bg-slide-in-right {
-    animation: bgSlideFromRight 1s forwards;
-  }
-
-  .img-wrapper.bg-slide-out-left {
-    animation: bgSlideToLeft 1s forwards;
-  }
+.bg-slide-out-left {
+  --bg-x: calc(var(--max-bg-position) * -1);
+  animation: bgSlideTo 1s forwards;
 }
 
 @keyframes fadeIn {
