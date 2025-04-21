@@ -207,17 +207,35 @@ button {
   z-index: 0;
 }
 
-@media (orientation: portrait) and (min-aspect-ratio: 1/2) {
+/* Moderate landscape viewports */
+@media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 2/1) {
   .img-wrapper {
-    padding-inline: calc(var(--img-padding));
-    padding-block: calc(var(--img-padding) * 3.5);
+    padding-inline: calc(var(--img-padding) * 2);
+    padding-block: var(--img-padding);
   }
 }
 
-@media (orientation: portrait) and (min-aspect-ratio: 3/2) {
+/* Very wide landscape viewports */
+@media (min-aspect-ratio: 2/1) {
   .img-wrapper {
     padding-inline: calc(var(--img-padding) * 3.5);
-    padding-block: calc(var(--img-padding));
+    padding-block: var(--img-padding);
+  }
+}
+
+/* Portrait viewports */
+@media (max-aspect-ratio: 3/4) and (min-aspect-ratio: 1/2) {
+  .img-wrapper {
+    padding-inline: var(--img-padding);
+    padding-block: calc(var(--img-padding) * 2);
+  }
+}
+
+/* Extremely tall viewports */
+@media (max-aspect-ratio: 1/2) {
+  .img-wrapper {
+    padding-inline: var(--img-padding);
+    padding-block: calc(var(--img-padding) * 3.5);
   }
 }
 
