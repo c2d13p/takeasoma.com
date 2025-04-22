@@ -298,9 +298,6 @@ dialog[open]::backdrop {
 
 .slideshow-dialog {
   cursor: pointer;
-}
-
-.slideshow-dialog[open] {
   height: 100dvh;
   max-height: 100%;
   max-width: 1440px;
