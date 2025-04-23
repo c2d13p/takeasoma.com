@@ -10,7 +10,10 @@
   --icon-clr: #f9f8f5;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
   --icon-size-controls: clamp(1.25rem, 1.0357rem + 1.0714vw, 2rem);
-  --img-padding: clamp(1rem, -0.1429rem + 5.7143vw, 5rem);
+  --img-padding-s: clamp(3.75rem, 1.25rem + 12.5vw, 12.5rem);
+  --img-padding-m: clamp(1.5625rem, 0.2232rem + 6.6964vw, 6.25rem);
+  --img-padding-l: clamp(1.875rem, 0.2679rem + 8.0357vw, 7.5rem);
+  --img-padding-xl: clamp(2.5rem, 0.3571rem + 10.7143vw, 10rem);
   --max-position: 150%;
   --max-bg-position: 150vh;
 }
@@ -188,8 +191,8 @@ button {
   height: 100%;
   justify-content: center;
   overflow: hidden;
-  padding-inline: var(--img-padding);
-  padding-block: var(--img-padding);
+  padding-block: var(--img-padding-m);
+  padding-inline: var(--img-padding-m);
   position: relative;
   width: 100%;
 }
@@ -207,35 +210,51 @@ button {
   z-index: 0;
 }
 
+/* Slightly landscape */
+@media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) {
+  .img-wrapper {
+    padding-block: calc(var(--img-padding-m) * 1.5);
+    padding-inline: calc(var(--img-padding-m) * 1);
+  }
+}
+
 /* Moderate landscape viewports */
 @media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 2/1) {
   .img-wrapper {
-    padding-inline: calc(var(--img-padding) * 2);
-    padding-block: var(--img-padding);
+    padding-inline: calc(var(--img-padding-m) * 2);
+    padding-block: calc(var(--img-padding-m) * 1);
   }
 }
 
 /* Very wide landscape viewports */
 @media (min-aspect-ratio: 2/1) {
   .img-wrapper {
-    padding-inline: calc(var(--img-padding) * 3.5);
-    padding-block: var(--img-padding);
+    padding-inline: calc(var(--img-padding-m) * 3);
+    padding-block: calc(var(--img-padding-m) * 1);
   }
 }
 
-/* Portrait viewports */
+/* Slightly portrait */
+@media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 1/1) {
+  .img-wrapper {
+    padding-block: calc(var(--img-padding-m) * 1);
+    padding-inline: calc(var(--img-padding-m) * 2);
+  }
+}
+
+/* Moderate portrait viewports */
 @media (max-aspect-ratio: 3/4) and (min-aspect-ratio: 1/2) {
   .img-wrapper {
-    padding-inline: var(--img-padding);
-    padding-block: calc(var(--img-padding) * 2);
+    padding-inline: calc(var(--img-padding-m) * 1);
+    padding-block: calc(var(--img-padding-m) * 2.5);
   }
 }
 
 /* Extremely tall viewports */
 @media (max-aspect-ratio: 1/2) {
   .img-wrapper {
-    padding-inline: var(--img-padding);
-    padding-block: calc(var(--img-padding) * 3.5);
+    padding-inline: calc(var(--img-padding-m) * 1);
+    padding-block: calc(var(--img-padding-m) * 3);
   }
 }
 
