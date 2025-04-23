@@ -191,23 +191,35 @@ document.addEventListener("DOMContentLoaded", () => {
         "slideshow-image-wrapper"
       );
 
-      slideshowImg.classList.add("slideshow-fade-out");
-      slideshowImgWrapper.classList.add("slideshow-bg-fade-out");
+      // Detect if browser is Safari on macOS
+      const isSafariOnMac =
+        /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
+        navigator.platform.indexOf("Mac") > -1;
 
-      setTimeout(() => {
-        slideshowImg.src = url;
-        slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
-
-        slideshowImg.classList.remove("slideshow-fade-out");
-        slideshowImgWrapper.classList.remove("slideshow-bg-fade-out");
-        slideshowImg.classList.add("slideshow-fade-in");
-        slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
+      if (!isSafariOnMac) {
+        // Apply fade effects for all browsers except Safari on macOS
+        slideshowImg.classList.add("slideshow-fade-out");
+        slideshowImgWrapper.classList.add("slideshow-bg-fade-out");
 
         setTimeout(() => {
-          slideshowImg.classList.remove("slideshow-fade-in");
-          slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
+          slideshowImg.src = url;
+          slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
+
+          slideshowImg.classList.remove("slideshow-fade-out");
+          slideshowImgWrapper.classList.remove("slideshow-bg-fade-out");
+          slideshowImg.classList.add("slideshow-fade-in");
+          slideshowImgWrapper.classList.add("slideshow-bg-fade-in");
+
+          setTimeout(() => {
+            slideshowImg.classList.remove("slideshow-fade-in");
+            slideshowImgWrapper.classList.remove("slideshow-bg-fade-in");
+          }, 1000);
         }, 1000);
-      }, 1000);
+      } else {
+        // For Safari on macOS, just update the image without animations
+        slideshowImg.src = url;
+        slideshowImgWrapper.style.backgroundImage = `url('${url}')`;
+      }
     }
   }
 
