@@ -118,17 +118,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (isGoingForward) {
       return {
-        imgOut: isLandscape ? "slide-out-down" : "slide-out-right",
-        imgIn: isLandscape ? "slide-in-up" : "slide-in-left",
-        bgOut: isLandscape ? "bg-slide-out-down" : "bg-slide-out-right",
-        bgIn: isLandscape ? "bg-slide-in-up" : "bg-slide-in-left",
-      };
-    } else {
-      return {
         imgOut: isLandscape ? "slide-out-up" : "slide-out-left",
         imgIn: isLandscape ? "slide-in-down" : "slide-in-right",
         bgOut: isLandscape ? "bg-slide-out-up" : "bg-slide-out-left",
         bgIn: isLandscape ? "bg-slide-in-down" : "bg-slide-in-right",
+      };
+    } else {
+      return {
+        imgOut: isLandscape ? "slide-out-down" : "slide-out-right",
+        imgIn: isLandscape ? "slide-in-up" : "slide-in-left",
+        bgOut: isLandscape ? "bg-slide-out-down" : "bg-slide-out-right",
+        bgIn: isLandscape ? "bg-slide-in-up" : "bg-slide-in-left",
       };
     }
   }
@@ -287,9 +287,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Math.abs(swipeDistanceY) < swipeThreshold) return; // Ignore small movements
 
       if (swipeDistanceY > 0) {
-        goToNext(); // Swipe down - go to next image
+        goToPrevious(); // Swipe down - go to previous image
       } else {
-        goToPrevious(); // Swipe up - go to previous image
+        goToNext(); // Swipe up - go to next image
       }
     } else {
       // In portrait mode, respond to horizontal swipes
@@ -297,9 +297,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (Math.abs(swipeDistanceX) < swipeThreshold) return; // Ignore small movements
 
       if (swipeDistanceX > 0) {
-        goToNext(); // Swipe right - go to next image
+        goToPrevious(); // Swipe right - go to previous image
       } else {
-        goToPrevious(); // Swipe left - go to previous image
+        goToNext(); // Swipe left - go to next image
       }
     }
   }
