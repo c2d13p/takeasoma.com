@@ -220,7 +220,6 @@ button {
   }
 }
 
-/* Landscape orientation - only when img-wrapper is NOT inside dialog */
 @media (orientation: landscape) {
   .img-wrapper:not(dialog *) {
     overflow-y: clip;
