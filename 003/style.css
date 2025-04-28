@@ -152,6 +152,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  transition: transform 0.15s ease;
 }
 
 .round-button {
@@ -161,12 +162,30 @@ button {
   display: flex;
   height: calc(var(--icon-size) * 2);
   justify-content: center;
-  transition: transform 0.15s ease;
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active,
-.round-button:focus {
+.round-button:focus,
+.round-button:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.round-button:active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transform: scale(0.95);
+}
+
+.controls button:focus,
+.controls button:hover {
+  outline: none;
+  transform: scale(1.1);
+}
+
+.controls button:active {
+  outline: none;
   transform: scale(0.95);
 }
 

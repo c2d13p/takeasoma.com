@@ -1,5 +1,6 @@
 :root {
   --bg-clr: rgb(242, 242, 242);
+  --btn-box-shadow: rgba(0, 0, 0, 0.05);
   --dropdown-menu-border-clr: rgb(181, 181, 181);
   --dropdown-menu-bg-clr: rgb(245, 245, 245);
   --dropdown-menu-item-clr: rgb(10, 10, 10);
@@ -12,6 +13,7 @@
 
 .dark {
   --bg-clr: rgb(19, 19, 19);
+  --btn-box-shadow: rgba(255, 255, 255, 0.1);
   --dropdown-menu-border-clr: rgb(97, 97, 97);
   --dropdown-menu-bg-clr: rgb(30, 30, 30);
   --dropdown-menu-item-clr: rgb(225, 225, 225);
@@ -73,9 +75,16 @@ button {
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active,
-.round-button:focus {
+.round-button:focus,
+.round-button:hover {
+  box-shadow: 0 5px 10px var(--btn-box-shadow);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.round-button:active {
   background-color: var(--icon-bg-clr-active);
+  box-shadow: 0 1px 3px var(--btn-box-shadow);
   outline: none;
   transform: scale(0.95);
 }

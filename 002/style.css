@@ -124,6 +124,7 @@ input[type="datetime-local"] {
   border-radius: 100vmax;
   box-shadow: 0 0 30px var(--shadow-clr);
   color: inherit;
+  cursor: pointer;
   font-family: inherit;
   font-size: var(--input-fs);
   font-weight: bold;
@@ -163,6 +164,7 @@ i {
 
 a,
 a:focus {
+  outline: none;
   text-decoration: none;
 }
 
@@ -175,6 +177,18 @@ button {
 .arrow-button {
   color: inherit;
   font-size: var(--arrow-fs);
+  transition: transform 0.15s ease;
+}
+
+.arrow-button:focus,
+.arrow-button:hover {
+  outline: none;
+  transform: scale(1.05);
+}
+
+.arrow-button:active {
+  outline: none;
+  transform: scale(0.95);
 }
 
 .enter-button {
@@ -186,14 +200,15 @@ button {
   font-weight: bold;
 }
 
+.enter-button:active,
+.enter-button:hover {
+  animation: none;
+}
+
 button:disabled {
   cursor: not-allowed;
   color: transparent;
   animation: none;
-}
-
-button:focus {
-  outline: none;
 }
 
 .round-button {
@@ -212,8 +227,16 @@ button:focus {
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active,
-.round-button:focus {
+.round-button:focus,
+.round-button:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.round-button:active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  outline: none;
   transform: scale(0.95);
 }
 

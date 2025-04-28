@@ -1,5 +1,6 @@
 :root {
   --bg-clr: rgb(242, 242, 242);
+  --btn-box-shadow: rgba(0, 0, 0, 0.05);
   --icon-bg-clr: rgb(225, 225, 225);
   --icon-bg-clr-active: rgb(174, 174, 174);
   --icon-clr: rgb(58, 58, 58);
@@ -9,6 +10,7 @@
 
 .dark {
   --bg-clr: rgb(19, 19, 19);
+  --btn-box-shadow: rgba(255, 255, 255, 0.1);
   --icon-bg-clr: rgb(50, 50, 50);
   --icon-bg-clr-active: rgb(100, 100, 100);
   --icon-clr: rgb(225, 225, 225);
@@ -65,9 +67,16 @@ button {
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active,
-.round-button:focus {
+.round-button:focus,
+.round-button:hover {
+  box-shadow: 0 5px 10px var(--btn-box-shadow);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.round-button:active {
   background-color: var(--icon-bg-clr-active);
+  box-shadow: 0 1px 3px var(--btn-box-shadow);
   outline: none;
   transform: scale(0.95);
 }

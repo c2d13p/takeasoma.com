@@ -61,9 +61,16 @@ button {
   width: calc(var(--icon-size) * 2);
 }
 
-button:active,
-button:focus {
+button:focus,
+button:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+button:active {
   background-color: var(--icon-bg-clr-active);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   outline: none;
   transform: scale(0.95);
 }
