@@ -225,7 +225,7 @@ button {
 /* Slightly landscape */
 @media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 4/3) {
   .img-wrapper {
-    padding-block: calc(var(--img-padding) * 1.5);
+    padding-block: calc(var(--img-padding) * 3);
     padding-inline: calc(var(--img-padding) * 1);
   }
 }
@@ -233,16 +233,16 @@ button {
 /* Moderate landscape */
 @media (min-aspect-ratio: 4/3) and (max-aspect-ratio: 2/1) {
   .img-wrapper {
-    padding-inline: calc(var(--img-padding) * 2);
     padding-block: calc(var(--img-padding) * 1);
+    padding-inline: calc(var(--img-padding) * 1.5);
   }
 }
 
 /* Very wide landscape  */
 @media (min-aspect-ratio: 2/1) {
   .img-wrapper {
-    padding-inline: calc(var(--img-padding) * 3);
     padding-block: calc(var(--img-padding) * 1);
+    padding-inline: calc(var(--img-padding) * 3.5);
   }
 }
 
@@ -250,23 +250,23 @@ button {
 @media (min-aspect-ratio: 3/4) and (max-aspect-ratio: 1/1) {
   .img-wrapper {
     padding-block: calc(var(--img-padding) * 1);
-    padding-inline: calc(var(--img-padding) * 2);
+    padding-inline: calc(var(--img-padding) * 2.5);
   }
 }
 
 /* Moderate portrait */
 @media (max-aspect-ratio: 3/4) and (min-aspect-ratio: 1/2) {
   .img-wrapper {
-    padding-inline: calc(var(--img-padding) * 1);
     padding-block: calc(var(--img-padding) * 2.5);
+    padding-inline: calc(var(--img-padding) * 1);
   }
 }
 
 /* Extremely tall */
 @media (max-aspect-ratio: 1/2) {
   .img-wrapper {
+    padding-block: calc(var(--img-padding) * 5);
     padding-inline: calc(var(--img-padding) * 1);
-    padding-block: calc(var(--img-padding) * 3);
   }
 }
 
