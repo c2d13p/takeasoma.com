@@ -184,9 +184,9 @@ button {
   display: flex;
   height: 100%;
   justify-content: center;
+  overflow: hidden;
   padding-block: var(--img-padding);
   padding-inline: var(--img-padding);
-  position: relative;
   width: 100%;
 }
 
@@ -201,32 +201,6 @@ button {
   top: 0;
   width: 100%;
   z-index: 0;
-}
-
-@media (orientation: portrait) {
-  .img-wrapper:not(dialog *) {
-    overflow-x: clip;
-  }
-
-  .img-wrapper:not(dialog *)::before {
-    height: 110%;
-    left: 0;
-    top: -5%;
-    width: 100%;
-  }
-}
-
-@media (orientation: landscape) {
-  .img-wrapper:not(dialog *) {
-    overflow-y: clip;
-  }
-
-  .img-wrapper:not(dialog *)::before {
-    height: 100%;
-    left: -5%;
-    top: 0;
-    width: 110%;
-  }
 }
 
 /* Slightly landscape */
