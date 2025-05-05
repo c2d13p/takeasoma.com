@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
+  let blurValue = 25;
+  let saturationValue = 3;
+
+  function updateCSSVariables() {
+    root.style.setProperty("--blur", `${blurValue}px`);
+    root.style.setProperty("--saturation", saturationValue);
+  }
+
+  updateCSSVariables();
+
   const imageFilenames = [""];
 
   function createImageWrapper(url) {
@@ -8,12 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const img = document.createElement("img");
     img.src = url;
-
     img.onload = () => {
       wrapper.appendChild(img);
       document.body.appendChild(wrapper);
     };
-
     img.onerror = () => {
       console.warn(`Image not found or failed to load: ${url}`);
     };
@@ -36,8 +45,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "+") {
-      fileInput.click();
+    switch (event.key) {
+      case "+":
+        fileInput.click();
+        break;
+      case "a":
+        blurValue += 5;
+        updateCSSVariables();
+        break;
+      case "s":
+        blurValue = Math.max(0, blurValue - 5);
+        updateCSSVariables();
+        break;
+      case "d":
+        saturationValue += 1;
+        updateCSSVariables();
+        break;
+      case "f":
+        saturationValue = Math.max(0, saturationValue - 1);
+        updateCSSVariables();
+        break;
     }
   });
 });
