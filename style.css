@@ -1,9 +1,25 @@
+@font-face {
+  font-family: "Oleo Script";
+  font-weight: 400;
+  src: local("Oleo Script"),
+    url("/fonts/Oleo\ Script/oleoscript-regular.woff2") format("woff2"),
+    url("/fonts/Oleo\ Script/oleoscript-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Oleo Script";
+  font-weight: 700;
+  src: local("Oleo Script"),
+    url("/fonts/Oleo\ Script/oleoscript-bold.woff2") format("woff2"),
+    url("/fonts/Oleo\ Script/oleoscript-bold.woff") format("woff");
+}
+
 :root {
   --body-bg-clr: #edece8;
   --body-fs: clamp(1.25rem, 1rem + 1.25vw, 2.125rem);
   --cookie-banner-fs: clamp(0.6875rem, 0.6339rem + 0.2679vw, 0.875rem);
   --cookie-banner-button-fs: clamp(0.75rem, 0.6786rem + 0.3571vw, 1rem);
-  --font-family: "Courier New", monospace;
+  --font-family: "Courier New", Courier, monospace;
   --font-weight: bold;
   --footer-bg-clr: #034488;
   --footer-clr: #fffcf6;

@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     february: "https://fonts.googleapis.com/css?family=Tomorrow",
     march: "https://fonts.googleapis.com/css?family=Caveat",
     april: "https://fonts.googleapis.com/css?family=Kaushan+Script",
-    may: "https://fonts.googleapis.com/css?family=Oleo+Script",
     june: "https://fonts.googleapis.com/css?family=Playwrite+AT",
     july: "https://fonts.googleapis.com/css?family=Coiny",
     august: "https://fonts.googleapis.com/css?family=Notable",
