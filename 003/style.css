@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Rubik+Mono+One");
+@font-face {
+  font-family: "Rubik Mono One";
+  font-weight: 400;
+  src: local("Rubik Mono One"),
+    url("/fonts/Rubik\ Mono\ One/rubikmonoone-regular.woff2") format("woff2"),
+    url("/fonts/Rubik\ Mono\ One/rubikmonoone-regular.woff") format("woff");
+}
 
 :root {
   --bg-clr: #ffffff;

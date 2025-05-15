@@ -1,6 +1,42 @@
-@import url("https://fonts.googleapis.com/css?family=Inconsolata");
-@import url("https://fonts.googleapis.com/css?family=Allura");
-@import url("https://fonts.googleapis.com/css?family=Chakra+Petch");
+@font-face {
+  font-family: "Allura";
+  font-weight: 400;
+  src: local("Allura"),
+    url("/fonts/Allura/allura-regular.woff2") format("woff2"),
+    url("/fonts/Allura/allura-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  font-weight: 400;
+  src: local("Chakra Petch"),
+    url("/fonts/Chakra\ Petch/chakrapetch-regular.woff2") format("woff2"),
+    url("/fonts/Chakra\ Petch/chakrapetch-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  font-weight: 700;
+  src: local("Chakra Petch"),
+    url("/fonts/Chakra\ Petch/chakrapetch-bold.woff2") format("woff2"),
+    url("/fonts/Chakra\ Petch/chakrapetch-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  font-weight: 400;
+  src: local("Inconsolata"),
+    url("/fonts/Inconsolata/inconsolata-regular.woff2") format("woff2"),
+    url("/fonts/Inconsolata/inconsolata-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inconsolata";
+  font-weight: 700;
+  src: local("Inconsolata"),
+    url("/fonts/Inconsolata/inconsolata-bold.woff2") format("woff2"),
+    url("/fonts/Inconsolata/inconsolata-bold.woff") format("woff");
+}
 
 :root {
   --arrow-fs: clamp(2.5rem, 1.6071rem + 4.4643vw, 5.625rem);

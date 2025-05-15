@@ -1,4 +1,74 @@
 @font-face {
+  font-family: "Autour One";
+  font-weight: 400;
+  src: local("Autour One"),
+    url("/fonts/Autour\ One/autourone-regular.woff2") format("woff2"),
+    url("/fonts/Autour\ One/autourone-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Caveat";
+  font-weight: 400;
+  src: local("Caveat"),
+    url("/fonts/Caveat/caveat-regular.woff2") format("woff2"),
+    url("/fonts/Caveat/caveat-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Caveat";
+  font-weight: 700;
+  src: local("Caveat"), url("/fonts/Caveat/caveat-bold.woff2") format("woff2"),
+    url("/fonts/Caveat/caveat-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Coiny";
+  font-weight: 400;
+  src: local("Coiny"), url("/fonts/Coiny/coiny-regular.woff2") format("woff2"),
+    url("/fonts/Coiny/coiny-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Kaushan Script";
+  font-weight: 400;
+  src: local("Kaushan Script"),
+    url("/fonts/Kaushan\ Script/kaushanscript-regular.woff2") format("woff2"),
+    url("/fonts/Kaushan\ Script/kaushanscript-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Matemasie";
+  font-weight: 400;
+  src: local("Matemasie"),
+    url("/fonts/Matemasie/matemasie-regular.woff2") format("woff2"),
+    url("/fonts/Matemasie/matemasie-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "MuseoModerno";
+  font-weight: 400;
+  src: local("MuseoModerno"),
+    url("/fonts/MuseoModerno/museomoderno-regular.woff2") format("woff2"),
+    url("/fonts/MuseoModerno/museomoderno-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Museo Moderno";
+  font-weight: 700;
+  src: local("Museo Moderno"),
+    url("/fonts/Museo\ Moderno/museomoderno-bold.woff2") format("woff2"),
+    url("/fonts/Museo\ Moderno/museomoderno-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Notable";
+  font-weight: 400;
+  src: local("Notable"),
+    url("/fonts/Notable/notable-regular.woff2") format("woff2"),
+    url("/fonts/Notable/notable-regular.woff") format("woff");
+}
+
+@font-face {
   font-family: "Oleo Script";
   font-weight: 400;
   src: local("Oleo Script"),
@@ -12,6 +82,48 @@
   src: local("Oleo Script"),
     url("/fonts/Oleo\ Script/oleoscript-bold.woff2") format("woff2"),
     url("/fonts/Oleo\ Script/oleoscript-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Playwrite AT";
+  font-weight: 400;
+  src: local("Playwrite AT"),
+    url("/fonts/Playwrite\ AT/playwriteat-regular.woff2") format("woff2"),
+    url("/fonts/Playwrite\ AT/playwriteat-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Rubik Bubbles";
+  font-weight: 400;
+  src: local("Rubik Bubbles"),
+    url("/fonts/Rubik\ Bubbles/rubikbubbles-regular.woff2") format("woff2"),
+    url("/fonts/Rubik\ Bubbles/rubikbubbles-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Shadows Into Light";
+  font-weight: 400;
+  src: local("Shadows Into Light"),
+    url("/fonts/Shadows\ Into\ Light/shadowsintolight-regular.woff")
+      format("woff2"),
+    url("/fonts/Shadows\ Into\ Light/shadowsintolight-regular.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Tomorrow";
+  font-weight: 400;
+  src: local("Tomorrow"),
+    url("/fonts/Tomorrow/tomorrow-regular.woff2") format("woff2"),
+    url("/fonts/Tomorrow/tomorrow-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Tomorrow";
+  font-weight: 700;
+  src: local("Tomorrow"),
+    url("/fonts/Tomorrow/tomorrow-bold.woff2") format("woff2"),
+    url("/fonts/Tomorrow/tomorrow-bold.woff") format("woff");
 }
 
 :root {
@@ -155,7 +267,7 @@ footer {
   border-top-right-radius: 20px;
   bottom: 0;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-  font-family: "Courier New", monospace;
+  font-family: "Courier New", Courier, monospace;
   font-size: var(--cookie-banner-fs);
   font-weight: normal;
   left: 0;
