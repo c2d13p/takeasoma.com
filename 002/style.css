@@ -60,6 +60,10 @@
   box-sizing: border-box;
 }
 
+*:focus-visible {
+  outline: none;
+}
+
 body {
   background-color: var(--bg-clr-light);
   color: var(--text-clr);
@@ -148,13 +152,60 @@ p {
 }
 
 .question {
-  filter: drop-shadow(0 0 50px var(--shadow-clr));
+  color: transparent;
   font-family: "Inconsolata";
   font-size: var(--question-fs);
   line-height: 1.4;
+  overflow: hidden;
+  position: relative;
+}
+
+.question::before {
+  animation: typewriter 2.5s steps(19) 1s forwards;
+  color: var(--text-clr);
+  content: attr(data-text);
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 0;
+}
+
+.question::after {
+  animation: cursorMove 2.5s steps(19) 1s forwards,
+    cursorBlink 700ms steps(1) infinite;
+  background-color: var(--text-clr);
+  content: "";
+  display: inline-block;
+  height: 1em;
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  width: 0.125em;
+}
+
+@keyframes typewriter {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursorMove {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes cursorBlink {
+  50% {
+    background-color: transparent;
+  }
 }
 
 input[type="datetime-local"] {
+  animation: fadeIn 2.5s 3s ease forwards;
   background-color: transparent;
   border: 2px solid var(--text-clr);
   border-radius: 100vmax;
@@ -166,11 +217,18 @@ input[type="datetime-local"] {
   font-weight: bold;
   min-height: 2em;
   min-width: 10em;
+  opacity: 0;
   padding: 0.6rem;
 }
 
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
 .time {
@@ -200,7 +258,6 @@ i {
 
 a,
 a:focus {
-  outline: none;
   text-decoration: none;
 }
 
@@ -218,7 +275,6 @@ button {
 
 .arrow-button:focus,
 .arrow-button:hover {
-  outline: none;
   transform: scale(1.05);
 }
 
@@ -266,13 +322,11 @@ button:disabled {
 .round-button:focus,
 .round-button:hover {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  outline: none;
   transform: translateY(-2px);
 }
 
 .round-button:active {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  outline: none;
   transform: scale(0.95);
 }
 

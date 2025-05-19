@@ -86,6 +86,7 @@ const TimeTracker = {
 
   openSettingsDialog() {
     this.elements.birthInput.disabled = true;
+    this.elements.enterButton.disabled = true;
     this.elements.dialog.showModal();
     setTimeout(() => {
       this.elements.birthInput.disabled = false;
@@ -95,7 +96,9 @@ const TimeTracker = {
     if (birthDatetime) {
       const date = new Date(birthDatetime);
       this.elements.birthInput.value = this.formatDateForInput(date);
-      this.elements.enterButton.disabled = !this.elements.birthInput.value;
+      setTimeout(() => {
+        this.elements.enterButton.disabled = false;
+      }, 5000);
     } else {
       this.elements.birthInput.value = "";
     }
