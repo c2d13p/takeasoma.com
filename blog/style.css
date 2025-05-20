@@ -183,6 +183,7 @@ p {
 footer {
   background-color: var(--accent-clr-3);
   bottom: 0;
+  display: flex;
   padding: 1em;
   position: fixed;
   width: 100%;
@@ -212,8 +213,13 @@ footer a:focus {
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active,
-.round-button:focus {
+.round-button:active {
   outline: none;
   transform: scale(0.95);
+}
+
+button:focus,
+button:hover {
+  outline: none;
+  transform: translateY(-2px);
 }
