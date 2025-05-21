@@ -5,7 +5,8 @@
   --article-title-fs: clamp(1.125rem, 0.9821rem + 0.7143vw, 1.625rem);
   --article-paragraph-fs: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
   --form-fs: clamp(1rem, 0.8571rem + 0.7143vw, 1.5rem);
-  --font-family: "Courier New", monospace;
+  --font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
 }
 

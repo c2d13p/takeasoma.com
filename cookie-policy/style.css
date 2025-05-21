@@ -1,6 +1,7 @@
 body {
   box-sizing: border-box;
-  font-family: "Courier New", monospace;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
   font-size: clamp(0.875rem, 0.7917rem + 0.4167vw, 1rem);
   margin: 2em auto;
   padding-inline: clamp(1.5rem, 0.5rem + 5vw, 3rem);

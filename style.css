@@ -131,7 +131,8 @@
   --body-fs: clamp(1.25rem, 1rem + 1.25vw, 2.125rem);
   --cookie-banner-fs: clamp(0.6875rem, 0.6339rem + 0.2679vw, 0.875rem);
   --cookie-banner-button-fs: clamp(0.75rem, 0.6786rem + 0.3571vw, 1rem);
-  --font-family: "Courier New", Courier, monospace;
+  --font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
   --font-weight: bold;
   --footer-bg-clr: #034488;
   --footer-clr: #fffcf6;
@@ -267,7 +268,8 @@ footer {
   border-top-right-radius: 20px;
   bottom: 0;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter",
+    "Lucida Typewriter", monospace;
   font-size: var(--cookie-banner-fs);
   font-weight: normal;
   left: 0;
@@ -307,7 +309,8 @@ footer {
 /*january, black*/
 .january {
   --body-bg-clr: #91a3b0;
-  --font-family: "Shadows Into Light";
+  --font-family: "Shadows Into Light", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #36454f;
   --footer-clr: #8c92ac;
   --soma-bg-img: linear-gradient(#708090, #91a3b0);
@@ -321,7 +324,8 @@ footer {
 /*february, white*/
 .february {
   --body-bg-clr: #a4dded;
-  --font-family: "Tomorrow";
+  --font-family: "Tomorrow", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #191970;
   --footer-clr: #f0ffff;
   --soma-bg-img: linear-gradient(#fffafa, #a4dded);
@@ -335,7 +339,8 @@ footer {
 /*march, turquoise*/
 .march {
   --body-bg-clr: #d0f0c0;
-  --font-family: "Caveat";
+  --font-family: "Caveat", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #01796f;
   --footer-clr: #f0fff0;
   --soma-bg-img: linear-gradient(#afe7b2, #d0f0c0);
@@ -349,7 +354,8 @@ footer {
 /*april, pink*/
 .april {
   --body-bg-clr: #ffdae9;
-  --font-family: "Kaushan Script";
+  --font-family: "Kaushan Script", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #ed7a9b;
   --footer-clr: #fff0f5;
   --soma-bg-img: linear-gradient(#f2bdcd, #ffdae9);
@@ -363,7 +369,8 @@ footer {
 /*may, sorrento*/
 .may {
   --body-bg-clr: #fada5e;
-  --font-family: "Oleo Script";
+  --font-family: "Oleo Script", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #00bfff;
   --footer-clr: #e4d00a;
   --soma-bg-img: linear-gradient(#fffacd, #fada5e);
@@ -377,7 +384,8 @@ footer {
 /*june, blue*/
 .june {
   --body-bg-clr: #edece8;
-  --font-family: "Playwrite AT";
+  --font-family: "Playwrite AT", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #178fd6;
   --footer-clr: #fffcf6;
   --soma-bg-img: linear-gradient(#ccdde8, #edece8);
@@ -391,7 +399,8 @@ footer {
 /*july, yellow*/
 .july {
   --body-bg-clr: #fada5e;
-  --font-family: "Coiny";
+  --font-family: "Coiny", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #ef9b0f;
   --footer-clr: #fffacd;
   --soma-bg-img: linear-gradient(#fcf75e, #fada5e);
@@ -405,7 +414,8 @@ footer {
 /*august, orange*/
 .august {
   --body-bg-clr: #ffa000;
-  --font-family: "Notable";
+  --font-family: "Notable", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #ec5800;
   --footer-clr: #ffa500;
   --soma-bg-img: linear-gradient(#ff8f00, #ffa000);
@@ -419,7 +429,8 @@ footer {
 /*september, violet*/
 .september {
   --body-bg-clr: #ccccff;
-  --font-family: "MuseoModerno";
+  --font-family: "MuseoModerno", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #702963;
   --footer-clr: #e6e6fa;
   --soma-bg-img: linear-gradient(#e0b0ff, #ccccff);
@@ -433,7 +444,8 @@ footer {
 /*october, gray*/
 .october {
   --body-bg-clr: #e5e4e2;
-  --font-family: "Autour One";
+  --font-family: "Autour One", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #ad958e;
   --footer-clr: #f5f5f5;
   --soma-bg-img: linear-gradient(#dbd7d2, #e5e4e2);
@@ -447,7 +459,8 @@ footer {
 /*november, brown*/
 .november {
   --body-bg-clr: #ed9121;
-  --font-family: "Matemasie";
+  --font-family: "Matemasie", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #592720;
   --footer-clr: #cc7f3b;
   --soma-bg-img: linear-gradient(#c46210, #ed9121);
@@ -461,7 +474,8 @@ footer {
 /*december, red*/
 .december {
   --body-bg-clr: #99ffff;
-  --font-family: "Rubik Bubbles";
+  --font-family: "Rubik Bubbles", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --footer-bg-clr: #ff0800;
   --footer-clr: #fffafa;
   --soma-bg-img: linear-gradient(#fffafa, #99ffff);

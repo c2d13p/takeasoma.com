@@ -9,7 +9,9 @@
 :root {
   --bg-clr: #ffffff;
   --bg-controls-gradient: linear-gradient(#d5514d, #693856);
-  --ff: "Rubik Mono One";
+  --ff: "Rubik Mono One", Impact, Haettenschweiler, "Franklin Gothic Bold",
+    Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black",
+    "sans serif";
   --fs-opening-dialog: clamp(1.5rem, 0.6786rem + 4.1071vw, 4.375rem);
   --fs-title: clamp(0.625rem, 0.4464rem + 0.8929vw, 1.25rem);
   --icon-bg-gradient: linear-gradient(#ff8d11, #d5514d, #693856);

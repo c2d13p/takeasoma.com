@@ -91,7 +91,8 @@ form {
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-family: "Inconsolata";
+  font-family: "Inconsolata", "Lucida Sans Typewriter", "Lucida Console", monaco,
+    "Bitstream Vera Sans Mono", monospace;
   gap: clamp(1.25rem, 0.3571rem + 4.4643vw, 4.375rem);
   height: 100%;
   justify-content: center;
@@ -153,7 +154,8 @@ p {
 
 .question {
   color: transparent;
-  font-family: "Inconsolata";
+  font-family: "Inconsolata", "Lucida Sans Typewriter", "Lucida Console", monaco,
+    "Bitstream Vera Sans Mono", monospace;
   font-size: var(--question-fs);
   line-height: 1.4;
   overflow: hidden;
@@ -232,7 +234,8 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .time {
-  font-family: "Chakra Petch";
+  font-family: "Chakra Petch", Rockwell, "Courier Bold", Courier, Georgia, Times,
+    "Times New Roman", serif;
   font-size: var(--time-fs);
   line-height: 2;
   text-transform: capitalize;
@@ -244,7 +247,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .quote {
-  font-family: "Allura";
+  font-family: "Allura", "Brush Script MT", cursive;
   font-size: var(--quote-fs);
   text-transform: none;
 }
