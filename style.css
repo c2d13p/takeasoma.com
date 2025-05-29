@@ -186,53 +186,21 @@ a:focus {
   margin-block: 0.2em;
   padding: 0.6em 1.4em;
   position: relative;
-}
-
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
-}
-
-.soma:hover::before,
-.soma:focus::before,
-.soma:hover::after,
-.soma:focus::after {
-  animation: rotation 5s linear infinite;
-  background: conic-gradient(
-    from var(--gradient-angle),
-    var(--soma-clr),
-    var(--body-bg-clr),
-    var(--soma-clr-hover),
-    var(--body-bg-clr),
-    var(--soma-clr)
-  );
-  border-radius: inherit;
-  content: "";
-  inset: 0;
-  position: absolute;
-  z-index: -1;
-}
-
-.soma:hover::after,
-.soma:focus::after {
-  filter: blur(25px);
+  transition: transform 0.15s ease;
 }
 
 .soma:hover,
 .soma:focus {
   background-color: var(--soma-bg-clr-hover);
   background-image: var(--soma-bg-img-hover);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   color: var(--soma-clr-hover);
+  transform: translateY(-2px);
+}
+
+.soma:active {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
 }
 
 footer {
