@@ -5,9 +5,9 @@
 :root {
   --bg-clr: #00b4d8;
   --btn-box-shadow: rgba(3, 4, 94, 0.1);
-  --dropdown-menu-border-clr: rgb(181, 181, 181);
-  --dropdown-menu-bg-clr: rgb(245, 245, 245);
-  --dropdown-menu-item-clr: rgb(10, 10, 10);
+  --dropdown-menu-border-clr: #0096c7;
+  --dropdown-menu-bg-clr: #ade8f4;
+  --dropdown-menu-item-clr: #03045e;
   --dropdown-menu-item-fs: clamp(1.125rem, 0.9464rem + 0.8929vw, 1.75rem);
   --icon-bg-clr: #90e0ef;
   --icon-bg-clr-active: #ade8f4;
@@ -19,14 +19,15 @@
 }
 
 .dark {
-  --bg-clr: rgb(19, 19, 19);
-  --btn-box-shadow: rgba(255, 255, 255, 0.1);
-  --dropdown-menu-border-clr: rgb(97, 97, 97);
-  --dropdown-menu-bg-clr: rgb(30, 30, 30);
-  --dropdown-menu-item-clr: rgb(225, 225, 225);
-  --icon-bg-clr: rgb(50, 50, 50);
-  --icon-bg-clr-active: rgb(100, 100, 100);
-  --icon-clr: rgb(238, 44, 48);
+  --bg-clr: #03045e;
+  --btn-box-shadow: rgba(144, 224, 239, 0.15);
+  --dropdown-menu-border-clr: #48cae4;
+  --dropdown-menu-bg-clr: #023e8a;
+  --dropdown-menu-item-clr: #caf0f8;
+  --icon-bg-clr: #0096c7;
+  --icon-bg-clr-active: #0077b6;
+  --icon-clr: #ade8f4;
+  --text-clr: #00b4d8;
 }
 
 * {
