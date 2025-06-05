@@ -1,14 +1,21 @@
+@import url("https://fonts.googleapis.com/css?family=Monoton");
+@import url("https://fonts.googleapis.com/css?family=Silkscreen");
+@import url("https://fonts.googleapis.com/css?family=Barriecito");
+
 :root {
-  --bg-clr: rgb(242, 242, 242);
-  --btn-box-shadow: rgba(0, 0, 0, 0.05);
+  --bg-clr: #00b4d8;
+  --btn-box-shadow: rgba(3, 4, 94, 0.1);
   --dropdown-menu-border-clr: rgb(181, 181, 181);
   --dropdown-menu-bg-clr: rgb(245, 245, 245);
   --dropdown-menu-item-clr: rgb(10, 10, 10);
   --dropdown-menu-item-fs: clamp(1.125rem, 0.9464rem + 0.8929vw, 1.75rem);
-  --icon-bg-clr: rgb(225, 225, 225);
-  --icon-bg-clr-active: rgb(174, 174, 174);
-  --icon-clr: rgb(58, 58, 58);
+  --icon-bg-clr: #90e0ef;
+  --icon-bg-clr-active: #ade8f4;
+  --icon-clr: #03045e;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
+  --text-clr: #03045e;
+  --text-ff: "Barriecito";
+  --text-size: 25vh;
 }
 
 .dark {
@@ -31,7 +38,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  justify-content: space-between;
   margin: 0 auto;
   max-width: 1440px;
   overflow: hidden;
@@ -127,20 +133,21 @@ button {
 }
 
 main {
-  flex: 1;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 10rem;
-  font-weight: bold;
+  color: var(--text-clr);
+  display: flex;
+  flex: 1;
+  font-family: var(--text-ff);
+  font-size: var(--text-size);
+  justify-content: center;
   overflow: hidden;
 }
 
 .wave-text {
+  animation: slide 10s linear infinite;
   display: inline-block;
   position: absolute;
   white-space: nowrap;
-  animation: slideLeftToRight 10s linear infinite;
 }
 
 .wave-letter {
@@ -158,7 +165,7 @@ main {
   }
 }
 
-@keyframes slideLeftToRight {
+@keyframes slide {
   0% {
     transform: translateX(100vw);
   }
