@@ -156,13 +156,58 @@ main {
   animation: wave 3s ease-in-out infinite;
 }
 
-@keyframes wave {
-  0%,
+#wave-wrapper {
+  position: absolute;
+  width: 700px; /* Play with this size */
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wave-01,
+.wave-02,
+.wave-03 {
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  left: -100%;
+  top: 50%;
+  border-radius: 45%;
+  animation: rotate 10s linear infinite;
+  z-index: 0;
+}
+
+.wave-02 {
+  top: 57%;
+  border-radius: 43%;
+  animation-duration: 7s;
+}
+
+.wave-03 {
+  top: 60%;
+  border-radius: 40%;
+  animation-duration: 5s;
+}
+
+.wave-01 {
+  background-color: rgba(0, 190, 255, 0.4);
+}
+
+.wave-02 {
+  background-color: rgba(0, 70, 110, 0.4);
+}
+
+.wave-03 {
+  background-color: rgba(0, 90, 110, 0.4);
+}
+
+@keyframes rotate {
   100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px);
+    transform: rotate(360deg);
   }
 }
 
@@ -172,5 +217,15 @@ main {
   }
   100% {
     transform: translateX(-100vw);
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
   }
 }
