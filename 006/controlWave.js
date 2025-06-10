@@ -61,16 +61,6 @@ function loadMode() {
   const theme =
     new Date().getHours() >= 20 || new Date().getHours() < 8 ? "dark" : "light";
   document.body.classList.toggle("dark", theme === "dark");
-
-  ["background", "time", "second"].forEach((id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const mode = getCookie("mode") || "italian";
-      element.src = `images/${mode}-${id}-${theme}.png`;
-      element.className = "";
-      element.classList.add(mode);
-    }
-  });
 }
 
 function applyWaveTextEffect(element, text) {
