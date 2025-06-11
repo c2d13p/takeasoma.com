@@ -2,13 +2,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const waveText = document.querySelector(".wave-text");
   const switcher = document.getElementById("switcher");
   const dropdownMenu = document.querySelector(".dropdown-menu");
-  const italianMode = document.getElementById("italian");
-  const englishMode = document.getElementById("english");
+
+  const translations = {
+    el: "Panta rei",
+    it: "Tutto scorre",
+    en: "Everything flows",
+    fr: "Tout coule",
+    es: "Todo fluye",
+    de: "Alles fließt",
+    pt: "Tudo flui",
+  };
+
+  const defaultLang = "el";
+  const savedLang = getCookie("mode") || defaultLang;
 
   if (waveText) {
-    const savedLang = getCookie("mode") || "italian";
-    const initialText =
-      savedLang === "italian" ? "PANTA REI" : "Everything flows";
+    const initialText = translations[savedLang] || translations[defaultLang];
     waveText.dataset.text = initialText;
     applyWaveTextEffect(waveText, initialText);
   }
@@ -24,18 +33,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  Object.keys(translations).forEach((lang) => {
+    const langItem = document.getElementById(lang);
+    if (langItem) {
+      langItem.addEventListener("click", () => toggleMode(lang));
+    }
+  });
+
   const toggleMode = (mode) => {
     setCookie("mode", mode, 365);
-    const newText = mode === "italian" ? "PANTA REI" : "Everything flows";
+    const newText = translations[mode] || translations[defaultLang];
     if (waveText) {
       waveText.dataset.text = newText;
       applyWaveTextEffect(waveText, newText);
     }
     dropdownMenu.classList.remove("active");
   };
-
-  italianMode.addEventListener("click", () => toggleMode("italian"));
-  englishMode.addEventListener("click", () => toggleMode("english"));
 
   loadMode();
 });
