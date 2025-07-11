@@ -1,6 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Monoton");
-@import url("https://fonts.googleapis.com/css?family=Silkscreen");
-@import url("https://fonts.googleapis.com/css?family=Barriecito");
+@font-face {
+  font-family: "Libertinus Mono";
+  font-weight: 400;
+  src: local("Libertinus Mono"),
+    url("/fonts/Libertinus\ Mono/libertinusmono-regular.woff2") format("woff2"),
+    url("/fonts/Libertinus\ Mono/libertinusmono-regular.woff") format("woff");
+}
 
 :root {
   --bg-clr: #00b4d8;
@@ -14,7 +18,7 @@
   --icon-clr: #03045e;
   --icon-size: clamp(1.25rem, 0.8929rem + 1.7857vw, 2.5rem);
   --text-clr: #03045e;
-  --text-ff: "Silkscreen";
+  --text-ff: "Libertinus Mono";
   --text-size: 25vh;
 }
 
@@ -178,10 +182,10 @@ main {
 
 @keyframes slide {
   0% {
-    transform: translateX(110%);
+    transform: translateX(100vw);
   }
   100% {
-    transform: translateX(-110%);
+    transform: translateX(calc(-100vw - 50%));
   }
 }
 
