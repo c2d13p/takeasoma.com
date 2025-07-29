@@ -1,16 +1,31 @@
-/*  setCookie(name, value, days) {
-    const d = new Date();
-    d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000);
-    const expires = "Expires=" + d.toUTCString();
-    document.cookie = `${name}=${value}; ${expires}; path=/`;
-  }
+// Helper function for cookie management
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+  return null;
+}
 
-  getCookie(name) {
-    const nameEQ = name + "=";
-    const ca = document.cookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i].trim();
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+// Add hearts to favorite poems on page load
+function addHeartsToFavorites() {
+  const favoritesCookie = getCookie("favourite-poems");
+
+  if (!favoritesCookie) return; // No favorites cookie exists
+
+  const favoritesList = favoritesCookie.split(",");
+
+  favoritesList.forEach((poemId) => {
+    const poemLink = document.getElementById(poemId);
+    if (poemLink) {
+      // Create heart icon
+      const heartIcon = document.createElement("i");
+      heartIcon.className = "fa-regular fa-heart heart-poem";
+
+      // Add heart at the beginning of the link
+      poemLink.insertBefore(heartIcon, poemLink.firstChild);
     }
-    return null;
-  }*/
+  });
+}
+
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", addHeartsToFavorites);
