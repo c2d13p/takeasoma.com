@@ -9,7 +9,7 @@
     "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
   --form-btn-clr: #fff;
   --footer-fs: 1em;
-  --h1-fs: clamp(1.375rem, 1.0302rem + 1.7241vw, 2rem);
+
   --header-fs: clamp(1.25rem, 0.6983rem + 2.7586vw, 2.25rem);
   --icon-bg-clr: transparent;
   --icon-bg-clr-active: rgb(174, 174, 174);
@@ -24,6 +24,7 @@
     50% - min(50% - 0.5em, 450px) + clamp(2rem, 1.4483rem + 2.7586vw, 3rem)
   );
   --main-fs: 1em;
+  --summary-fs: clamp(1.375rem, 1.0302rem + 1.7241vw, 2rem);
 }
 
 * {
@@ -92,8 +93,32 @@ main {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 1em;
-  justify-content: top;
+}
+
+summary {
+  cursor: pointer;
+  font-size: var(--summary-fs);
+}
+
+summary:focus-visible {
+  outline: none;
+  text-decoration: underline;
+}
+
+details[open] summary {
+  font-weight: bold;
+}
+
+details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+details > * {
+  display: block;
+  margin-block: 0.8em;
 }
 
 footer {
@@ -103,12 +128,8 @@ footer {
   padding-block: 1em;
 }
 
-h1 {
-  font-size: var(--h1-fs);
-}
-
-main a,
-main a:focus {
+details a,
+details a:focus {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
