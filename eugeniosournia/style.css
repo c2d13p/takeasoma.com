@@ -4,16 +4,26 @@
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap");
 
 :root {
+  --font-clr: #111111;
   --font-family: "Courier Prime", "Courier New", Courier,
     "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  --header-fs: clamp(1.25rem, 0.8362rem + 2.069vw, 2rem);
+  --form-btn-clr: #fff;
+  --footer-fs: 1em;
+  --h1-fs: clamp(1.375rem, 1.0302rem + 1.7241vw, 2rem);
+  --header-fs: clamp(1.25rem, 0.6983rem + 2.7586vw, 2.25rem);
   --icon-bg-clr: transparent;
   --icon-bg-clr-active: rgb(174, 174, 174);
   --icon-clr: rgb(0, 0, 0);
   --icon-size: 1.2em;
-  --light-bg: #ffffff;
-
-  --line-offset: calc(50% - min(50% - 0.5em, 450px) + 3em);
+  --input-bg-clr: #fff;
+  --input-placeholder-clr: #848482;
+  --light-bg: #fff;
+  --line-clr: #3b3c36;
+  --line-side-clr: #e60026;
+  --line-offset: calc(
+    50% - min(50% - 0.5em, 450px) + clamp(2rem, 1.4483rem + 2.7586vw, 3rem)
+  );
+  --main-fs: 1em;
 }
 
 * {
@@ -22,13 +32,14 @@
 
 body {
   background-color: var(--light-bg);
+  color: var(--font-clr);
   display: flex;
   flex-direction: column;
   font-family: var(--font-family);
   margin: 0 auto;
   min-height: 100dvh;
+  max-width: 900px;
   text-align: center;
-  width: min(100% - 1em, 900px);
 }
 
 body::before {
@@ -37,19 +48,24 @@ body::before {
   filter: url(#noiseFilter);
   height: 100%;
   inset: 0;
-  opacity: 30%;
+  opacity: 50%;
   position: absolute;
   width: 100%;
   z-index: -1;
 }
 
+svg {
+  position: absolute;
+  z-index: 1;
+}
+
 .line-left,
 .line-right {
+  background-color: var(--line-side-clr);
+  bottom: 0;
   position: fixed;
   top: 0;
-  bottom: 0;
   width: 1px;
-  background-color: red;
   z-index: 1;
 }
 
@@ -61,16 +77,11 @@ body::before {
   right: var(--line-offset);
 }
 
-svg {
-  position: absolute;
-  z-index: 1;
-}
-
 header {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
-    #000 1em
+    var(--line-clr) 1em
   );
   font-size: var(--header-fs);
   line-height: 1.5em;
@@ -88,8 +99,12 @@ main {
 footer {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.8em;
   padding-block: 1em;
+}
+
+h1 {
+  font-size: var(--h1-fs);
 }
 
 main a,
@@ -97,62 +112,73 @@ main a:focus {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
-    #000 1em
+    var(--line-clr) 1em
   );
-  color: #000;
+  color: var(--font-clr);
+  font-size: var(--main-fs);
+  font-style: italic;
   line-height: 1.5em;
   outline: none;
   text-decoration: none;
 }
 
+main a:focus,
+main a:hover {
+  font-style: normal;
+  font-weight: bold;
+}
+
 footer a {
-  color: #000;
+  color: var(--font-clr);
   text-decoration: none;
 }
 
+footer a:focus,
+footer a:hover {
+  font-weight: bold;
+}
+
 form {
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
   justify-content: center;
 }
 
-form label {
-  flex-basis: 100%;
-  text-align: center;
-  margin: 0;
-  margin-bottom: -0.7em;
+@media (max-width: 410px) {
+  form {
+    flex-direction: column;
+    gap: 0.3em;
+  }
 }
 
 input {
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: var(--input-bg-clr);
+  border: 1px solid var(--font-clr);
   border-radius: 5px;
-  color: #000;
+  color: var(--font-clr);
   font-family: inherit;
-  font-size: 1em;
+  font-size: var(--footer-fs);
   padding-block: 0.2em;
   text-align: center;
 }
 
 input::placeholder {
-  color: gray;
-  opacity: 1;
-  text-align: center;
+  color: var(--input-placeholder-clr);
 }
 
 input:focus {
-  background-color: white;
-  border-color: black;
-  color: black;
-  outline: none;
+  background-color: var(--input-bg-clr);
+  border-color: var(--font-clr);
+  color: var(--font-clr);
 }
 
 input:invalid {
   border-color: red;
 }
 
-input:valid {
+input:valid:not(:placeholder-shown) {
   border-color: green;
 }
 
@@ -161,24 +187,25 @@ button {
 }
 
 .form-button {
-  background-color: black;
-  border: 1px solid black;
+  background-color: var(--font-clr);
+  border: 1px solid var(--font-clr);
   border-radius: 5px;
-  color: white;
+  color: var(--form-btn-clr);
   font-family: inherit;
-  padding-block: 0.5em;
+  padding-block: 0.3em;
+  padding-inline: 0.6em;
 }
 
-.form-button:hover,
-.form-button:focus {
-  background-color: white;
-  color: black;
-  outline: none;
+.form-button:focus,
+.form-button:hover {
+  background-color: transparent;
+  color: var(--font-clr);
+  font-weight: bold;
 }
 
 .form-button:disabled {
-  background-color: gray;
-  color: white;
+  background-color: var(--input-placeholder-clr);
+  color: var(--form-btn-clr);
   cursor: not-allowed;
 }
 
@@ -189,14 +216,14 @@ button {
 }
 
 i {
-  color: black;
-  font-size: 1em;
+  color: var(--font-clr);
+  font-size: 1.2em;
 }
 
 .round-button {
   align-items: center;
-  background: white;
-  border: 1px solid black;
+  background: var(--light-bg);
+  border: 1px solid var(--font-clr);
   border-radius: 100vmax;
   display: flex;
   height: calc(var(--icon-size) * 2);
@@ -209,8 +236,8 @@ i {
   transform: scale(0.95);
 }
 
-button:focus,
-button:hover {
+.round-button:focus,
+.round-button:hover {
   outline: none;
   transform: translateY(-2px);
 }
