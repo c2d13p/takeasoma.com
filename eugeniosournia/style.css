@@ -163,6 +163,7 @@ main h1 {
   );
   line-height: 1.5em;
   margin-block: 1.2em;
+  font-style: italic;
 }
 
 main p {
@@ -177,6 +178,35 @@ main p {
 
 main p.invisible {
   color: transparent;
+}
+
+.typewriter {
+  color: transparent;
+  overflow: hidden;
+  position: relative;
+}
+
+.typewriter::before {
+  animation: typewriter 4s steps(40) forwards;
+  color: var(--font-clr);
+  content: attr(data-text);
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  width: 0;
+}
+
+.typewriter.second::before {
+  animation-delay: 2s;
+}
+
+@keyframes typewriter {
+  to {
+    width: 100%;
+  }
 }
 
 footer a {
