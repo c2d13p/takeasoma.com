@@ -17,6 +17,6 @@ function subscribe() {
   document.getElementById("hidden-entry").value = email;
   document.getElementById("hidden-form").submit();
 
-  button.textContent = "Subscribed!";
+  button.textContent = "Iscritt!";
   button.disabled = true;
 }
