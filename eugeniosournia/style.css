@@ -8,23 +8,25 @@
   --font-clr: #111111;
   --font-family: "Courier Prime", "Courier New", Courier,
     "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  --form-fs: 1em;
-  --footer-link-fs: 0.8em;
+  --form-btn-fs: clamp(0.875rem, 0.806rem + 0.3448vw, 1rem);
+  --form-fs: clamp(0.875rem, 0.806rem + 0.3448vw, 1rem);
+  --footer-link-fs: clamp(0.875rem, 0.806rem + 0.3448vw, 1rem);
   --header-fs: clamp(1.25rem, 0.6983rem + 2.7586vw, 2.25rem);
   --icon-bg-clr: #fff;
   --icon-bg-clr-active: rgb(174, 174, 174);
   --icon-clr: rgb(0, 0, 0);
-  --icon-size: 1.2em;
+  --icon-size: clamp(1rem, 0.8621rem + 0.6897vw, 1.25rem);
   --input-placeholder-clr: #848482;
   --light-clr: #fff;
   --line-horizontal-clr: #3b3c36;
   --line-vertical-clr: #e60026;
   --line-offset: calc(
-    50% - min(50% - 0.5em, 450px) + clamp(2rem, 1.4483rem + 2.7586vw, 3rem)
+    50% - min(50% - 0.5em, 450px) + clamp(1.75rem, 1.0603rem + 3.4483vw, 3rem)
   );
-  --poem-title-fs: 2em;
-  --poem-fs: 1em;
-  --poems-fs: 1em;
+  --poem-title-fs: clamp(1.25rem, 0.6983rem + 2.7586vw, 2.25rem);
+  --poem-fs: clamp(0.75rem, 0.6121rem + 0.6897vw, 1rem);
+  --poems-fs: clamp(0.875rem, 0.806rem + 0.3448vw, 1rem);
+  --poem-indent: clamp(2.25rem, 1.5603rem + 3.4483vw, 3.5rem);
   --summary-fs: clamp(1.375rem, 1.0302rem + 1.7241vw, 2rem);
 }
 
@@ -172,7 +174,7 @@ details a:hover {
 .poem {
   padding-block: 2em;
   text-align: left;
-  text-indent: clamp(2.5rem, 1.9483rem + 2.7586vw, 3.5rem);
+  text-indent: var(--poem-indent);
 }
 
 .poem h1 {
@@ -350,17 +352,19 @@ input:valid:not(:placeholder-shown) {
 
 .form-button {
   background-color: var(--font-clr);
-  border: 1px solid var(--font-clr);
+  border: none;
   border-radius: 5px;
   color: var(--light-clr);
   font-family: inherit;
-  padding-block: 0.3em;
+  font-size: var(--form-btn-fs);
+  padding-block: 0.2em;
   padding-inline: 0.6em;
 }
 
 .form-button:focus-visible,
 .form-button:hover {
   background-color: transparent;
+  border: 1px solid var(--font-clr);
   color: var(--font-clr);
   font-weight: bold;
 }
