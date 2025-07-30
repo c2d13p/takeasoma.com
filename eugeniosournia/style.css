@@ -21,9 +21,9 @@
   --line-horizontal-clr: #3b3c36;
   --line-vertical-clr: #e60026;
   --line-offset: calc(
-    50% - min(50% - 0.5em, 450px) + clamp(1.75rem, 1.0603rem + 3.4483vw, 3rem)
+    50% - min(50% - 0.5em, 450px) + clamp(1.5rem, 0.5rem + 4.4444vw, 3rem)
   );
-  --poem-title-fs: clamp(1.25rem, 0.6983rem + 2.7586vw, 2.25rem);
+  --poem-title-fs: clamp(1.125rem, 0.5417rem + 2.5926vw, 2rem);
   --poem-fs: clamp(0.75rem, 0.6121rem + 0.6897vw, 1rem);
   --poems-fs: clamp(0.875rem, 0.806rem + 0.3448vw, 1rem);
   --poem-indent: clamp(2.25rem, 1.5603rem + 3.4483vw, 3.5rem);
@@ -49,18 +49,9 @@ html::before {
   inset: 0;
   min-height: 100%;
   opacity: 0.5;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
   position: absolute;
   width: 100%;
   z-index: -1;
-}
-
-svg {
-  position: absolute;
-  z-index: 1;
 }
 
 body {
@@ -227,6 +218,12 @@ details a:hover {
   animation-delay: 2s;
 }
 
+@media (max-width: 400px) {
+  .typewriter.second::before {
+    animation-delay: 3s;
+  }
+}
+
 @keyframes typewriter {
   to {
     width: 100%;
@@ -241,7 +238,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 0.8em;
-  padding-block: 1em;
+  padding-block: 0.6em;
 }
 
 footer a {
@@ -358,7 +355,7 @@ input:valid:not(:placeholder-shown) {
   font-family: inherit;
   font-size: var(--form-btn-fs);
   padding-block: 0.2em;
-  padding-inline: 0.6em;
+  padding-inline: 1.6em;
 }
 
 .form-button:focus-visible,

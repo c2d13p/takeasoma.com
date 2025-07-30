@@ -14,7 +14,7 @@ function createNotification() {
     top: ${rect.top - 50}px;
     left: ${rect.left + rect.width / 2}px;
     transform: translateX(-50%);
-    background: var(--light-bg, #333);
+    background: var(--light-clr, #333);
     border: 1px solid var(--font-clr);
     color: var(--font-clr, #fff);
     padding: 8px 12px;
