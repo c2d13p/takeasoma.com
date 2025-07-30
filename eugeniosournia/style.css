@@ -4,26 +4,27 @@
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap");
 
 :root {
+  --dark-clr: #000;
   --font-clr: #111111;
   --font-family: "Courier Prime", "Courier New", Courier,
     "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-  --form-btn-clr: #fff;
-  --footer-fs: 1em;
-
+  --form-fs: 1em;
+  --footer-link-fs: 0.8em;
   --header-fs: clamp(1.25rem, 0.6983rem + 2.7586vw, 2.25rem);
-  --icon-bg-clr: transparent;
+  --icon-bg-clr: #fff;
   --icon-bg-clr-active: rgb(174, 174, 174);
   --icon-clr: rgb(0, 0, 0);
   --icon-size: 1.2em;
-  --input-bg-clr: #fff;
   --input-placeholder-clr: #848482;
-  --light-bg: #fff;
-  --line-clr: #3b3c36;
-  --line-side-clr: #e60026;
+  --light-clr: #fff;
+  --line-horizontal-clr: #3b3c36;
+  --line-vertical-clr: #e60026;
   --line-offset: calc(
     50% - min(50% - 0.5em, 450px) + clamp(2rem, 1.4483rem + 2.7586vw, 3rem)
   );
-  --main-fs: 1em;
+  --poem-title-fs: 2em;
+  --poem-fs: 1em;
+  --poems-fs: 1em;
   --summary-fs: clamp(1.375rem, 1.0302rem + 1.7241vw, 2rem);
 }
 
@@ -31,25 +32,21 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--light-bg);
-  color: var(--font-clr);
-  display: flex;
-  flex-direction: column;
-  font-family: var(--font-family);
-  margin: 0 auto;
-  min-height: 100dvh;
-  max-width: 900px;
-  text-align: center;
+/* -------------------------------------------------------------------------- */
+/*                                Html and body                               */
+/* -------------------------------------------------------------------------- */
+
+html {
+  position: relative;
 }
 
-body::before {
+html::before {
   background: #000;
   content: "";
   filter: url(#noiseFilter);
-  height: 100%;
   inset: 0;
-  opacity: 50%;
+  min-height: 100%;
+  opacity: 0.5;
   position: absolute;
   width: 100%;
   z-index: -1;
@@ -60,9 +57,20 @@ svg {
   z-index: 1;
 }
 
+body {
+  color: var(--font-clr);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+  margin: 0 auto;
+  min-height: 100dvh;
+  max-width: 900px;
+  text-align: center;
+}
+
 .line-left,
 .line-right {
-  background-color: var(--line-side-clr);
+  background-color: var(--line-vertical-clr);
   bottom: 0;
   position: fixed;
   top: 0;
@@ -78,22 +86,34 @@ svg {
   right: var(--line-offset);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                Header                                      */
+/* -------------------------------------------------------------------------- */
+
 header {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
-    var(--line-clr) 1em
+    var(--line-horizontal-clr) 1em
   );
   font-size: var(--header-fs);
   line-height: 1.5em;
   margin-block: 0.6em;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                Main                                        */
+/* -------------------------------------------------------------------------- */
+
 main {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                Poems                                       */
+/* -------------------------------------------------------------------------- */
 
 summary {
   cursor: pointer;
@@ -121,33 +141,29 @@ details > * {
   margin-block: 0.8em;
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8em;
-  padding-block: 1em;
-}
-
-details a,
-details a:focus {
+details a {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
-    var(--line-clr) 1em
+    var(--line-horizontal-clr) 1em
   );
   color: var(--font-clr);
-  font-size: var(--main-fs);
+  font-size: var(--poems-fs);
   font-style: italic;
   line-height: 1.5em;
   outline: none;
   text-decoration: none;
 }
 
-details a:focus,
+details a:focus-visible,
 details a:hover {
   font-style: normal;
   font-weight: bold;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                Poem                                        */
+/* -------------------------------------------------------------------------- */
 
 .poem {
   padding-block: 2em;
@@ -155,28 +171,30 @@ details a:hover {
   text-indent: clamp(2.5rem, 1.9483rem + 2.7586vw, 3.5rem);
 }
 
-main h1 {
+.poem h1 {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
-    var(--line-clr) 1em
+    var(--line-horizontal-clr) 1em
   );
+  font-size: var(--poem-title-fs);
   line-height: 1.5em;
   margin-block: 1.2em;
   font-style: italic;
 }
 
-main p {
+.poem p {
   background: repeating-linear-gradient(
     transparent 0em,
     transparent 0.96em,
-    var(--line-clr) 1em
+    var(--line-horizontal-clr) 1em
   );
+  font-size: var(--poem-fs);
   line-height: 1.5em;
   margin-block: 0.4em;
 }
 
-main p.invisible {
+.poem p.invisible {
   color: transparent;
 }
 
@@ -209,15 +227,78 @@ main p.invisible {
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                Footer                                      */
+/* -------------------------------------------------------------------------- */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+  padding-block: 1em;
+}
+
 footer a {
   color: var(--font-clr);
+  font-size: var(--footer-link-fs);
   text-decoration: none;
 }
 
-footer a:focus,
+footer a:focus-visible,
 footer a:hover {
   font-weight: bold;
+  outline: none;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                Icon                                        */
+/* -------------------------------------------------------------------------- */
+
+button {
+  cursor: pointer;
+}
+
+i {
+  color: var(--font-clr);
+  font-size: var(--icon-size);
+}
+
+.i-poem {
+  font-size: var(--poems-fs);
+  margin-right: 0.6em;
+}
+
+.round-button {
+  align-items: center;
+  background: var(--light-clr);
+  border: 1px solid var(--dark-clr);
+  border-radius: 100vmax;
+  display: flex;
+  height: calc(var(--icon-size) * 2);
+  justify-content: center;
+  width: calc(var(--icon-size) * 2);
+}
+
+.round-button:active {
+  outline: none;
+  transform: scale(0.95);
+}
+
+.round-button:focus,
+.round-button:hover {
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.icons {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Form                                        */
+/* -------------------------------------------------------------------------- */
 
 form {
   align-items: center;
@@ -235,12 +316,12 @@ form {
 }
 
 input {
-  background-color: var(--input-bg-clr);
+  background-color: var(--light-clr);
   border: 1px solid var(--font-clr);
   border-radius: 5px;
   color: var(--font-clr);
   font-family: inherit;
-  font-size: var(--footer-fs);
+  font-size: var(--form-fs);
   padding-block: 0.2em;
   text-align: center;
 }
@@ -250,7 +331,7 @@ input::placeholder {
 }
 
 input:focus {
-  background-color: var(--input-bg-clr);
+  background-color: var(--light-clr);
   border-color: var(--font-clr);
   color: var(--font-clr);
 }
@@ -263,21 +344,17 @@ input:valid:not(:placeholder-shown) {
   border-color: green;
 }
 
-button {
-  cursor: pointer;
-}
-
 .form-button {
   background-color: var(--font-clr);
   border: 1px solid var(--font-clr);
   border-radius: 5px;
-  color: var(--form-btn-clr);
+  color: var(--light-clr);
   font-family: inherit;
   padding-block: 0.3em;
   padding-inline: 0.6em;
 }
 
-.form-button:focus,
+.form-button:focus-visible,
 .form-button:hover {
   background-color: transparent;
   color: var(--font-clr);
@@ -288,42 +365,4 @@ button {
   background-color: var(--input-placeholder-clr);
   color: var(--form-btn-clr);
   cursor: not-allowed;
-}
-
-.social-links {
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-}
-
-i {
-  color: var(--font-clr);
-  font-size: 1.2em;
-}
-
-.heart-poem {
-  font-size: 1em;
-  margin-right: 0.6em;
-}
-
-.round-button {
-  align-items: center;
-  background: var(--light-bg);
-  border: 1px solid var(--font-clr);
-  border-radius: 100vmax;
-  display: flex;
-  height: calc(var(--icon-size) * 2);
-  justify-content: center;
-  width: calc(var(--icon-size) * 2);
-}
-
-.round-button:active {
-  outline: none;
-  transform: scale(0.95);
-}
-
-.round-button:focus,
-.round-button:hover {
-  outline: none;
-  transform: translateY(-2px);
 }

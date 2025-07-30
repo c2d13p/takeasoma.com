@@ -19,7 +19,7 @@ function addHeartsToFavorites() {
     if (poemLink) {
       // Create heart icon
       const heartIcon = document.createElement("i");
-      heartIcon.className = "fa-regular fa-heart heart-poem";
+      heartIcon.className = "fa-regular fa-heart i-poem";
 
       // Add heart at the beginning of the link
       poemLink.insertBefore(heartIcon, poemLink.firstChild);
