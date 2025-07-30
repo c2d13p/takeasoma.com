@@ -29,3 +29,4 @@ function addHeartsToFavorites() {
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", addHeartsToFavorites);
+document.addEventListener("touchstart", () => {}, true);
