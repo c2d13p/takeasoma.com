@@ -279,15 +279,15 @@ i {
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:active {
-  outline: none;
-  transform: scale(0.95);
-}
-
-.round-button:focus,
+.round-button:focus-visible,
 .round-button:hover {
   outline: none;
   transform: translateY(-2px);
+}
+
+.round-button:active {
+  outline: none;
+  transform: scale(0.95);
 }
 
 .icons {
