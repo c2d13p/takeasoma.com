@@ -286,14 +286,20 @@ i {
   display: flex;
   height: calc(var(--icon-size) * 2);
   justify-content: center;
-  touch-action: manipulation;
+  transition: transform 0.15s ease;
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:focus-visible,
-.round-button:hover {
+.round-button:focus-visible {
   outline: none;
   transform: translateY(-2px);
+}
+
+@media (hover: hover) {
+  .round-button:hover {
+    outline: none;
+    transform: translateY(-2px);
+  }
 }
 
 .round-button:active {
