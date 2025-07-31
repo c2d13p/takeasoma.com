@@ -290,6 +290,7 @@ i {
   display: flex;
   height: calc(var(--icon-size) * 2);
   justify-content: center;
+  touch-action: manipulation;
   width: calc(var(--icon-size) * 2);
 }
 

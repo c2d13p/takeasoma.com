@@ -53,5 +53,8 @@ function toggleFavorite() {
 
 // Event listeners
 document.addEventListener("DOMContentLoaded", initializeFavorites);
-heartButton.addEventListener("click", toggleFavorite);
+heartButton.addEventListener("click", () => {
+  toggleFavorite();
+  heartButton.blur();
+});
 document.addEventListener("touchstart", () => {}, true);
