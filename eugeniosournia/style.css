@@ -43,15 +43,26 @@ html {
 }
 
 html::before {
-  background: #000;
   content: "";
   filter: url(#noiseFilter);
   inset: 0;
   min-height: 100%;
   opacity: 0.5;
-  position: absolute;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  position: fixed;
   width: 100%;
   z-index: -1;
+}
+
+svg {
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+  z-index: -10;
 }
 
 body {
