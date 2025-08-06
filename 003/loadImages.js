@@ -138,7 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const image = images[currentIndex];
     if (!image) return;
 
-    const url = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
+    // const url = `https://drive.google.com/thumbnail?id=${image.id}&sz=s1024`;
+    const url = `https://lh3.googleusercontent.com/d/${image.id}=s1024`;
 
     // Update the title if it exists
     if (title && image.title) {
@@ -318,7 +319,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const nextImage = images[nextIndex];
       if (nextImage) {
         const preloadImg = new Image();
-        preloadImg.src = `https://drive.google.com/thumbnail?id=${nextImage.id}&sz=s1024`;
+        // preloadImg.src = `https://drive.google.com/thumbnail?id=${nextImage.id}&sz=s1024`;
+        preloadImg.src = `https://lh3.googleusercontent.com/d/${nextImage.id}=s1024`;
       }
     }
   }
