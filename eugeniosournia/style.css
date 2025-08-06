@@ -48,11 +48,7 @@ html::before {
   inset: 0;
   min-height: 100%;
   opacity: 0.5;
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: -1;
 }
@@ -290,14 +286,20 @@ i {
   display: flex;
   height: calc(var(--icon-size) * 2);
   justify-content: center;
-  touch-action: manipulation;
+  transition: transform 0.15s ease;
   width: calc(var(--icon-size) * 2);
 }
 
-.round-button:focus-visible,
-.round-button:hover {
+.round-button:focus-visible {
   outline: none;
   transform: translateY(-2px);
+}
+
+@media (hover: hover) {
+  .round-button:hover {
+    outline: none;
+    transform: translateY(-2px);
+  }
 }
 
 .round-button:active {
