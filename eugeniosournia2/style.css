@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Times Newer Roman"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-regular.woff2") format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 400;
+  font-style: italic;
+  src: local("Times Newer Roman Italic"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-italic.woff2") format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 700;
+  font-style: normal;
+  src: local("Times Newer Roman Bold"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bold.woff2") format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 700;
+  font-style: italic;
+  src: local("Times Newer Roman Bold Italic"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bolditalic.woff2")
+      format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bolditalic.woff") format("woff");
+}
+
+body {
+  font-family: "Times Newer Roman";
+  margin: 0 auto;
+  max-width: 600px;
+  position: relative;
+}
+
+header h1 {
+  font-size: clamp(1.625rem, 1.1964rem + 2.1429vw, 2rem);
+  margin-block: 1.2em;
+}
+
+img {
+  display: block;
+
+  bottom: 10%;
+  max-width: 20%;
+  position: absolute;
+  right: 20%;
+}
+
+@media (max-width: 400px) {
+  img {
+    right: 10%;
+  }
+}
+
+main {
+  padding-inline: 0.4em;
+}
+
+main.poem p.title {
+  font-weight: bold;
+  margin-block: 2em;
+}
+
+main.poem p {
+  margin-block: 0.4em;
+}
+
+p {
+  font-size: clamp(0.875rem, 0.7321rem + 0.7143vw, 1rem);
+}
+
+footer.poem {
+  margin-block: 2em;
+}
