@@ -39,6 +39,7 @@ body {
   font-family: "Times Newer Roman";
   margin: 0 auto;
   max-width: 600px;
+  padding-inline: 1em;
   position: relative;
 }
 
@@ -60,10 +61,6 @@ img {
   img {
     right: 10%;
   }
-}
-
-main {
-  padding-inline: 0.4em;
 }
 
 main.poem p.title {
