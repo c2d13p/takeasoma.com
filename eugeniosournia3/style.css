@@ -1,0 +1,157 @@
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Times Newer Roman"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-regular.woff2") format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 400;
+  font-style: italic;
+  src: local("Times Newer Roman Italic"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-italic.woff2") format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 700;
+  font-style: normal;
+  src: local("Times Newer Roman Bold"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bold.woff2") format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Times Newer Roman";
+  font-weight: 700;
+  font-style: italic;
+  src: local("Times Newer Roman Bold Italic"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bolditalic.woff2")
+      format("woff2"),
+    url("/fonts/TimesNewerRoman/timesnewerroman-bolditalic.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fefefa;
+  font-family: "Times Newer Roman";
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+body.poem {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 0.6em;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.6em;
+  text-align: center;
+}
+
+header img {
+  display: block;
+  max-width: 15%;
+}
+
+h1 {
+  font-size: clamp(1.625rem, 1.1964rem + 2.1429vw, 2rem);
+  margin-block: 0.2em;
+}
+
+h2 {
+  margin-block: 0.4em;
+}
+
+p {
+  font-size: clamp(0.875rem, 0.7321rem + 0.7143vw, 1rem);
+}
+
+main.poems {
+  display: grid;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(min(275px, 100%), 1fr));
+  padding: 0.6em;
+}
+
+article {
+  padding-inline: 0.4em;
+}
+
+article p {
+  margin-block: 0.2em;
+}
+
+main.poems a {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: inherit;
+  display: block;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+main.poems a:hover,
+main.poems a:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+main.poems a:active {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+}
+
+#id2025004 {
+  background-image: url("bg/4.png");
+}
+
+#id2025003 {
+  background-image: url("bg/3.png");
+}
+#id2025002 {
+  background-image: url("bg/2.png");
+}
+#id2025001 {
+  background-image: url("bg/1.png");
+}
+
+main.poem {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding-inline: 1em;
+  position: relative;
+  width: min(400px, calc(100% - 2em));
+}
+
+main.poem p.title {
+  font-weight: bold;
+  margin-block: 2em;
+}
+
+main.poem p {
+  margin-block: 0.4em;
+}
+
+main.poem img {
+  display: block;
+  max-width: 15%;
+}
+
+main.poem p {
+  font-size: clamp(0.875rem, 0.7321rem + 0.7143vw, 1rem);
+}
